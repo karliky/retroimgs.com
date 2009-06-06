@@ -1,5 +1,6 @@
 <?php
 /* SVN FILE: $Id: routes.php 7820 2008-11-03 18:27:56Z renan.saddam $ */
+
 /**
  * Short description for file.
  *
@@ -26,12 +27,14 @@
  * @lastmodified  $Date: 2008-11-03 19:27:56 +0100 (Mon, 03 Nov 2008) $
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
+
 /**
  * Here, we are connecting '/' (base path) to controller called 'Pages',
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	Router::connect('/', array('controller' => 'products', 'action' => 'index'));
+
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
