@@ -40,4 +40,13 @@
  * ...and connect the rest of 'Pages' controller's urls.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+
+/**
+ * If the code reaches here, there  is no cached or vendor-served css/js/etc file.
+ */
+Router::connect('/css/*', array('controller' => 'dev', 'action' => 'serve'));
+Router::connect('/js/*', array('controller' => 'dev', 'action' => 'serve'));
+Router::connect('/files/*', array('controller' => 'media', 'action' => 'view'));
+Router::connect('/img/*', array('controller' => 'media', 'action' => 'view'));
+
 ?>

@@ -15,10 +15,13 @@ $menu->add(array(
 	array('title' => __('Contact Us', true), 'url' => array('controller' => 'contact', 'action' => 'us'))
 ));
 if ($session->check('Auth.User') && empty($isEmail)) {
+	if ($session->check('Auth.User.is_admin')) {
+		$menu->add(array(
+			array('title' => __('Admin', true), 'url' => '/admin'),
+		));
+	}
 	$menu->add(array(
 		array('title' => __('Your Profile', true), 'url' => array('controller' => 'users', 'action' => 'profile')),
-		// A deliberate teaser. If the user isn't an admin they can't access it
-		array('title' => __('Admin', true), 'url' => '/admin'),
 		array('title' => __('Logout', true), 'url' => array('controller' => 'users', 'action' => 'logout')),
 	));
 } else {
