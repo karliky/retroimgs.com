@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Rifalia schema generated on: 2009-06-06 16:06:07 : 1244298907*/
+/* Rifalia schema generated on: 2009-06-06 19:06:47 : 1244308847*/
 class RifaliaSchema extends CakeSchema {
 	var $name = 'Rifalia';
 
@@ -15,6 +15,41 @@ class RifaliaSchema extends CakeSchema {
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
 		'name' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
 		'descriptiion' => array('type' => 'text', 'null' => true, 'default' => NULL),
+		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
+	);
+	var $emails = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'from_user_id' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'to_user_id' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'chain_id' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'ip' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'send_date' => array('type' => 'date', 'null' => true, 'default' => NULL),
+		'status' => array('type' => 'string', 'null' => false, 'default' => 'unsent', 'length' => 30),
+		'type' => array('type' => 'string', 'null' => true, 'default' => 'normal', 'length' => 10),
+		'from' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'to' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'reply_to' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'cc' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'bcc' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'send_as' => array('type' => 'string', 'null' => false, 'default' => 'both', 'length' => 4),
+		'subject' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'template' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'layout' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'data' => array('type' => 'text', 'null' => false, 'default' => NULL),
+		'created' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'modified' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
+	);
+	var $enums = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'type' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 30),
+		'order' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'length' => 2),
+		'display' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'value' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 50),
+		'description' => array('type' => 'text', 'null' => false, 'default' => NULL),
+		'default' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
@@ -77,8 +112,14 @@ class RifaliaSchema extends CakeSchema {
 	);
 	var $users = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'mail' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'password' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
+		'username' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 20),
+		'email' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'group' => array('type' => 'string', 'null' => true, 'default' => 'normal', 'length' => 15),
+		'password' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 41),
+		'email_verified' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
+		'first_name' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'last_name' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'pic' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
