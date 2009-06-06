@@ -32,8 +32,6 @@ $viewPaths        = array($base . 'views' . DS);
 $helperPaths      = array($base . 'views' . DS . 'helpers' . DS);
 $vendorPaths      = array($base . 'vendors' . DS);
 
-Configure::write('Users.allowRegistrations', true);
-
 /**
  * isproduction method
  * a stub/example
