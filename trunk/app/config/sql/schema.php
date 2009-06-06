@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Rifalia schema generated on: 2009-06-06 16:06:02 : 1244298722*/
+/* Rifalia schema generated on: 2009-06-06 16:06:07 : 1244298907*/
 class RifaliaSchema extends CakeSchema {
 	var $name = 'Rifalia';
 
@@ -50,7 +50,7 @@ class RifaliaSchema extends CakeSchema {
 	var $raffles = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
 		'expirated_date' => array('type' => 'date', 'null' => true, 'default' => NULL),
-		'ticket_number' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'tickets_count' => array('type' => 'integer', 'null' => true, 'default' => NULL),
 		'tickets_price' => array('type' => 'float', 'null' => true, 'default' => NULL),
 		'tickets_bought' => array('type' => 'integer', 'null' => true, 'default' => NULL),
 		'last_ticket_date' => array('type' => 'date', 'null' => true, 'default' => NULL),
