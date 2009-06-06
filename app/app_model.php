@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: app_model.php 7847 2008-11-08 02:54:07Z renan.saddam $ */
 
 /**
  * Application model for Cake.
@@ -21,9 +21,9 @@
  * @package       cake
  * @subpackage    cake.app
  * @since         CakePHP(tm) v 0.2.9
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
+ * @version       $Revision: 7847 $
+ * @modifiedby    $LastChangedBy: renan.saddam $
+ * @lastmodified  $Date: 2008-11-08 03:54:07 +0100 (Sat, 08 Nov 2008) $
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 

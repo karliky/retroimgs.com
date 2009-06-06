@@ -1,4 +1,4 @@
-# $Id$
+# $Id: db_acl.sql 7805 2008-10-30 17:30:26Z AD7six $
 #
 # Copyright 2005-2008,	Cake Software Foundation, Inc.
 #

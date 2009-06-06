@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: app_helper.php 7904 2008-12-05 16:49:43Z mark_story $ */
 /**
  * Short description for file.
  *
@@ -20,9 +20,9 @@
  * @package       cake
  * @subpackage    cake.cake
  * @since         CakePHP(tm) v 0.2.9
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
+ * @version       $Revision: 7904 $
+ * @modifiedby    $LastChangedBy: mark_story $
+ * @lastmodified  $Date: 2008-12-05 17:49:43 +0100 (Fri, 05 Dec 2008) $
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 App::import('Core', 'Helper');

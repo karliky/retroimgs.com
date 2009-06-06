@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: routes.php 7820 2008-11-03 18:27:56Z renan.saddam $ */
 /**
  * Short description for file.
  *
@@ -21,9 +21,9 @@
  * @package       cake
  * @subpackage    cake.app.config
  * @since         CakePHP(tm) v 0.2.9
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
+ * @version       $Revision: 7820 $
+ * @modifiedby    $LastChangedBy: renan.saddam $
+ * @lastmodified  $Date: 2008-11-03 19:27:56 +0100 (Mon, 03 Nov 2008) $
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**

@@ -1,4 +1,4 @@
-# $Id$
+# $Id: sessions.sql 7062 2008-05-30 11:29:53Z nate $
 #
 # Copyright 2005-2008,	Cake Software Foundation, Inc.
 #								1785 E. Sahara Avenue, Suite 490-204
