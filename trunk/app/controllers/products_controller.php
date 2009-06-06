@@ -29,10 +29,6 @@
  * @subpackage    rifalia.controllers
  */
 class ProductsController extends AppController {
-<<<<<<< HEAD:controllers/products_controller.php
-	var $scaffold = array('index', 'add', 'edit', 'delete', 'view');
-=======
->>>>>>> updated schema files:controllers/products_controller.php
 
 /**
  * name property
