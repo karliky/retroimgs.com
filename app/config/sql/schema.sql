@@ -1,4 +1,4 @@
-#Rifalia sql generated on: 2009-06-06 21:06:45 : 1244317005
+#Rifalia sql generated on: 2009-06-06 21:06:37 : 1244317297
 
 DROP TABLE IF EXISTS `categories`;
 DROP TABLE IF EXISTS `emails`;
