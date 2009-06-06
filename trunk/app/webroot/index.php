@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: index.php 7805 2008-10-30 17:30:26Z AD7six $ */
+/* SVN FILE: $Id$ */
 /**
  * Short description for file.
  *
@@ -19,9 +19,9 @@
  * @package       cake
  * @subpackage    cake.app.webroot
  * @since         CakePHP(tm) v 0.2.9
- * @version       $Revision: 7805 $
- * @modifiedby    $LastChangedBy: AD7six $
- * @lastmodified  $Date: 2008-10-30 18:30:26 +0100 (Thu, 30 Oct 2008) $
+ * @version       $Revision$
+ * @modifiedby    $LastChangedBy$
+ * @lastmodified  $Date$
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -55,11 +55,11 @@
  *
  */
 	if (!defined('CAKE_CORE_INCLUDE_PATH')) {
-		define('CAKE_CORE_INCLUDE_PATH', '/home/andy/www/cakes/1.2.x.x');
+		define('CAKE_CORE_INCLUDE_PATH', ROOT);
 	}
 
 /**
- * Editing below this line should not be necessary.
+ * Editing below this line should NOT be necessary.
  * Change at your own risk.
  *
  */
