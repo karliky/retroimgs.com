@@ -1,44 +1,83 @@
 <?php
-/* SVN FILE: $Id: bootstrap.php 7805 2008-10-30 17:30:26Z AD7six $ */
+/* SVN FILE: $Id$ */
+
 /**
- * Short description for file.
+ * Short description for bootstrap.php
  *
- * Long description for file
+ * Long description for bootstrap.php
  *
- * PHP versions 4 and 5
+ * PHP version 4 and 5
  *
- * CakePHP(tm) :  Rapid Development Framework (http://www.cakephp.org)
- * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * Copyright (c) 2009, Andy Dawson
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
- * @package       cake
- * @subpackage    cake.app.config
- * @since         CakePHP(tm) v 0.10.8.2117
- * @version       $Revision: 7805 $
- * @modifiedby    $LastChangedBy: AD7six $
- * @lastmodified  $Date: 2008-10-30 18:30:26 +0100 (Thu, 30 Oct 2008) $
+ * @copyright     Copyright (c) 2009, Andy Dawson
+ * @link          www.ad7six.com
+ * @package       base
+ * @subpackage    base.config
+ * @since         v 1.0
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
+
+$base = ROOT . DS . 'base' . DS;
+$controllerPaths  = array($base . 'controllers' . DS);
+$componentPaths   = array($base . 'controllers' . DS . 'components' . DS);
+$modelPaths       = array($base . 'models' . DS);
+$localePaths      = array($base . 'locale' . DS);
+$behaviorPaths    = array($base . 'models' . DS . 'behaviors' . DS);
+$viewPaths        = array($base . 'views' . DS);
+$helperPaths      = array($base . 'views' . DS . 'helpers' . DS);
+$vendorPaths      = array($base . 'vendors' . DS);
+
+Configure::write('Users.allowRegistrations', true);
+
 /**
+ * isproduction method
+ * a stub/example
  *
- * This file is loaded automatically by the app/webroot/index.php file after the core bootstrap.php is loaded
- * This is an application wide file to load any function that is not used within a class define.
- * You can also use this to include or require any files in your application.
+ * use sparingly - won't work from a shell
  *
+ * @return boolean
+ * @access public
  */
+function isproduction() {
+	if (!isset($_server['http_host'])) {
+		return false;
+	}
+	return ($_server['http_host'] === 'www.rifalia.com' && $_server['script_name'] === '/index.php');
+}
+
 /**
- * The settings below can be used to set additional paths to models, views and controllers.
- * This is related to Ticket #470 (https://trac.cakephp.org/ticket/470)
+ * isstaging method
+ * a stub/example
  *
- * $modelPaths = array('full path to models', 'second full path to models', 'etc...');
- * $viewPaths = array('this path to views', 'second full path to views', 'etc...');
- * $controllerPaths = array('this path to controllers', 'second full path to controllers', 'etc...');
+ * use sparingly - won't work from a shell
  *
+ * @return boolean
+ * @access public
  */
-//EOF
+function isstaging() {
+	if (!isset($_server['http_host'])) {
+		return false;
+	}
+	return ($_server['http_host'] === 'staging.rifalia.com'); // running in a subdomain
+	//return ($_server['http_host'] === 'www.rifalia.com' && $_server['script_name'] !== '/index.php'); // running in a subfolder
+}
+
+/**
+ * isdevelopment method
+ * a stub/example
+ *
+ * use sparingly - won't work from a shell
+ *
+ * @return boolean
+ * @access public
+ */
+function isdevelopment() {
+	return (!isproduction() && !isstaging());
+}
+include('mi_bootstrap.php');
 ?>
