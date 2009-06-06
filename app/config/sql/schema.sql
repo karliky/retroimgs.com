@@ -36,9 +36,9 @@ CREATE TABLE `products` (
 	`created` datetime DEFAULT NULL,
 	`modified` datetime DEFAULT NULL,
 	`categories_id` int(11) DEFAULT NULL,
-	`raffles_id` int(11) DEFAULT NULL,	PRIMARY KEY  (`id`),
+	`raffle_id` int(11) DEFAULT NULL,	PRIMARY KEY  (`id`),
 	KEY fk_products_categories (`categories_id`),
-	KEY fk_products_raffles (`raffles_id`));
+	KEY fk_products_raffles (`raffle_id`));
 
 CREATE TABLE `products_users` (
 	`users_id` int(11) NOT NULL,
@@ -65,8 +65,8 @@ CREATE TABLE `tickets` (
 	`reserved` tinyint(1) DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
 	`modified` datetime DEFAULT NULL,
-	`raffles_id` int(11) DEFAULT NULL,	PRIMARY KEY  (`id`),
-	KEY fk_tickets_raffles (`raffles_id`));
+	`raffle_id` int(11) DEFAULT NULL,	PRIMARY KEY  (`id`),
+	KEY fk_tickets_raffles (`raffle_id`));
 
 CREATE TABLE `tickets_users` (
 	`users_id` int(11) NOT NULL,
