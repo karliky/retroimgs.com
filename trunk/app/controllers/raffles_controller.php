@@ -32,7 +32,10 @@ class RafflesController extends AppController {
 
 		// TODO: Check admin role
 
-		//$this->Raffle->Tickets
+		$result = $this->Raffle->Ticket->find(array('raffle_id' => $id), "id", array('rand()'));
+		$winner = $result["Ticket"]["id"];
+
+		$this->Session->setFlash('And the winner is... '.$winner);
 	}
 }
 ?>
