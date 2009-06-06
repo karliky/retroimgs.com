@@ -1,23 +1,26 @@
-#Rifalia sql generated on: 2009-06-06 19:06:52 : 1244308852
+#Rifalia sql generated on: 2009-06-06 21:06:45 : 1244317005
 
 DROP TABLE IF EXISTS `categories`;
 DROP TABLE IF EXISTS `emails`;
 DROP TABLE IF EXISTS `enums`;
+DROP TABLE IF EXISTS `media`;
+DROP TABLE IF EXISTS `orders`;
+DROP TABLE IF EXISTS `payment_gateways`;
 DROP TABLE IF EXISTS `products`;
-DROP TABLE IF EXISTS `products_users`;
+DROP TABLE IF EXISTS `providers`;
 DROP TABLE IF EXISTS `raffles`;
+DROP TABLE IF EXISTS `settings`;
 DROP TABLE IF EXISTS `tickets`;
-DROP TABLE IF EXISTS `tickets_users`;
+DROP TABLE IF EXISTS `transactions`;
 DROP TABLE IF EXISTS `users`;
-DROP TABLE IF EXISTS `users_description`;
 
 
 CREATE TABLE `categories` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`name` varchar(45) DEFAULT NULL,
-	`descriptiion` text DEFAULT NULL,
+	`name` varchar(255) DEFAULT NULL,
+	`description` text DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
+	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
 
 CREATE TABLE `emails` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -52,85 +55,147 @@ CREATE TABLE `enums` (
 	`created` datetime DEFAULT NULL,
 	`modified` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
 
+CREATE TABLE `media` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`user_id` int(11) NOT NULL,
+	`model` varchar(30) NOT NULL,
+	`foreign_key` int(11) NOT NULL,
+	`filename` varchar(255) DEFAULT NULL,
+	`ext` varchar(6) DEFAULT 'gif' NOT NULL,
+	`dir` varchar(255) DEFAULT NULL,
+	`mimetype` varchar(30) DEFAULT NULL,
+	`filesize` int(11) DEFAULT NULL,
+	`height` int(4) DEFAULT NULL,
+	`width` int(4) DEFAULT NULL,
+	`description` varchar(100) NOT NULL,
+	`checksum` varchar(32) DEFAULT NULL,
+	`thumb` tinyint(1) DEFAULT 0 NOT NULL,
+	`created` datetime DEFAULT NULL,
+	`modified` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
+	KEY idxfk_foreign (`model`, `foreign_key`));
+
+CREATE TABLE `orders` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`user_id` int(11) NOT NULL,
+	`amount` float NOT NULL,
+	`transaction_id` int(11) NOT NULL,
+	`ticket_id` int(11) DEFAULT NULL,
+	`description` varchar(255) DEFAULT NULL,
+	`created` datetime DEFAULT NULL,
+	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
+	KEY idx_orders_user_id (`user_id`),
+	KEY idx_orders_transaction_id (`transaction_id`),
+	KEY idx_orders_ticket_id (`ticket_id`));
+
+CREATE TABLE `payment_gateways` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(255) DEFAULT NULL,
+	`updated` datetime DEFAULT NULL,
+	`created` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
+
 CREATE TABLE `products` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`tittle` varchar(45) DEFAULT NULL,
-	`short_description` varchar(45) DEFAULT NULL,
-	`long_description` varchar(45) DEFAULT NULL,
-
-	`lat` float DEFAULT NULL,
-	`long` float DEFAULT NULL,
-	`zoom` int(11) DEFAULT NULL,
+	`provider_id` int(11) DEFAULT NULL,
+	`commission` float DEFAULT NULL,
+	`category_id` int(11) NOT NULL,
+	`raffle_id` int(11) DEFAULT NULL,
+	`name` varchar(255) DEFAULT NULL,
+	`short_description` varchar(255) DEFAULT NULL,
+	`description` text DEFAULT NULL,
 	`price` float DEFAULT NULL,
-	`order` int(11) DEFAULT NULL,
-	`video` varchar(45) DEFAULT NULL,
-	`video_type` varchar(45) DEFAULT NULL,
-	`image` varchar(45) DEFAULT NULL,
-	`acept` varchar(45) DEFAULT NULL,
-	`acepted_date` date DEFAULT NULL,
+	`video_url` varchar(255) DEFAULT NULL,
+	`is_on_raffle` tinyint(1) DEFAULT 0 NOT NULL,
+	`is_approved` tinyint(1) DEFAULT 0 NOT NULL,
 	`created` datetime DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,
-	`categories_id` int(11) DEFAULT NULL,
-	`raffle_id` int(11) DEFAULT NULL,	PRIMARY KEY  (`id`),
-	KEY fk_products_categories (`categories_id`),
-	KEY fk_products_raffles (`raffle_id`));
+	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
+	KEY idx_products_provider_id (`provider_id`),
+	KEY idx_products_category_id (`category_id`),
+	KEY idx_products_raffle_id (`raffle_id`),
+	KEY idx_products_is_on_raffle (`is_on_raffle`),
+	KEY idx_products_is_approved (`is_approved`));
 
-CREATE TABLE `products_users` (
-	`users_id` int(11) NOT NULL,
-	`products_id` int(11) NOT NULL,
+CREATE TABLE `providers` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(255) DEFAULT NULL,
+	`contact_person` varchar(255) DEFAULT NULL,
+	`email` varchar(255) DEFAULT NULL,
+	`phone` varchar(255) DEFAULT NULL,
+	`balance` float DEFAULT NULL,
+	`default_commission` int(11) DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,
-	KEY fk_products_users_users (`users_id`),
-	KEY fk_products_users_products (`products_id`));
+	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
 
 CREATE TABLE `raffles` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`expirated_date` date DEFAULT NULL,
-	`tickets_count` int(11) DEFAULT NULL,
-	`tickets_price` float DEFAULT NULL,
-	`tickets_bought` int(11) DEFAULT NULL,
-	`last_ticket_date` date DEFAULT NULL,
-	`status` tinyint(1) DEFAULT NULL,
+	`available_tickets` varchar(255) DEFAULT NULL,
+	`ticket_price` varchar(255) DEFAULT NULL,
+	`sold_tickets` varchar(255) DEFAULT NULL,
+	`closes` datetime DEFAULT NULL,
+	`parent_id` int(11) DEFAULT NULL,
+	`is_published` tinyint(1) DEFAULT 0 NOT NULL,
+	`published` datetime DEFAULT NULL,
+	`is_assigned` tinyint(1) DEFAULT 0 NOT NULL,
+	`assigned` datetime DEFAULT NULL,
+	`winner_id` int(11) DEFAULT NULL,
+	`winner_code` varchar(255) DEFAULT NULL,
+	`is_cancelled` tinyint(1) DEFAULT 0 NOT NULL,
+	`cancelled` datetime DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
+	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
+	KEY idx_raffles_parent_id (`parent_id`),
+	KEY idx_raffles_is_published (`is_published`),
+	KEY idx_raffles_is_assigned (`is_assigned`),
+	KEY idx_raffles_winner_id (`winner_id`),
+	KEY idx_raffles_is_cancelled (`is_cancelled`));
+
+CREATE TABLE `settings` (
+	`id` varchar(255) NOT NULL,
+	`value` varchar(255) DEFAULT NULL,
+	`type` varchar(30) DEFAULT 'string' NOT NULL,
+	`description` varchar(255) DEFAULT NULL,
+	`modified` datetime DEFAULT NULL,
+	`created` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
 
 CREATE TABLE `tickets` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`number` int(11) DEFAULT NULL,
-	`reserved` tinyint(1) DEFAULT NULL,
+	`code` varchar(255) DEFAULT NULL,
+	`user_id` int(11) DEFAULT NULL,
+	`raffle_id` int(11) DEFAULT NULL,
+	`transaction_id` int(11) DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,
-	`raffle_id` int(11) DEFAULT NULL,	PRIMARY KEY  (`id`),
-	KEY fk_tickets_raffles (`raffle_id`));
+	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
+	KEY idx_tickets_raffle_id (`raffle_id`),
+	KEY idx_tickets_transaction_id (`transaction_id`));
 
-CREATE TABLE `tickets_users` (
-	`users_id` int(11) NOT NULL,
-	`tickets_id` int(11) NOT NULL,
+CREATE TABLE `transactions` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`payment_gateway_id` int(11) DEFAULT NULL,
+	`user_id` int(11) DEFAULT NULL,
+	`transaction_type` varchar(255) DEFAULT NULL,
+	`description` text DEFAULT NULL,
+	`amount` int(11) NOT NULL,
+	`connection_details` text DEFAULT NULL,
+	`authorisation_code` varchar(255) DEFAULT NULL,
+	`payment_requested` datetime DEFAULT NULL,
+	`payment_response` datetime DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,
-	KEY fk_tickets_users_users (`users_id`),
-	KEY fk_tickets_users_tickets (`tickets_id`));
+	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
+	KEY idx_transactions_payment_gateway_id (`payment_gateway_id`),
+	KEY idx_transactions_user_id (`user_id`));
 
 CREATE TABLE `users` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`username` varchar(20) NOT NULL,
-	`email` varchar(255) NOT NULL,
-	`group` varchar(15) DEFAULT 'normal',
-	`password` varchar(41) NOT NULL,
-	`email_verified` tinyint(1) DEFAULT 0 NOT NULL,
-	`first_name` varchar(255) DEFAULT NULL,
-	`last_name` varchar(255) DEFAULT NULL,
-	`pic` varchar(255) DEFAULT NULL,
-	`created` datetime DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
-
-CREATE TABLE `users_description` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`users_id` int(11) DEFAULT NULL,
-	`address` varchar(45) DEFAULT NULL,
-	`telephone` varchar(45) DEFAULT NULL,
-	`cash` float DEFAULT NULL,
-	`created` datetime DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
-	KEY fk_users_description_users (`users_id`));
+	`login` varchar(40) NOT NULL,
+	`email` varchar(50) NOT NULL,
+	`password` varchar(40) NOT NULL,
+	`address` varchar(255) DEFAULT NULL,
+	`phone` varchar(255) DEFAULT NULL,
+	`balance` float DEFAULT NULL,
+	`is_admin` tinyint(1) DEFAULT 1,
+	`is_enabled` tinyint(1) DEFAULT 1,
+	`is_email_verified` tinyint(1) DEFAULT 1,
+	`updated` datetime DEFAULT NULL,
+	`created` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
+	KEY idx_users_login (`login`),
+	KEY idx_users_email (`email`));
 

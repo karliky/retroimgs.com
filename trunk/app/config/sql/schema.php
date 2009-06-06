@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Rifalia schema generated on: 2009-06-06 19:06:47 : 1244308847*/
+/* Rifalia schema generated on: 2009-06-06 21:06:40 : 1244317000*/
 class RifaliaSchema extends CakeSchema {
 	var $name = 'Rifalia';
 
@@ -13,10 +13,10 @@ class RifaliaSchema extends CakeSchema {
 
 	var $categories = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'name' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'descriptiion' => array('type' => 'text', 'null' => true, 'default' => NULL),
+		'name' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'description' => array('type' => 'text', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
 	);
 	var $emails = array(
@@ -54,85 +54,139 @@ class RifaliaSchema extends CakeSchema {
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
 	);
+	var $media = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'user_id' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'model' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 30, 'key' => 'index'),
+		'foreign_key' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'filename' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'ext' => array('type' => 'string', 'null' => false, 'default' => 'gif', 'length' => 6),
+		'dir' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'mimetype' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 30),
+		'filesize' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'height' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'length' => 4),
+		'width' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'length' => 4),
+		'description' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 100),
+		'checksum' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 32),
+		'thumb' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
+		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idxfk_foreign' => array('column' => array('model', 'foreign_key'), 'unique' => 0))
+	);
+	var $orders = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'user_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
+		'amount' => array('type' => 'float', 'null' => false, 'default' => NULL),
+		'transaction_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
+		'ticket_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
+		'description' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_orders_user_id' => array('column' => 'user_id', 'unique' => 0), 'idx_orders_transaction_id' => array('column' => 'transaction_id', 'unique' => 0), 'idx_orders_ticket_id' => array('column' => 'ticket_id', 'unique' => 0))
+	);
+	var $payment_gateways = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'name' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
+	);
 	var $products = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'tittle' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'short_description' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'long_description' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'lat' => array('type' => 'float', 'null' => true, 'default' => NULL),
-		'long' => array('type' => 'float', 'null' => true, 'default' => NULL),
-		'zoom' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'provider_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
+		'commission' => array('type' => 'float', 'null' => true, 'default' => NULL),
+		'category_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
+		'raffle_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
+		'name' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'short_description' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'description' => array('type' => 'text', 'null' => true, 'default' => NULL),
 		'price' => array('type' => 'float', 'null' => true, 'default' => NULL),
-		'order' => array('type' => 'integer', 'null' => true, 'default' => NULL),
-		'video' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'video_type' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'image' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'acept' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'acepted_date' => array('type' => 'date', 'null' => true, 'default' => NULL),
+		'video_url' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'is_on_raffle' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'key' => 'index'),
+		'is_approved' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'key' => 'index'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'categories_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
-		'raffles_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'fk_products_categories' => array('column' => 'categories_id', 'unique' => 0), 'fk_products_raffles' => array('column' => 'raffles_id', 'unique' => 0))
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_products_provider_id' => array('column' => 'provider_id', 'unique' => 0), 'idx_products_category_id' => array('column' => 'category_id', 'unique' => 0), 'idx_products_raffle_id' => array('column' => 'raffle_id', 'unique' => 0), 'idx_products_is_on_raffle' => array('column' => 'is_on_raffle', 'unique' => 0), 'idx_products_is_approved' => array('column' => 'is_approved', 'unique' => 0))
 	);
-	var $products_users = array(
-		'users_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'products_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+	var $providers = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'name' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'contact_person' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'email' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'phone' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'balance' => array('type' => 'float', 'null' => true, 'default' => NULL),
+		'default_commission' => array('type' => 'integer', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => array('users_id', 'products_id'), 'unique' => 1), 'fk_products_users_users' => array('column' => 'users_id', 'unique' => 0), 'fk_products_users_products' => array('column' => 'products_id', 'unique' => 0))
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
 	);
 	var $raffles = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'expirated_date' => array('type' => 'date', 'null' => true, 'default' => NULL),
-		'tickets_count' => array('type' => 'integer', 'null' => true, 'default' => NULL),
-		'tickets_price' => array('type' => 'float', 'null' => true, 'default' => NULL),
-		'tickets_bought' => array('type' => 'integer', 'null' => true, 'default' => NULL),
-		'last_ticket_date' => array('type' => 'date', 'null' => true, 'default' => NULL),
-		'status' => array('type' => 'boolean', 'null' => true, 'default' => NULL),
+		'available_tickets' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'ticket_price' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'sold_tickets' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'closes' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'parent_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
+		'is_published' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'key' => 'index'),
+		'published' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'is_assigned' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'key' => 'index'),
+		'assigned' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'winner_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
+		'winner_code' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'is_cancelled' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'key' => 'index'),
+		'cancelled' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_raffles_parent_id' => array('column' => 'parent_id', 'unique' => 0), 'idx_raffles_is_published' => array('column' => 'is_published', 'unique' => 0), 'idx_raffles_is_assigned' => array('column' => 'is_assigned', 'unique' => 0), 'idx_raffles_winner_id' => array('column' => 'winner_id', 'unique' => 0), 'idx_raffles_is_cancelled' => array('column' => 'is_cancelled', 'unique' => 0))
+	);
+	var $settings = array(
+		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'value' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'type' => array('type' => 'string', 'null' => false, 'default' => 'string', 'length' => 30),
+		'description' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
 	);
 	var $tickets = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'number' => array('type' => 'integer', 'null' => true, 'default' => NULL),
-		'reserved' => array('type' => 'boolean', 'null' => true, 'default' => NULL),
+		'code' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'user_id' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'raffle_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
+		'transaction_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'raffles_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'fk_tickets_raffles' => array('column' => 'raffles_id', 'unique' => 0))
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_tickets_raffle_id' => array('column' => 'raffle_id', 'unique' => 0), 'idx_tickets_transaction_id' => array('column' => 'transaction_id', 'unique' => 0))
 	);
-	var $tickets_users = array(
-		'users_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'tickets_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+	var $transactions = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'payment_gateway_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
+		'user_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
+		'transaction_type' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'description' => array('type' => 'text', 'null' => true, 'default' => NULL),
+		'amount' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'connection_details' => array('type' => 'text', 'null' => true, 'default' => NULL),
+		'authorisation_code' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'payment_requested' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'payment_response' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => array('users_id', 'tickets_id'), 'unique' => 1), 'fk_tickets_users_users' => array('column' => 'users_id', 'unique' => 0), 'fk_tickets_users_tickets' => array('column' => 'tickets_id', 'unique' => 0))
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_transactions_payment_gateway_id' => array('column' => 'payment_gateway_id', 'unique' => 0), 'idx_transactions_user_id' => array('column' => 'user_id', 'unique' => 0))
 	);
 	var $users = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'username' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 20),
-		'email' => array('type' => 'string', 'null' => false, 'default' => NULL),
-		'group' => array('type' => 'string', 'null' => true, 'default' => 'normal', 'length' => 15),
-		'password' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 41),
-		'email_verified' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
-		'first_name' => array('type' => 'string', 'null' => true, 'default' => NULL),
-		'last_name' => array('type' => 'string', 'null' => true, 'default' => NULL),
-		'pic' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'login' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 40, 'key' => 'index'),
+		'email' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 50, 'key' => 'index'),
+		'password' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 40),
+		'address' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'phone' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'balance' => array('type' => 'float', 'null' => true, 'default' => NULL),
+		'is_admin' => array('type' => 'boolean', 'null' => true, 'default' => '1'),
+		'is_enabled' => array('type' => 'boolean', 'null' => true, 'default' => '1'),
+		'is_email_verified' => array('type' => 'boolean', 'null' => true, 'default' => '1'),
+		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
-	);
-	var $users_description = array(
-		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'users_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
-		'address' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'telephone' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45),
-		'cash' => array('type' => 'float', 'null' => true, 'default' => NULL),
-		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'fk_users_description_users' => array('column' => 'users_id', 'unique' => 0))
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_users_login' => array('column' => 'login', 'unique' => 0), 'idx_users_email' => array('column' => 'email', 'unique' => 0))
 	);
 }
 ?>
