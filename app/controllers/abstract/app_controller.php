@@ -130,6 +130,7 @@ class AppController extends Controller {
  * @access public
  */
 	function beforeFilter() {
+		$this->log($this->here, 'Requests');
 		if (isset($this->SwissArmy)) {
 			$this->SwissArmy->setDefaultPageTitle();
 			$this->SwissArmy->handlePostActions();
@@ -139,6 +140,13 @@ class AppController extends Controller {
 		$this->Auth->loginAction = '/users/login';
 		$this->Auth->logoutRedirect = '/';
 	}
+
+/**
+ * beforeRender method
+ *
+ * @return void
+ * @access public
+ */
 	function beforeRender() {
 		if (!isset ($this->viewVars['data'])) {
 			$this->set('data', $this->data);
@@ -400,8 +408,7 @@ class AppController extends Controller {
  * @access public
  */
 	function isAuthorized() {
-		debug ($this->Auth->user()); die;
-		if (isset($this->params['admin']) && $this->Auth->user('group') != 'admin') {
+		if (isset($this->params['admin']) && !$this->Auth->user('is_admin')) {
 			return false;
 		}
 		return true;

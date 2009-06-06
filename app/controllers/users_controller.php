@@ -62,7 +62,7 @@ class UsersController extends AppController {
 	function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->fields = array(
-			'username' => 'email',
+			'username' => 'login',
 			'password' => 'password'
 		);
 		$this->set('authFields', $this->Auth->fields);
@@ -224,16 +224,18 @@ class UsersController extends AppController {
 					$token = $this->User->token(null, array('length' => 100, 'fields' => array(
 						$this->Auth->fields['username'], $this->Auth->fields['password']
 					)));
-					$this->SwissArmy->addComponent('Cookie');
-					$this->Cookie->write('User.id', $this->User->id, true, '+2 weeks');
-					$this->Cookie->write('User.token', $token, true, '+2 weeks');
+					if(isset($this->SwissArmy)) {
+						$this->SwissArmy->addComponent('Cookie');
+						$this->Cookie->write('User.id', $this->User->id, true, '+2 weeks');
+						$this->Cookie->write('User.token', $token, true, '+2 weeks');
+					}
 				}
 				$display = $this->User->display();
 				$this->Session->setFlash(sprintf(__('Welcome back %1$s.', true), $display));
 				if ($this->RequestHandler->isAjax() && !empty($this->params['refresh'])) {
-					return $this->_back(null, true);
+					return $this->redirect($this->Auth->redirect(), null, true, true);
 				}
-				return $this->_back();
+				return $this->redirect($this->Auth->redirect());
 			}
 		} elseif ($this->Auth->user('id')) {
 			$this->Session->setFlash(__('You\'re already logged in!', true));
@@ -255,8 +257,10 @@ class UsersController extends AppController {
  */
 	function logout() {
 		if ($this->Auth->user()) {
-			$this->SwissArmy->addComponent('Cookie');
-			$this->Cookie->del('User');
+			if (isset($this->SwissArmy)) {
+				$this->SwissArmy->addComponent('Cookie');
+				$this->Cookie->del('User');
+			}
 			$this->Session->destroy();
 			$this->Session->setFlash(__('now logged out', true));
 		}
@@ -380,8 +384,12 @@ class UsersController extends AppController {
  * @return void
  */
 	function switch_language($language = 'eng') {
-		$this->SwissArmy->addComponent('Cookie');
-		$this->Cookie->write('lang', $language, null, '+350 day');
+		if(isset($this->SwissArmy)) {
+			$this->SwissArmy->addComponent('Cookie');
+			$this->Cookie->write('User.id', $this->User->id, true, '+2 weeks');
+			$this->Cookie->write('User.token', $token, true, '+2 weeks');
+			$this->Cookie->write('lang', $language, null, '+350 day');
+		}
 		$this->Session->write('Config.language', $language);
 		$this->_back();
 	}
