@@ -1,6 +1,6 @@
 <?php
 class RafflesController extends AppController {
-	var $scaffold = array('index', 'add', 'edit', 'delete');
+	var $scaffold = array('index', 'add', 'edit', 'delete', 'winner');
 
 	var $name = 'Raffles';
 
@@ -8,7 +8,7 @@ class RafflesController extends AppController {
 		//$this->set('raffles', $this->Raffle->find('all'));
 	//}
 
-	function add() {
+	/*function add() {
 		
 		// TODO: check admin role
 
@@ -21,16 +21,18 @@ class RafflesController extends AppController {
 					$aTickets[$i] =Array("number" => $i, "raffle" => $this->Raffle->id);
 				}
 				$this->Raffle->Ticket->saveAll($aTickets);
-//print_r($this->Raffle->Ticket);
-//print_r($this->data);
-//echo "    $i<br/>";
-//echo $this->Raffle->data["tickets_count"];
-//die();
 				
 				$this->Session->setFlash('Your post has been saved.');
 				$this->redirect(array('action' => 'index'));
 			}
 		}
+	}*/
+
+	function winner($id) {
+
+		// TODO: Check admin role
+
+		//$this->Raffle->Tickets
 	}
 }
 ?>
