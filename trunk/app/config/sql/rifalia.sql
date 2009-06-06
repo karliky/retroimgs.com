@@ -1,483 +1,211 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
-
-
-
--- -----------------------------------------------------
-
--- Table `users`
-
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `users` ;
-
-
-
-SHOW WARNINGS;
-
-CREATE  TABLE IF NOT EXISTS `users` (
-
-  `id` INT NOT NULL ,
-
-  `mail` VARCHAR(45) NULL ,
-
-  `pass` VARCHAR(45) NULL ,
-
-  `created` DATETIME NULL ,
-
-  `modified` DATETIME NULL ,
-
-  PRIMARY KEY (`id`) )
-
-ENGINE = MyISAM
-
-DEFAULT CHARACTER SET = utf8
-
-COLLATE = utf8_general_ci;
-
-
-
-SHOW WARNINGS;
-
-
-
--- -----------------------------------------------------
-
--- Table `categories`
-
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `categories` ;
-
-
-
-SHOW WARNINGS;
-
-CREATE  TABLE IF NOT EXISTS `categories` (
-
-  `id` INT NOT NULL ,
-
-  `name` VARCHAR(45) NULL ,
-
-  `descriptiion` VARCHAR(45) NULL ,
-
-  `created` DATETIME NULL ,
-
-  `modified` DATETIME NULL ,
-
-  PRIMARY KEY (`id`) )
-
-ENGINE = MyISAM
-
-DEFAULT CHARACTER SET = utf8
-
-COLLATE = utf8_general_ci;
-
-
-
-SHOW WARNINGS;
-
-
-
--- -----------------------------------------------------
-
--- Table `raffles`
-
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `raffles` ;
-
-
-
-SHOW WARNINGS;
-
-CREATE  TABLE IF NOT EXISTS `raffles` (
-
-  `id` INT NOT NULL ,
-
-  `expirated_date` DATE NULL ,
-
-  `tickets_number` INT NULL ,
-
-  `tickets_price` FLOAT NULL ,
-
-  `tickets_bought` INT NULL ,
-
-  `last_ticket_date` DATE NULL ,
-
-  `status` BOOLEAN NULL ,
-
-  `created` DATETIME NULL ,
-
-  `modified` DATETIME NULL ,
-
-  PRIMARY KEY (`id`) )
-
-ENGINE = MyISAM
-
-DEFAULT CHARACTER SET = utf8
-
-COLLATE = utf8_general_ci;
-
-
-
-SHOW WARNINGS;
-
-
-
--- -----------------------------------------------------
-
--- Table `products`
-
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `products` ;
-
-
-
-SHOW WARNINGS;
-
-CREATE  TABLE IF NOT EXISTS `products` (
-
-  `id` INT NOT NULL ,
-
-  `tittle` VARCHAR(45) NULL ,
-
-  `short_description` VARCHAR(45) NULL ,
-
-  `long_description` VARCHAR(45) NULL ,
-
-  `lat` FLOAT NULL ,
-
-  `long` FLOAT NULL ,
-
-  `zoom` INT NULL ,
-
-  `price` FLOAT NULL ,
-
-  `order` INT NULL ,
-
-  `video` VARCHAR(45) NULL ,
-
-  `video_type` VARCHAR(45) NULL ,
-
-  `image` VARCHAR(45) NULL ,
-
-  `acept` VARCHAR(45) NULL ,
-
-  `acepted_date` DATE NULL ,
-
-  `created` DATETIME NULL ,
-
-  `modified` DATETIME NULL ,
-
-  `categories_id` INT NULL ,
-
-  `raffles_id` INT NULL ,
-
-  PRIMARY KEY (`id`) ,
-
-  CONSTRAINT `fk_products_categories`
-
-    FOREIGN KEY (`categories_id` )
-
-    REFERENCES `categories` (`id` )
-
-    ON DELETE NO ACTION
-
-    ON UPDATE NO ACTION,
-
-  CONSTRAINT `fk_products_raffles`
-
-    FOREIGN KEY (`raffles_id` )
-
-    REFERENCES `raffles` (`id` )
-
-    ON DELETE NO ACTION
-
-    ON UPDATE NO ACTION)
-
-ENGINE = MyISAM
-
-DEFAULT CHARACTER SET = utf8
-
-COLLATE = utf8_general_ci;
-
-
-
-SHOW WARNINGS;
-
-CREATE INDEX `fk_products_categories` ON `products` (`categories_id` ASC) ;
-
-
-
-SHOW WARNINGS;
-
-CREATE INDEX `fk_products_raffles` ON `products` (`raffles_id` ASC) ;
-
-
-
-SHOW WARNINGS;
-
-
-
--- -----------------------------------------------------
-
--- Table `tickets`
-
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `tickets` ;
-
-
-
-SHOW WARNINGS;
-
-CREATE  TABLE IF NOT EXISTS `tickets` (
-
-  `id` INT NOT NULL ,
-
-  `ticket_number` INT NULL ,
-
-  `reserved` BOOLEAN NULL ,
-
-  `created` DATETIME NULL ,
-
-  `modified` DATETIME NULL ,
-
-  `raffles_id` INT NULL ,
-
-  PRIMARY KEY (`id`) ,
-
-  CONSTRAINT `fk_tickets_raffles`
-
-    FOREIGN KEY (`raffles_id` )
-
-    REFERENCES `raffles` (`id` )
-
-    ON DELETE NO ACTION
-
-    ON UPDATE NO ACTION)
-
-ENGINE = MyISAM
-
-DEFAULT CHARACTER SET = utf8
-
-COLLATE = utf8_general_ci;
-
-
-
-SHOW WARNINGS;
-
-CREATE INDEX `fk_tickets_raffles` ON `tickets` (`raffles_id` ASC) ;
-
-
-
-SHOW WARNINGS;
-
-
-
--- -----------------------------------------------------
-
--- Table `users_has_tickets`
-
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `users_has_tickets` ;
-
-
-
-SHOW WARNINGS;
-
-CREATE  TABLE IF NOT EXISTS `users_has_tickets` (
-
-  `users_id` INT NOT NULL ,
-
-  `tickets_id` INT NOT NULL ,
-
-  `created` DATETIME NULL ,
-
-  `modified` DATETIME NULL ,
-
-  PRIMARY KEY (`users_id`, `tickets_id`) ,
-
-  CONSTRAINT `fk_users_has_tickets_users`
-
-    FOREIGN KEY (`users_id` )
-
-    REFERENCES `users` (`id` )
-
-    ON DELETE NO ACTION
-
-    ON UPDATE NO ACTION,
-
-  CONSTRAINT `fk_users_has_tickets_tickets`
-
-    FOREIGN KEY (`tickets_id` )
-
-    REFERENCES `tickets` (`id` )
-
-    ON DELETE NO ACTION
-
-    ON UPDATE NO ACTION)
-
-ENGINE = MyISAM
-
-DEFAULT CHARACTER SET = utf8
-
-COLLATE = utf8_general_ci;
-
-
-
-SHOW WARNINGS;
-
-CREATE INDEX `fk_users_has_tickets_users` ON `users_has_tickets` (`users_id` ASC) ;
-
-
-
-SHOW WARNINGS;
-
-CREATE INDEX `fk_users_has_tickets_tickets` ON `users_has_tickets` (`tickets_id` ASC) ;
-
-
-
-SHOW WARNINGS;
-
-
-
--- -----------------------------------------------------
-
--- Table `users_has_products`
-
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `users_has_products` ;
-
-
-
-SHOW WARNINGS;
-
-CREATE  TABLE IF NOT EXISTS `users_has_products` (
-
-  `users_id` INT NOT NULL ,
-
-  `products_id` INT NOT NULL ,
-
-  `created` DATETIME NULL ,
-
-  `modified` DATETIME NULL ,
-
-  PRIMARY KEY (`users_id`, `products_id`) ,
-
-  CONSTRAINT `fk_users_has_products_users`
-
-    FOREIGN KEY (`users_id` )
-
-    REFERENCES `users` (`id` )
-
-    ON DELETE NO ACTION
-
-    ON UPDATE NO ACTION,
-
-  CONSTRAINT `fk_users_has_products_products`
-
-    FOREIGN KEY (`products_id` )
-
-    REFERENCES `products` (`id` )
-
-    ON DELETE NO ACTION
-
-    ON UPDATE NO ACTION)
-
-ENGINE = MyISAM
-
-DEFAULT CHARACTER SET = utf8
-
-COLLATE = utf8_general_ci;
-
-
-
-SHOW WARNINGS;
-
-CREATE INDEX `fk_users_has_products_users` ON `users_has_products` (`users_id` ASC) ;
-
-
-
-SHOW WARNINGS;
-
-CREATE INDEX `fk_users_has_products_products` ON `users_has_products` (`products_id` ASC) ;
-
-
-
-SHOW WARNINGS;
-
-
-
--- -----------------------------------------------------
-
--- Table `users_description`
-
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `users_description` ;
-
-
-
-SHOW WARNINGS;
-
-CREATE  TABLE IF NOT EXISTS `users_description` (
-
-  `id` INT NOT NULL ,
-
-  `users_id` INT NULL ,
-
-  `address` VARCHAR(45) NULL ,
-
-  `telephone` VARCHAR(45) NULL ,
-
-  `cash` FLOAT NULL ,
-
-  `created` DATETIME NULL ,
-
-  `modified` DATETIME NULL ,
-
-  PRIMARY KEY (`id`) ,
-
-  CONSTRAINT `fk_users_description_users`
-
-    FOREIGN KEY (`users_id` )
-
-    REFERENCES `users` (`id` )
-
-    ON DELETE NO ACTION
-
-    ON UPDATE NO ACTION)
-
-ENGINE = MyISAM
-
-DEFAULT CHARACTER SET = utf8
-
-COLLATE = utf8_general_ci;
-
-
-
-SHOW WARNINGS;
-
-CREATE INDEX `fk_users_description_users` ON `users_description` (`users_id` ASC) ;
-
-
-
-SHOW WARNINGS;
-
-
-
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+n SQL Dump
+-- version 2.11.4
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jun 06, 2009 at 04:20 PM
+-- Server version: 5.0.67
+-- PHP Version: 5.2.6-2ubuntu4.2
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `rifalia`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) default NULL,
+  `descriptiion` text,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `categories`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `tittle` varchar(45) default NULL,
+  `short_description` varchar(45) default NULL,
+  `long_description` varchar(45) default NULL,
+  `lat` float default NULL,
+  `long` float default NULL,
+  `zoom` int(11) default NULL,
+  `price` float default NULL,
+  `order` int(11) default NULL,
+  `video` varchar(45) default NULL,
+  `video_type` varchar(45) default NULL,
+  `image` varchar(45) default NULL,
+  `acept` varchar(45) default NULL,
+  `acepted_date` date default NULL,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  `categories_id` int(11) default NULL,
+  `raffles_id` int(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `fk_products_categories` (`categories_id`),
+  KEY `fk_products_raffles` (`raffles_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `products`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products_users`
+--
+
+DROP TABLE IF EXISTS `products_users`;
+CREATE TABLE `products_users` (
+  `users_id` int(11) NOT NULL,
+  `products_id` int(11) NOT NULL,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  PRIMARY KEY  (`users_id`,`products_id`),
+  KEY `fk_products_users_users` (`users_id`),
+  KEY `fk_products_users_products` (`products_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `products_users`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `raffles`
+--
+
+DROP TABLE IF EXISTS `raffles`;
+CREATE TABLE `raffles` (
+  `id` int(11) NOT NULL,
+  `expirated_date` date default NULL,
+  `ticket_number` int(11) default NULL,
+  `tickets_price` float default NULL,
+  `tickets_bought` int(11) default NULL,
+  `last_ticket_date` date default NULL,
+  `status` tinyint(1) default NULL,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `raffles`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tickets`
+--
+
+DROP TABLE IF EXISTS `tickets`;
+CREATE TABLE `tickets` (
+  `id` int(11) NOT NULL,
+  `number` int(11) default NULL,
+  `reserved` tinyint(1) default NULL,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  `raffles_id` int(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `fk_tickets_raffles` (`raffles_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tickets`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tickets_users`
+--
+
+DROP TABLE IF EXISTS `tickets_users`;
+CREATE TABLE `tickets_users` (
+  `users_id` int(11) NOT NULL,
+  `tickets_id` int(11) NOT NULL,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  PRIMARY KEY  (`users_id`,`tickets_id`),
+  KEY `fk_tickets_users_users` (`users_id`),
+  KEY `fk_tickets_users_tickets` (`tickets_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tickets_users`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `mail` varchar(45) default NULL,
+  `password` varchar(45) default NULL,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_description`
+--
+
+DROP TABLE IF EXISTS `users_description`;
+CREATE TABLE `users_description` (
+  `id` int(11) NOT NULL,
+  `users_id` int(11) default NULL,
+  `address` varchar(45) default NULL,
+  `telephone` varchar(45) default NULL,
+  `cash` float default NULL,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `fk_users_description_users` (`users_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users_description`
+--
+
+ET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+ET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
