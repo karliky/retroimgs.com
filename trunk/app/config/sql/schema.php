@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Rifalia schema generated on: 2009-06-06 21:06:40 : 1244317000*/
+/* Rifalia schema generated on: 2009-06-06 21:06:32 : 1244317292*/
 class RifaliaSchema extends CakeSchema {
 	var $name = 'Rifalia';
 
