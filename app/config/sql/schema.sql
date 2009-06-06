@@ -1,4 +1,4 @@
-#Rifalia sql generated on: 2009-06-06 16:06:12 : 1244298732
+#Rifalia sql generated on: 2009-06-06 16:06:13 : 1244298913
 
 DROP TABLE IF EXISTS `categories`;
 DROP TABLE IF EXISTS `products`;
@@ -50,7 +50,7 @@ CREATE TABLE `products_users` (
 CREATE TABLE `raffles` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`expirated_date` date DEFAULT NULL,
-	`ticket_number` int(11) DEFAULT NULL,
+	`tickets_count` int(11) DEFAULT NULL,
 	`tickets_price` float DEFAULT NULL,
 	`tickets_bought` int(11) DEFAULT NULL,
 	`last_ticket_date` date DEFAULT NULL,
