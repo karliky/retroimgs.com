@@ -46,7 +46,7 @@ class RafflesController extends AppController {
 	var $name = 'Raffles';
 	function add() {
 		if ($this->data) {
-			if ($this->Raffle->saveAll($this->data)) {
+			if ($this->Raffle->save($this->data)) {
 				$display = $this->Raffle->display();
 				$this->Session->setFlash(sprintf(__('Raffle "%1$s" added', true), $display));
 				return $this->_back();
@@ -55,6 +55,7 @@ class RafflesController extends AppController {
 				$this->Session->setFlash(__('errors in form', true));
 			}
 		}
+		$this->set('products', $this->Raffle->Product->find('list'));
 		$this->_setSelects();
 	}
 

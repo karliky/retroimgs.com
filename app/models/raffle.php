@@ -76,6 +76,9 @@ class Raffle extends AppModel {
 					$aTickets[$i] = array('code' => $i, 'raffle_id' => $this->id);
 				}
 				$this->Ticket->saveAll($aTickets);
+				$product = $this->Ticket->Raffle->Product->find(array('Product.id' => $this->data['Raffle']['product_id']));
+				$product['Product']['is_on_raffle'] = 1;
+				$product = $this->Ticket->Raffle->Product->save($product);
 			}
 		}
 	}
