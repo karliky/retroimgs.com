@@ -40,7 +40,9 @@ class AppController extends Controller {
  */
 	var $components = array(
 		//'SwissArmy',
-		'Auth', 'RequestHandler');
+		'MiSession',
+		'Auth', 'RequestHandler'
+	);
 
 /**
  * helpers property
@@ -51,7 +53,8 @@ class AppController extends Controller {
 	var $helpers = array(
 		'MiHtml', 'MiJavascript', 'MiForm',
 		'Menu' => array('genericElement' => false),
-		'Form', 'Html');
+		'Form', 'Html'
+	);
 
 /**
  * namedParams property
@@ -130,6 +133,7 @@ class AppController extends Controller {
  * @access public
  */
 	function beforeFilter() {
+		$this->Auth->allow('*'); // temporary
 		$this->log($this->here, 'Requests');
 		if (isset($this->SwissArmy)) {
 			$this->SwissArmy->setDefaultPageTitle();
