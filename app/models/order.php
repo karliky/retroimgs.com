@@ -40,4 +40,10 @@ class Order extends AppModel {
 		'Ticket',
 		'User',
 	);
+
+      function generateOrder($id_ticket, $price, $idUser){
+        $aOrder = array('user_id' => $idUser, 'amount' => $price, "ticket_id" => $id_ticket, "description" => "quien me dejo pilotar esto madre mia");
+        $this->save($aOrder);
+        return $this->getLastInsertID();
+    }
 }

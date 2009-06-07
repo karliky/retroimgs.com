@@ -128,10 +128,11 @@ class User extends AppModel {
                 $this->id = $id;
            }
            if ($this->id) {
-               $less_money = $this->field('balance') - $price;
-               $this->amount->save($less_money);
-           }
-           return false;
+               $this->updateAll(array('balance' => 'balance - ' . $price), array('id'=>$this->id));
+               //$user = $this->find(array('id' =>$id));
+				//$resta = $user['User']['balance'] - $price;
+                //$this->saveField('balance', $resta);
+          }
     }
 }
 ?>
