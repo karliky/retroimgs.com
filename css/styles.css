@@ -53,9 +53,11 @@ h4{font-size:1.2em;line-height:1.6;}
 #menu ul li a{color:#eee;display:block;line-height:40px;text-decoration:none;padding:0 1.5em;}
 #menu ul li a:hover{color:#fff;}
 
-#migapan{margin:1em 0;padding:0 6px;}
+#migapan{margin:1em 0;padding:0 8px;}
 #migapan a{color:#666;}
 #migapan .sep{color:#ccc;margin:0 0.5em;}
+
+#info{background:pink;border:1px red solid;margin:1em 0;padding:0.5em 6px 0.5em 6px;}
 
 #social{
 	background-color: #252525;
