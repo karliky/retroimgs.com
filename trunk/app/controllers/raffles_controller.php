@@ -35,7 +35,7 @@ class RafflesController extends AppController {
  * @var array
  * @access public
  */
-	var $scaffold = array('index', 'add', 'edit', 'delete', 'winner');
+	var $scaffold = array('index', 'add', 'edit', 'delete', 'winner', 'view');
 
 /**
  * name property
@@ -47,6 +47,20 @@ class RafflesController extends AppController {
 
 	function index() {
 		$this->set('data', $this->paginate());
+	}
+
+/**
+ * view method
+ *
+ * @param $id
+ * @return void
+ * @access public
+ */
+	function view($id) {
+		$result = $this->Raffle->find(array('Raffle.id' => $id ));
+		$this->set('availableTickets', $result["Raffle"]["available_tickets"]);
+		$this->set('soldTickets', $result["Raffle"]["sold_tickets"]);
+		$this->set('remainingTickets', $result["Raffle"]["available_tickets"] - $result["Raffle"]["sold_tickets"]);
 	}
 
 /**
