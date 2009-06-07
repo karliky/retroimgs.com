@@ -25,7 +25,6 @@ $strengths = array(
 );
 $out .= $form->input('strength', array('fieldset' => false, 'label' => __('password strength', true), 'options' => $strengths, 'default' => 'normal'));
 */
-$out .= $form->input('strength', array('fieldset' => false, 'label' => __('password strength', true), 'options' => $strengths, 'default' => 'normal'));
 $tos = array('controller' => 'pages', 'action' => 'display', 'tos');
 $out .= $form->input('tos', array('fieldset' => false, 'type' => 'checkbox',
 	'label' => sprintf(__('I agree to the site %1$s', true), $html->link(__('terms of service', true), $tos, array('class' => 'popup modal noResize noDrag')))

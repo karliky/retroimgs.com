@@ -32,6 +32,10 @@ $viewPaths        = array($base . 'views' . DS);
 $helperPaths      = array($base . 'views' . DS . 'helpers' . DS);
 $vendorPaths      = array($base . 'vendors' . DS);
 
+Configure::write('Security.level', 'low');
+Configure::write('Session.start', false);
+Configure::write('Session.cookie', 'RIFALIA');
+
 /**
  * isproduction method
  * a stub/example
