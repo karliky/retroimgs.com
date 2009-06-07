@@ -12,6 +12,7 @@ echo $html->meta('icon');
 echo $html->css(array(
 	'admin_default', 'jquery.tokeninput',
 	'/js/theme/ui.all',
+	'form'
 ), null, null, false);
 echo $html->css();
 if (isset ($javascript)) {
