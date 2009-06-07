@@ -44,13 +44,13 @@ h4{font-size:1.2em;line-height:1.6;}
 	width: 100px;
 }
 
-#menu{background:#ad2624;height:35px;overflow:hidden;text-transform:uppercase;}
-#menu #search{float:left;padding:5px;}
+#menu{background:#ad2624;height:40px;overflow:hidden;text-transform:uppercase;}
+#menu #search{float:left;padding:8px;}
 #menu #search .search-text{border:1px #333 solid;color:#999;padding:3px;}
 #menu #search .search-button{}
 #menu ul{float:right;}
 #menu ul li{border-left:1px #eee solid;float:left;list-style:none;}
-#menu ul li a{color:#eee;display:block;line-height:35px;text-decoration:none;padding:0 1.5em;}
+#menu ul li a{color:#eee;display:block;line-height:40px;text-decoration:none;padding:0 1.5em;}
 #menu ul li a:hover{color:#fff;}
 
 #migapan{margin:1em 0;padding:0 6px;}
@@ -75,7 +75,7 @@ h4{font-size:1.2em;line-height:1.6;}
 #pie ul{height:65px;}
 #pie li{display:inline;}
 #pie li a{display:block;float:left;overflow:hidden;text-indent:-9999px;}
-#pie a.sponsor1{background:url('./img/iweekend.jpg') no-repeat;height:65px;width:190px;}
+#pie a.sponsor1{background:url('../img/iweekend.jpg') no-repeat;height:65px;width:190px;}
 #pie p{color:#999;margin-top:10px;text-align:center;}
 
 #proceso{
