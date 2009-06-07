@@ -33,7 +33,7 @@ $helperPaths      = array($base . 'views' . DS . 'helpers' . DS);
 $vendorPaths      = array($base . 'vendors' . DS);
 
 Configure::write('Security.level', 'low');
-Configure::write('Session.start', false);
+//Configure::write('Session.start', false);
 Configure::write('Session.cookie', 'RIFALIA');
 
 /**

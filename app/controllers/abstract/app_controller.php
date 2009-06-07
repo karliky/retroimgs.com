@@ -133,9 +133,8 @@ class AppController extends Controller {
  * @access public
  */
 	function beforeFilter() {
+		Configure::read('Session.start', true);
 		$this->Session->activate('/');
-		$this->Auth->allow('*'); // temporary
-		$this->log($this->here, 'Requests');
 		if (isset($this->SwissArmy)) {
 			$this->SwissArmy->setDefaultPageTitle();
 			$this->SwissArmy->handlePostActions();
