@@ -72,7 +72,7 @@ class Raffle extends AppModel {
 		if ($created) {
 			if (!empty($this->data)) {
 				$aTickets = array();
-				for($i=0; $i<$this->data['Raffle']['tickets_count']; $i++) {
+				for($i=0; $i<$this->data['Raffle']['available_tickets']; $i++) {
 					$aTickets[$i] = array('number' => $i, 'raffle_id' => $this->id);
 				}
 				$this->Ticket->saveAll($aTickets);
