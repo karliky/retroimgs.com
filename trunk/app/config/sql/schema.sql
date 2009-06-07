@@ -1,4 +1,4 @@
-#Rifalia sql generated on: 2009-06-06 21:06:37 : 1244317297
+#Rifalia sql generated on: 2009-06-07 09:06:39 : 1244360079
 
 DROP TABLE IF EXISTS `categories`;
 DROP TABLE IF EXISTS `emails`;
@@ -58,8 +58,6 @@ CREATE TABLE `enums` (
 CREATE TABLE `media` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`user_id` int(11) NOT NULL,
-	`model` varchar(30) NOT NULL,
-	`foreign_key` int(11) NOT NULL,
 	`filename` varchar(255) DEFAULT NULL,
 	`ext` varchar(6) DEFAULT 'gif' NOT NULL,
 	`dir` varchar(255) DEFAULT NULL,
@@ -71,8 +69,7 @@ CREATE TABLE `media` (
 	`checksum` varchar(32) DEFAULT NULL,
 	`thumb` tinyint(1) DEFAULT 0 NOT NULL,
 	`created` datetime DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
-	KEY idxfk_foreign (`model`, `foreign_key`));
+	`modified` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
 
 CREATE TABLE `orders` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -191,9 +188,9 @@ CREATE TABLE `users` (
 	`address` varchar(255) DEFAULT NULL,
 	`phone` varchar(255) DEFAULT NULL,
 	`balance` float DEFAULT NULL,
-	`is_admin` tinyint(1) DEFAULT 1,
-	`is_enabled` tinyint(1) DEFAULT 1,
-	`is_email_verified` tinyint(1) DEFAULT 1,
+	`is_admin` tinyint(1) DEFAULT 0,
+	`is_enabled` tinyint(1) DEFAULT 0,
+	`is_email_verified` tinyint(1) DEFAULT 0,
 	`updated` datetime DEFAULT NULL,
 	`created` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
 	KEY idx_users_login (`login`),

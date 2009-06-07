@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Rifalia schema generated on: 2009-06-06 21:06:32 : 1244317292*/
+/* Rifalia schema generated on: 2009-06-07 09:06:31 : 1244360071*/
 class RifaliaSchema extends CakeSchema {
 	var $name = 'Rifalia';
 
@@ -57,8 +57,6 @@ class RifaliaSchema extends CakeSchema {
 	var $media = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
 		'user_id' => array('type' => 'integer', 'null' => false, 'default' => NULL),
-		'model' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 30, 'key' => 'index'),
-		'foreign_key' => array('type' => 'integer', 'null' => false, 'default' => NULL),
 		'filename' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'ext' => array('type' => 'string', 'null' => false, 'default' => 'gif', 'length' => 6),
 		'dir' => array('type' => 'string', 'null' => true, 'default' => NULL),
@@ -71,7 +69,7 @@ class RifaliaSchema extends CakeSchema {
 		'thumb' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idxfk_foreign' => array('column' => array('model', 'foreign_key'), 'unique' => 0))
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
 	);
 	var $orders = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
@@ -181,9 +179,9 @@ class RifaliaSchema extends CakeSchema {
 		'address' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'phone' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'balance' => array('type' => 'float', 'null' => true, 'default' => NULL),
-		'is_admin' => array('type' => 'boolean', 'null' => true, 'default' => '1'),
-		'is_enabled' => array('type' => 'boolean', 'null' => true, 'default' => '1'),
-		'is_email_verified' => array('type' => 'boolean', 'null' => true, 'default' => '1'),
+		'is_admin' => array('type' => 'boolean', 'null' => true, 'default' => '0'),
+		'is_enabled' => array('type' => 'boolean', 'null' => true, 'default' => '0'),
+		'is_email_verified' => array('type' => 'boolean', 'null' => true, 'default' => '0'),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_users_login' => array('column' => 'login', 'unique' => 0), 'idx_users_email' => array('column' => 'email', 'unique' => 0))
