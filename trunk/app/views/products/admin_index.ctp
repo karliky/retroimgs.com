@@ -4,33 +4,27 @@ $this->set('pageTitle', __('Products', true));
 $paginator->options(array('url' => $this->passedArgs));
 $th = array(
 	$paginator->sort('id'),
-	$paginator->sort('Provider.name'),
-	$paginator->sort('commission'),
-	$paginator->sort('Category.name'),
-	$paginator->sort('Raffle.id'),
 	$paginator->sort('name'),
-	$paginator->sort('short_description'),
 	$paginator->sort('price'),
-	$paginator->sort('video_url'),
-	$paginator->sort('is_on_raffle'),
-	$paginator->sort('is_approved'),
+	$paginator->sort('category_id'),
+	$paginator->sort('provider_id'),
+	$paginator->sort('commission')
+
 );
 echo $html->tableHeaders($th);
 foreach ($data as $i => $row) {
+
 	extract($row);
 	$tr = array(
 		array(
-			$html->link($Product['id'], array('action' => 'view', $Product['id'])),
-			$Provider?$Provider['name']:'',
-			$Product['commission'],
-			$Category?$Category['name']:'',
-			$Raffle?$Raffle['id']:'',
-			$Product['name'],
-			$Product['short_description'],
-			$Product['price'],
-			$Product['video_url'],
-			$Product['is_on_raffle'],
-			$Product['is_approved'],
+			$html->link($Product['id'], array('action' => 'admin_edit', $Product['id'])),
+			$html->link($Product['name'], array('action' => 'admin_edit', $Product['id'])),
+			$Product['price'].'&euro;',
+			$Provider['name'],
+			$Category['name'],
+			$Product['commission'].'%',
+			$html->link("Borrar", array('action' => 'delete', $Product['id'])),
+			$html->link("Crear Rifa", array('controller'=>'raffles','action' => 'add', $Product['id'])),
 		),
 	);
 	$class = $i%2?'even':'odd';
