@@ -24,7 +24,6 @@ $this->set('pageTitle', __('New Transaction', true));
 
         <input type="hidden" name="cmd" value="_cart" />
         <input type="hidden" name="upload" value="1" />
-        <input type="hidden" name="business" value="<?php echo C_PAYPAL_BUSINESSID ?>" />
 
         <input type="hidden" name="item_name_1" value="Compra de credito para Rifalia" />
         <input type="hidden" name="charset" value="utf8">
@@ -45,15 +44,13 @@ $this->set('pageTitle', __('New Transaction', true));
 
         <?php } ?>
 
-         
+
         <input type="hidden" name="quantity_1" value="1" />
 
         <input type="hidden" name="currency_code" value="EUR" />
         <input type="hidden" name="lc" value="ES" />
-        
-        
-        <input type="hidden" name="return" value="<?php echo C_PAYPAL_RETURNURL ?>" />
-        <input type="hidden" name="cancel_return" value="<?php echo C_PAYPAL_CANCELURL ?>" />
+
+
         <input type="hidden" name="no_shipping" value="1" />
         <input type="hidden" name="rm" value="2" />
 
