@@ -79,4 +79,10 @@ class Raffle extends AppModel {
 			}
 		}
 	}
+
+	function ticketsBought($id, $number) {
+		$raffle = $this->find(array('Raffle.id' => $id));
+		$raffle["Raffle"]["sold_tickets"] += $number;
+		$this->save($raffle);
+	}
 }
