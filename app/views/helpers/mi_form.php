@@ -233,7 +233,7 @@ class MiFormHelper extends FormHelper {
 
 		$out = '';
 		$div = true;
-		$divOptions = array();
+		$divOptions = array('tag' => 'p');
 
 		if (array_key_exists('div', $options)) {
 			$div = $options['div'];
