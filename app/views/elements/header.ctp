@@ -1,4 +1,4 @@
-<?php /* 
+<?php /*
 <div id='header' class='clearfix'>
 	<form id="SearchForm" method="post" action="<?php echo $html->url('/search') ?>">
 		<div class="input text">
@@ -40,15 +40,15 @@ echo $menu->display();
 
 		<div id="cabecera">
 
-		
+
 			<div id="logo">
-			
+
 			</div><!-- Fin del logo -->
 		<div id"usuarioaccion">
-        <a href="users/register">Registrate</a> | <a href="users/login">Entrar</a>
+		<?php echo $html->link('Registrarte', array('controller' => 'users', 'action' => 'login')) ?>
         </div>
 		</div><!-- Fin de la cabecera -->
-	
+
 		<div id="menu">
 			<form id="search" method="get" action="<?php echo $html->url('/search') ?>">
 		        <div class="input text">
@@ -76,11 +76,9 @@ echo $menu->display();
             ));
         } else {
 	        $menu->add(array(
-		        array('title' => __('Register', true), 'url' => array('controller' => 'users', 'action' => 'register')),
 		        array('title' => __('Login', true), 'url' => array('controller' => 'users', 'action' => 'login'), 'htmlAttributes' => array('class' => 'login')),
 	        ));
         }
         echo $menu->display();
 	        ?>
 		</div><!-- Fin del menu -->
-

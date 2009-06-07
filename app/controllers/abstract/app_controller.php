@@ -133,6 +133,7 @@ class AppController extends Controller {
  * @access public
  */
 	function beforeFilter() {
+		$this->Session->activate('/');
 		$this->Auth->allow('*'); // temporary
 		$this->log($this->here, 'Requests');
 		if (isset($this->SwissArmy)) {
