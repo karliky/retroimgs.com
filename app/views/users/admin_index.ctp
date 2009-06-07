@@ -1,15 +1,17 @@
-<?php /* SVN FILE: $Id$ */ ?>
 <table>
 <?php
 $this->set('pageTitle', __('Users', true));
 $paginator->options(array('url' => $this->passedArgs));
 $th = array(
 	$paginator->sort('id'),
-	__('Pic', true),
-	$paginator->sort(__('Name', true), 'last_name'),
-	$paginator->sort('username'),
+	$paginator->sort('login'),
 	$paginator->sort('email'),
-	$paginator->sort('group'),
+	$paginator->sort('address'),
+	$paginator->sort('phone'),
+	$paginator->sort('balance'),
+	$paginator->sort('is_admin'),
+	$paginator->sort('is_enabled'),
+	$paginator->sort('is_email_verified'),
 );
 echo $html->tableHeaders($th);
 foreach ($data as $i => $row) {
@@ -17,11 +19,14 @@ foreach ($data as $i => $row) {
 	$tr = array(
 		array(
 			$html->link($User['id'], array('action' => 'view', $User['id'])),
-			$User['pic']?$html->image($User['versions']['thumb']):'',
-			$displayNames[$User['id']],
-			$User['username'],
+			$User['login'],
 			$User['email'],
-			$User['group'],
+			$User['address'],
+			$User['phone'],
+			$User['balance'],
+			$User['is_admin'],
+			$User['is_enabled'],
+			$User['is_email_verified'],
 		),
 	);
 	$class = $i%2?'even':'odd';

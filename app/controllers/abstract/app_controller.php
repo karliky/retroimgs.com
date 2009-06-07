@@ -161,6 +161,9 @@ class AppController extends Controller {
 		if (!empty($this->postActions)) {
 			$this->set('postActions', array(Inflector::underscore($this->name) => $this->postActions));
 		}
+		if (!empty($this->params['admin']) && empty($this->params['isAjax'])) {
+			$this->layout = 'admin_default';
+		}
 	}
 
 /**
@@ -335,7 +338,11 @@ class AppController extends Controller {
  * @access public
  */
 	function admin_index() {
-		$conditions = $this->SwissArmy->parseSearchFilter();
+		if (isset($this->SwissArmy)) {
+			$conditions = $this->SwissArmy->parseSearchFilter();
+		} else {
+			$conditions = array();
+		}
 		if ($conditions) {
 			$this->set('filters', $this->{$this->modelClass}->searchFilterFields());
 			$this->set('addFilter', true);
@@ -382,7 +389,11 @@ class AppController extends Controller {
  * @access public
  */
 	function admin_advanced_search($arg = null) {
-		$conditions = $this->SwissArmy->parseSearchFilter();
+		if (isset($this->SwissArmy)) {
+			$conditions = $this->SwissArmy->parseSearchFilter();
+		} else {
+			$conditions = array();
+		}
 		if ($this->data) {
 			$this->redirect(array('action' => 'index'));
 		}
@@ -400,7 +411,10 @@ class AppController extends Controller {
  * @access public
  */
 	function admin_lookup($input = '') {
-		return $this->SwissArmy->lookup($input);
+		if (isset($this->SwissArmy)) {
+			return $this->SwissArmy->lookup($input);
+		}
+		return false;
 	}
 
 /**

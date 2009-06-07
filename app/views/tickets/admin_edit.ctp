@@ -1,8 +1,8 @@
 <?php
 if ($this->action === 'admin_add') {
-	$this->set('pageTitle', __('New User', true));
+	$this->set('pageTitle', __('New Ticket', true));
 } else {
-	$this->set('pageTitle', __('Edit User', true));
+	$this->set('pageTitle', __('Edit Ticket', true));
 }
 ?>
 <div class="form-container">
@@ -11,14 +11,10 @@ echo $form->create(null, array('type' => 'file')); // Default to enable file upl
 echo $form->inputs(array(
 	'legend' => false,
 	'id',
-	'login',
-	'email',
-	'address',
-	'phone',
-	'balance',
-	'is_admin',
-	'is_enabled',
-	'is_email_verified',
+	'code',
+	'user_id' => array('empty' => true),
+	'raffle_id' => array('empty' => true),
+	'transaction_id' => array('empty' => true),
 ));
 echo $form->end(__('Submit', true));
 ?></div>

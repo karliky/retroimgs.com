@@ -30,6 +30,16 @@
 class Raffle extends AppModel {
 
 /**
+ * belongsTo property
+ *
+ * @var array
+ * @access public
+ */
+	var $belongsTo = array(
+		'Winner' => array('className' => 'User')
+	);
+
+/**
  * hasOne property
  *
  * @var array
@@ -37,7 +47,6 @@ class Raffle extends AppModel {
  */
 	var $hasOne = array(
 		'Product',
-		'Winner' => array('className' => 'User')
 	);
 
 /**
