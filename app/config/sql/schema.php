@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Rifalia schema generated on: 2009-06-07 12:06:07 : 1244372287*/
+/* Rifalia schema generated on: 2009-06-07 14:06:26 : 1244377046*/
 class RifaliaSchema extends CakeSchema {
 	var $name = 'Rifalia';
 
@@ -93,7 +93,6 @@ class RifaliaSchema extends CakeSchema {
 		'provider_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
 		'commission' => array('type' => 'float', 'null' => true, 'default' => NULL),
 		'category_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
-		'raffle_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
 		'name' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'short_description' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'description' => array('type' => 'text', 'null' => true, 'default' => NULL),
@@ -103,7 +102,7 @@ class RifaliaSchema extends CakeSchema {
 		'is_approved' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'key' => 'index'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_products_provider_id' => array('column' => 'provider_id', 'unique' => 0), 'idx_products_category_id' => array('column' => 'category_id', 'unique' => 0), 'idx_products_raffle_id' => array('column' => 'raffle_id', 'unique' => 0), 'idx_products_is_on_raffle' => array('column' => 'is_on_raffle', 'unique' => 0), 'idx_products_is_approved' => array('column' => 'is_approved', 'unique' => 0))
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_products_provider_id' => array('column' => 'provider_id', 'unique' => 0), 'idx_products_category_id' => array('column' => 'category_id', 'unique' => 0), 'idx_products_is_on_raffle' => array('column' => 'is_on_raffle', 'unique' => 0), 'idx_products_is_approved' => array('column' => 'is_approved', 'unique' => 0))
 	);
 	var $providers = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
@@ -134,6 +133,7 @@ class RifaliaSchema extends CakeSchema {
 		'cancelled' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'product_id' => array('type' => 'integer', 'null' => false, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_raffles_parent_id' => array('column' => 'parent_id', 'unique' => 0), 'idx_raffles_is_published' => array('column' => 'is_published', 'unique' => 0), 'idx_raffles_is_assigned' => array('column' => 'is_assigned', 'unique' => 0), 'idx_raffles_winner_id' => array('column' => 'winner_id', 'unique' => 0), 'idx_raffles_is_cancelled' => array('column' => 'is_cancelled', 'unique' => 0))
 	);
 	var $settings = array(
