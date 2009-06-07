@@ -11,6 +11,7 @@ $th = array(
 	$paginator->sort('commission')
 
 );
+echo '<a href="products/add">Crear producto</a>';
 echo $html->tableHeaders($th);
 foreach ($data as $i => $row) {
 	extract($row);

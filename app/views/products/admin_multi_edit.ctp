@@ -1,7 +1,7 @@
 <?php
 $this->set('pageTitle', __('Products', true));
 ?>
-<?php echo $form->create(null, array('url' => $this->passedArgs)); ?>
+<?php echo $form->create(null, array('class'=>'cmxform', 'url' => $this->passedArgs)); ?>
 <table>
 <?php
 $th = array(

@@ -5,7 +5,7 @@ $this->set('pageTitle', __('New Raffle', true));
 <?php
 echo $form->create(null,array("class"=>"cmxform"));
 echo $form->inputs(array(
-	'legend' => false,
+	'legend' => "Edición de rifa",
 	'id',
 	'product_id',
 	'available_tickets',
