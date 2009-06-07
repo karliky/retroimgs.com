@@ -44,6 +44,20 @@ class RafflesController extends AppController {
  * @access public
  */
 	var $name = 'Raffles';
+	function add() {
+		if ($this->data) {
+			if ($this->Raffle->saveAll($this->data)) {
+				$display = $this->Raffle->display();
+				$this->Session->setFlash(sprintf(__('Raffle "%1$s" added', true), $display));
+				return $this->_back();
+			} else {
+				$this->data = $this->Raffle->data;
+				$this->Session->setFlash(__('errors in form', true));
+			}
+		}
+		$this->_setSelects();
+		$this->render('admin_edit');
+	}
 
 	function index() {
 		$this->set('data', $this->paginate());
