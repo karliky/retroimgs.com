@@ -49,26 +49,6 @@ class RafflesController extends AppController {
 		$this->set('data', $this->paginate());
 	}
 
-	/*function add() {
-
-		// TODO: check admin role
-
-		if (!empty($this->data)) {
-			if ($this->Raffle->save($this->data)) {
-
-				// Add tickets
-				$aTickets = Array();
-				for($i=0; $i<$this->data["Raffle"]["tickets_count"]; $i++) {
-					$aTickets[$i] =Array("number" => $i, "raffle" => $this->Raffle->id);
-				}
-				$this->Raffle->Ticket->saveAll($aTickets);
-
-				$this->Session->setFlash('Your post has been saved.');
-				$this->redirect(array('action' => 'index'));
-			}
-		}
-	}*/
-
 /**
  * winner method
  *
@@ -77,8 +57,6 @@ class RafflesController extends AppController {
  * @access public
  */
 	function winner($id) {
-
-		// TODO: Check admin role
 
 		$result = $this->Raffle->Ticket->find(array('raffle_id' => $id), "id", array('rand()'));
 		$winner = $result["Ticket"]["id"];
