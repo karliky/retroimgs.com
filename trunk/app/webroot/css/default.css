@@ -130,7 +130,13 @@ h4{font-size:1.2em;line-height:1.6;}
     }
 #menu ul{background: #ad2624;float:right;}
 #menu ul li{border-left:1px #eee solid;float:left;list-style:none;}
-#menu ul li a{background: #ad2624;color:#eee;display:block;text-decoration:none;padding:8px 1.5em 7px;}
+#menu ul li a{
+        background: #ad2624;
+        font-size:smaller;
+        color:#eee;
+        display:block;
+        text-decoration:none;
+        padding:8px 1.5em 7px;}
 #menu ul li a:hover{
     background-color:#000000;
 }
