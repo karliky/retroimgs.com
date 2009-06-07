@@ -29,6 +29,13 @@
  * @subpackage    rifalia.models
  */
 class Product extends AppModel {
+
+/**
+ * displayField property
+ *
+ * @var string 'name'
+ * @access public
+ */
 		var $displayField = 'name';
 
 	/**
@@ -38,6 +45,7 @@ class Product extends AppModel {
 	 * @access public
 	 */
 	var $belongsTo = array (
+		'Media',
 		'Category',
 		'Provider',
 
@@ -50,29 +58,29 @@ class Product extends AppModel {
 	var $validate = array (
 		'commission' => array (
 			'rule' => 'numeric',
-			'message' => 'La comisión debe ser un número'
+			'message' => 'La comisiÃ³n debe ser un nÃºmero'
 		),
 		'name' => array (
 			'rule' => 'notEmpty',
-			'message' => 'El nombre debe tener más de 3 caracteres'
+			'message' => 'El nombre debe tener mÃ¡s de 3 caracteres'
 		),
 		'short_description' => array (
 			'rule' => 'notEmpty',
-			'message' => 'Falta la descripción corta'
+			'message' => 'Falta la descripciÃ³n corta'
 		),
 		'description' => array (
 			'rule' => 'notEmpty',
 
-			'message' => 'Falta la descripción '
+			'message' => 'Falta la descripciÃ³n '
 		),
 		'price' => array (
 			'rule' => 'numeric',
-			'message' => 'El precio debe ser un número'
+			'message' => 'El precio debe ser un nÃºmero'
 		),
 		'video_url' => array (
 			'allowEmpty'=>true,
 			'rule' => 'url',
-			'message' => 'La url de video no está bien '
+			'message' => 'La url de video no estÃ¡ bien '
 		)
 
 

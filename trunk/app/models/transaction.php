@@ -34,6 +34,7 @@ class Transaction extends AppModel
     var $valid_amounts = array(
         5, 20, 50, 100, 200
     );
+
 /**
  * belongsTo property
  *
@@ -52,7 +53,6 @@ class Transaction extends AppModel
  * @access public
  */
     var $hasMany = array(
-        'Order',
         'Ticket',
     );
 
@@ -99,7 +99,7 @@ class Transaction extends AppModel
 
     public function validatesProcessorResponse($processor_params)
     {
-        // asignamos el comando para la sincronizaci—n de la notificacion
+        // asignamos el comando para la sincronizaciÂ—n de la notificacion
         $sReq = 'cmd=_notify-synch';
 
         $sTx_token = $processor_params['tx'];
@@ -107,7 +107,7 @@ class Transaction extends AppModel
         $sAuth_token = C_PAYPAL_PDTKEY;
         $sReq .= "&tx=$sTx_token&at=$sAuth_token";
 
-        // post back to PayPal para validar el pago a partir de los datos recibidos as’ nos aseguramos
+        // post back to PayPal para validar el pago a partir de los datos recibidos asÂ’ nos aseguramos
         $sHeader = "POST /cgi-bin/webscr HTTP/1.0\r\n";
         $sHeader .= "Content-Type: application/x-www-form-urlencoded\r\n";
         $sHeader .= "Content-Length: " . strlen($sReq) . "\r\n\r\n";
@@ -154,7 +154,7 @@ class Transaction extends AppModel
              *
              *  $this->Transaction->setAmount($this->data['Transaction']['amount']);
             $this->Transaction->setDefaults($this->data);
-    created 	datetime 			S’ 	NULL 		Navegar los valores distintivos 	Cambiar 	Eliminar 	Primaria 	ònico 	êndice 	Texto completo
+    created 	datetime 			SÂ’ 	NULL 		Navegar los valores distintivos 	Cambiar 	Eliminar 	Primaria 	Ã²nico 	Ãªndice 	Texto completo
     updated
              */
 

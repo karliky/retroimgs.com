@@ -36,7 +36,6 @@ class Order extends AppModel {
  * @access public
  */
 	var $belongsTo = array(
-		'Transaction',
 		'Ticket',
 		'User',
 	);
