@@ -1,4 +1,4 @@
-#Rifalia sql generated on: 2009-06-07 09:06:39 : 1244360079
+#Rifalia sql generated on: 2009-06-07 12:06:12 : 1244372292
 
 DROP TABLE IF EXISTS `categories`;
 DROP TABLE IF EXISTS `emails`;
@@ -75,13 +75,11 @@ CREATE TABLE `orders` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`user_id` int(11) NOT NULL,
 	`amount` float NOT NULL,
-	`transaction_id` int(11) NOT NULL,
 	`ticket_id` int(11) DEFAULT NULL,
 	`description` varchar(255) DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
 	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
 	KEY idx_orders_user_id (`user_id`),
-	KEY idx_orders_transaction_id (`transaction_id`),
 	KEY idx_orders_ticket_id (`ticket_id`));
 
 CREATE TABLE `payment_gateways` (
