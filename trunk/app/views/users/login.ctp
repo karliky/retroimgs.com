@@ -16,8 +16,8 @@ echo $form->create(null, array('action' => 'login', 'url' => $this->passedArgs, 
 $after = '<p>' . $html->link(__('forgotten password', true), array('action' => 'forgotten_password')) .
 	' ' . $html->link(__('sign up', true), array('action' => 'register')) .
 	'</p>';
-	
-echo "".$form->input('username',array('div' => false))."";
+
+echo "".$form->input('login',array('div' => false))."";
 echo "".$form->input('password',array('div' => false))."";
 echo "".$form->input('remember_me',array('div' => false,'label'=>"recordarme",'type' => 'checkbox'))."";
 
@@ -34,7 +34,7 @@ echo $form->inputs(array(
 echo ''.$form->submit('Enviar',array('class'=>'submit',"div"=>false)).'';
 
 
-echo '<p>' . $html->link(__('forgotten password', true), 
+echo '<p>' . $html->link(__('forgotten password', true),
 			array('action' => 'forgotten_password')) .
 	' ' . $html->link(__('sign up', true), array('action' => 'register')) .
 	'</p>';
