@@ -1,27 +1,29 @@
 <?php
-	$this->set('pageTitle', __('A�adir Producto', true));
+	$this->set('pageTitle', __('New Product', true));
 ?>
 <div class="form-container">
 <?php
 echo $form->create("Product", array('class'=>'cmxform','type' => 'file')); // Default to enable file uploads
 
 echo $form->inputs(array(
-	'legend' => "Añadir producto",
+	'legend' => false,
 	'id',
 	'category_id',
 	'provider_id',
 	'name',
 	'short_description',
 	'description',
-	'commission',
-	'price',
-	'video_url',
+	'commission' => array('size'=>'1', 'label'=> '% de Comision'),
+	'price' => array('size'=>'4', 'label'=> 'Precio en euros'),
+	'video_url'
+
 ));
 
 
 echo $form->end(__('Submit', true));
 $javascript->link('productsAdd', false);
 ?>
+
 
 <form action="" method="get" class="cmxform">
 	<fieldset>
@@ -69,6 +71,9 @@ $menu->add(array(
 	array('title' => __('Add Many Products', true), 'url' => array('action' => 'multi_add')),
 	array('title' => __('Edit These Products', true), 'url' => am($this->passedArgs, array('action' => 'multi_edit')))
 ));
+
+
+
 
 
 
