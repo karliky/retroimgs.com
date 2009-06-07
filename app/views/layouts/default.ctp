@@ -38,7 +38,7 @@ if (isset ($javascript)) {
 echo $scripts_for_layout;
 ?>
 </head>
-<body class="<?=$this->action?>">
+<body class="<?php echo $this->action; ?>">
 	<div id="contenedor">
 		<?php echo $this->element('header'); ?>
 		<div id="contenido"><?php
