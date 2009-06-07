@@ -34,6 +34,13 @@ App::import('Helper', 'Form');
  * @subpackage    base.views.helpers
  */
 class MiFormHelper extends FormHelper {
+
+/**
+ * helpers property
+ *
+ * @var array
+ * @access public
+ */
 	var $helpers = array(
 		'Session',
 		'Html',
@@ -48,6 +55,17 @@ class MiFormHelper extends FormHelper {
  * @access public
  */
 	var $name = 'MiForm';
+
+/**
+ * construct method
+ *
+ * @return void
+ * @access private
+ */
+	function __construct() {
+		parent::__construct();
+		$this->loadConfig();
+	}
 
 /**
  * create method
