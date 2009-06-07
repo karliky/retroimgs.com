@@ -143,6 +143,22 @@ class MiFormHelper extends FormHelper {
 	}
 
 /**
+ * error method
+ *
+ * Spans for divs
+ *
+ * @param mixed $field
+ * @param mixed $text null
+ * @param array $options array()
+ * @return void
+ * @access public
+ */
+	function error($field, $text = null, $options = array()) {
+		$options['wrap'] = 'span';
+		return parent::error($field, $text, $options);
+	}
+
+/**
  * input method
  *
  * @param mixed $fieldName
