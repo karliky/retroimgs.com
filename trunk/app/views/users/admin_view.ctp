@@ -1,18 +1,19 @@
 <?php
 extract($data);
-$this->set('pageTitle', $User['username']);
+$this->set('pageTitle', $User['login']);
 ?>
 <table>
 <?php
 $tr = array(
 	array(__d('field_names', 'User Id', true), $User['id']),
-	array(__d('field_names', 'User Username', true), $User['username']),
+	array(__d('field_names', 'User Login', true), $User['login']),
 	array(__d('field_names', 'User Email', true), $User['email']),
-	array(__d('field_names', 'User Group', true), $User['group']),
-	array(__d('field_names', 'User Email Verified', true), $User['email_verified']),
-	array(__d('field_names', 'User First Name', true), $User['first_name']),
-	array(__d('field_names', 'User Last Name', true), $User['last_name']),
-	array(__d('field_names', 'User Pic', true), $User['pic']?$html->image($User['versions']['thumb']):''),
+	array(__d('field_names', 'User Address', true), $User['address']),
+	array(__d('field_names', 'User Phone', true), $User['phone']),
+	array(__d('field_names', 'User Balance', true), $User['balance']),
+	array(__d('field_names', 'User Is Admin', true), $User['is_admin']),
+	array(__d('field_names', 'User Is Enabled', true), $User['is_enabled']),
+	array(__d('field_names', 'User Is Email Verified', true), $User['is_email_verified']),
 );
 echo $html->tableCells($tr);
 ?>
