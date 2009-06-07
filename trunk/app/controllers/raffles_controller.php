@@ -58,8 +58,10 @@ class RafflesController extends AppController {
  */
 	function winner($id) {
 
-		$result = $this->Raffle->Ticket->find(array('raffle_id' => $id), "id", array('rand()'));
+		$result = $this->Raffle->Ticket->find(array('raffle_id' => $id, "not" => array("Ticket.user_id" => null)), "id", array('rand()'));
 		$winner = $result["Ticket"]["id"];
+
+		//$result = $this->Raffle->Ticket->find(array('raffle_id' => $id), "id", array('rand()'));
 
 		$this->Session->setFlash('And the winner is... '.$winner);
 	}
