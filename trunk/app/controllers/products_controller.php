@@ -81,7 +81,7 @@ class ProductsController extends AppController {
 			}
 		}
 		$this->_setSelects();
-		$this->render('admin_edit');
+		$this->render('add');
 	}
 
 /**
