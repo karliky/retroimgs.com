@@ -20,14 +20,14 @@ foreach ($data as $i => $row) {
 			$html->link($Product['id'], array('action' => 'admin_edit', $Product['id'])),
 			$html->link($Product['name'], array('action' => 'admin_edit', $Product['id'])),
 			$Product['price'].'&euro;',
-			$Provider['name'],
 			$Category['name'],
+			$Provider['name'],
 			$Product['commission'].'%',
 			$html->link("Borrar", array('action' => 'delete', $Product['id'])),
-			$html->link("Crear Rifa", array('controller'=>'raffles','action' => 'add', $Product['id'])),
-
+			$html->link('Crear Rifa', '/raffles/add/'.$Product['id'], array('class'=>'button')),
 		),
 	);
+echo
 	$class = $i%2?'even':'odd';
 	echo $html->tableCells($tr, compact('class'), compact('class'));
 }
