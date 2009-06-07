@@ -4,11 +4,12 @@
 
 <div id="separador">
    	<ul>
-        <li><a href="#">Quienes somos</a></li>
-        <li><a href="#">Contacto</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Twitter</a></li>
-        <li class="last"><a href="#">Facebook</a></li>
+   	    <li><?php echo $html->link('Privacidad','/pages/privacidad'); ?></li>
+   	    <li><?php echo $html->link('Quienes Somos','#'); ?></li>
+   	    <li><?php echo $html->link('Contacto','/contact/us'); ?></li>
+   	    <li><?php echo $html->link('Blog','http://blog.rifalia.com'); ?></li>
+   	    <li><?php echo $html->link('Twitter','http://twitter.com/rifalia.com'); ?></li>
+   	    <li><?php echo $html->link('Facebook','#'); ?></li>
      </ul>
 </div>
 
