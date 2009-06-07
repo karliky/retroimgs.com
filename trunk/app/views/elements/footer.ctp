@@ -8,9 +8,12 @@
    	    <li><?php echo $html->link('Privacidad','/pages/privacidad'); ?></li>
    	    <li><?php echo $html->link('Quienes Somos','#'); ?></li>
    	    <li><?php echo $html->link('Contacto','/contact/us'); ?></li>
-   	    <li><?php echo $html->link('Blog','http://blog.rifalia.com'); ?></li>
+   	    <li><a href="http://blog.rifalia.com">Blog</a></li>
+   	    <li><a href="http://twitter.com/rifalia.com">Twitter</a></li>
+   	    <li><a href="#">Facebook</a></li>
+   	    <? /* <li><?php echo $html->link('Blog','http://blog.rifalia.com'); ?></li>
    	    <li><?php echo $html->link('Twitter','http://twitter.com/rifalia.com'); ?></li>
-   	    <li><?php echo $html->link('Facebook','#'); ?></li>
+   	    <li><?php echo $html->link('Facebook','#'); ?></li> */ ?>
      </ul>
 </div>
 
