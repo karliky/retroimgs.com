@@ -44,7 +44,9 @@ echo $menu->display();
 			<div id="logo">
 			
 			</div><!-- Fin del logo -->
-		
+		<div id"usuarioaccion">
+        <a href="users/register">Registrate</a> | <a href="users/login">Entrar</a>
+        </div>
 		</div><!-- Fin de la cabecera -->
 	
 		<div id="menu">
