@@ -48,5 +48,4 @@ Router::connect('/css/*', array('controller' => 'dev', 'action' => 'serve'));
 Router::connect('/js/*', array('controller' => 'dev', 'action' => 'serve'));
 Router::connect('/files/*', array('controller' => 'media', 'action' => 'view'));
 Router::connect('/img/*', array('controller' => 'media', 'action' => 'view'));
-
 ?>

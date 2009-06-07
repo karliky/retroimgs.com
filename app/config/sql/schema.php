@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Rifalia schema generated on: 2009-06-07 09:06:31 : 1244360071*/
+/* Rifalia schema generated on: 2009-06-07 12:06:07 : 1244372287*/
 class RifaliaSchema extends CakeSchema {
 	var $name = 'Rifalia';
 
@@ -75,12 +75,11 @@ class RifaliaSchema extends CakeSchema {
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
 		'user_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
 		'amount' => array('type' => 'float', 'null' => false, 'default' => NULL),
-		'transaction_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
 		'ticket_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
 		'description' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_orders_user_id' => array('column' => 'user_id', 'unique' => 0), 'idx_orders_transaction_id' => array('column' => 'transaction_id', 'unique' => 0), 'idx_orders_ticket_id' => array('column' => 'ticket_id', 'unique' => 0))
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_orders_user_id' => array('column' => 'user_id', 'unique' => 0), 'idx_orders_ticket_id' => array('column' => 'ticket_id', 'unique' => 0))
 	);
 	var $payment_gateways = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
