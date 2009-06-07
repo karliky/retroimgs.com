@@ -1,6 +1,6 @@
-@import 'reset.css';
-@import 'home.css';
-@import 'sidebar.css';
+@import 'reset.css';@import 'home.css';@import 'sidebar.css';
+
+
 
 .alineaderecha{float:right;}
 .alineaizquierda{float:left;}
@@ -61,8 +61,6 @@ p{margin:0.5em 0;}
 #pie li a{display:block;float:left;overflow:hidden;text-indent:-9999px;}
 #pie a.sponsor1{background:url('../img/iweekend.jpg') no-repeat;height:65px;width:190px;}
 #pie p{color:#999;margin-top:10px;text-align:center;}
-
-
 .message{
 	background-color:#D6E4F0;
 	border:1px solid;
