@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.boton_reserva a {
+	background:#639500 url(../img/bg_button.png) bottom left repeat-x;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	padding:5px 20px;
+	text-decoration:none;
+	border:1px solid #344E01;
+	}
+	
+.boton_reserva a:hover {
+	background:#3E5D00 url(../img/bg_button.png) top left repeat-x;
+	}
+	
+	
+.producto {
+	float:left;
+	width:253px;
+	padding:0 10px;
+	border-right:1px dashed #ccc;
+	margin:0 0 25px 0;
+	}	
+	
+.producto h3 {
+	font-size:14px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	background:url(../img/icon_boleto.png) 0 5px no-repeat;
+	padding:6px 0 5px 35px;
+	margin-bottom:10px;
+	height:30px;
+	}
+
+.producto img {
+	float:left;
+	}
+	
+.producto .descripcion {
+	margin-left:20px;
+	float:left;
+	width:120px;
+	}
+
+.producto .descripcion p {
+	margin:0 0 10px 0;
+	font-size:13px;
+	}
+
+
+.producto .boton_reserva a {
+	display:block;
+	float:left;
+	margin-top:10px;
+	width:100%;
+}
+	
+.producto .stock_boletos {
+	background: #AD2624;
+	padding:5px 15px;
+	text-align:center;
+	color:#fff;
+	}
+
+.producto .precio {
+	color:#000000;
+	display:block;
+	float:left;
+	font-size:16px;
+	}
+
+.producto .precio strong{color:#ad2624;font: bold 2em/1em Georgia,serif; padding-left:10px;}
