@@ -31,9 +31,10 @@
             <div class="descripcion">
             	<p class="stock_boletos">S&oacute;lo quedan <br />20 boletos</p>
             	<p>Antes de <br />1 d. 30 min. 20 sec.</p>
-							<p class="precio">Tu boleto por solo <strong>1,30 €</strong></p>
-							<div class="boton_reserva"><a href="#">¡Reserva ahora!</a></div>
-						</div>
+			</div>
+			<p class="precio">Tu boleto por solo <strong>1,30 €</strong></p>
+			<div class="boton_reserva"><a href="#">¡Reserva ahora!</a></div>
+
 					</div>
 					<div class="producto">
           	<h3>Siemens Dualset Inalambrico</h3>
