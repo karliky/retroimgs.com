@@ -32,7 +32,15 @@ echo $form->inputs(array(
 ));
 */
 echo '<p>'.$form->submit('Enviar',array('class'=>'submit',"div"=>false)).'</p>';
+
+
+echo '<p>' . $html->link(__('forgotten password', true), 
+			array('action' => 'forgotten_password')) .
+	' ' . $html->link(__('sign up', true), array('action' => 'register')) .
+	'</p>';
 ?>
+
+
 </fieldset>
 <?php
 echo $form->end();
