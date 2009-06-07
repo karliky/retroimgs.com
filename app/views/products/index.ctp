@@ -19,8 +19,8 @@ foreach ($data as $i => $row) {
 			$html->link($Product['id'], array('action' => 'admin_edit', $Product['id'])),
 			$html->link($Product['name'], array('action' => 'admin_edit', $Product['id'])),
 			$Product['price'],
-			$Product['provider_id'],
-			$Product['category_id'],
+			$Category['name'],
+			$Provider['name'],
 
 			$Product['commission'],
 			$html->link("Borrar", array('action' => 'delete', $Product['id'])),
