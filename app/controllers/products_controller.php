@@ -29,7 +29,6 @@
  * @subpackage    rifalia.controllers
  */
 class ProductsController extends AppController {
-
 /**
  * name property
  *
@@ -37,10 +36,28 @@ class ProductsController extends AppController {
  * @access public
  */
 	var $name = 'Products';
-	function beforeFilter() {
-		parent::beforeFilter();
-		$this->Auth->allow('*'); // allow all actions for now (temporary)
+
+/**
+ * admin_index method
+ *
+ * @return void
+ * @access public
+ */
+	function admin_index() {
+		if (isset($this->SwissArmy)) {
+			$conditions = $this->SwissArmy->parseSearchFilter();
+		} else {
+			$conditions = array();
+		}
+		if ($conditions) {
+			$this->set('filters', $this->Product->searchFilterFields());
+			$this->set('addFilter', true);
+		}
+		$this->Product->recursive = 1;
+		$this->data = $this->paginate($conditions);
+		$this->_setSelects();
 	}
+
 
 /**
  * index method
@@ -61,27 +78,6 @@ class ProductsController extends AppController {
 		$this->Product->recursive = 1;
 		$this->data = $this->paginate($conditions);
 		$this->_setSelects();
-	}
-
-/**
- * add method
- *
- * @return void
- * @access public
- */
-	function add() {
-		if ($this->data) {
-			if ($this->Product->saveAll($this->data)) {
-				$display = $this->Product->display();
-				$this->Session->setFlash(sprintf(__('Product "%1$s" added', true), $display));
-				return $this->_back();
-			} else {
-				$this->data = $this->Product->data;
-				$this->Session->setFlash(__('errors in form', true));
-			}
-		}
-		$this->_setSelects();
-		$this->render('add');
 	}
 
 /**
@@ -106,14 +102,52 @@ class ProductsController extends AppController {
 		return $this->_back();
 	}
 
-/**
- * edit method
+	/**
+ * add method
  *
- * @param mixed $id
  * @return void
  * @access public
  */
-	function edit($id) {
+	function admin_add() {
+
+		if ($this->data) {
+
+				//debug($this->data);
+			    $this->Product->set( $this->data );
+
+			    if ($this->Product->validates()) {
+					$this->Session->setFlash(__('Valida  ok', true));
+					if ($this->Product->saveAll($this->data)) {
+						$display = $this->Product->display();
+						$this->Session->setFlash(sprintf(__('Producto "%1$s" añadido', true), $display));
+
+						//return $this->_back();
+						 $this->redirect(array('controller' => 'products', 'action' => 'index'));
+					} else {
+						$this->data = $this->Product->data;
+						$this->Session->setFlash(__('errors in form', true));
+					}
+
+				 } else {
+
+				 //	$this->Session->setFlash(__('NO VALIDA BIEN', true));
+				   	$errors = $this->Product->invalidFields();
+
+				 }
+
+		}
+
+
+		$this->set('providers', $this->Product->Provider->find('list'));
+		$this->set('categories', $this->Product->Category->find('list'));
+
+		$this->render('admin_add');
+	}
+
+
+
+
+	function admin_edit($id) {
 		if ($this->data) {
 			if ($this->Product->saveAll($this->data)) {
 				$display = $this->Product->display();
@@ -126,8 +160,16 @@ class ProductsController extends AppController {
 		} else {
 			$this->data = $this->Product->read(null, $id);
 		}
+
+
+		$this->set('providers', $this->Product->Provider->find('list'));
+		$this->set('categories', $this->Product->Category->find('list'));
+
 		$this->_setSelects();
+				$this->render('admin_edit');
 	}
+
+
 
 /**
  * search method
