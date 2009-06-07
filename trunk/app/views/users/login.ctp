@@ -17,9 +17,9 @@ $after = '<p>' . $html->link(__('forgotten password', true), array('action' => '
 	' ' . $html->link(__('sign up', true), array('action' => 'register')) .
 	'</p>';
 	
-echo "<p>".$form->input('username',array('div' => false))."</p>";
-echo "<p>".$form->input('password',array('div' => false))."</p>";
-echo "<p>".$form->input('remember_me',array('div' => false,'label'=>"recordarme",'type' => 'checkbox'))."</p>";
+echo "".$form->input('username',array('div' => false))."";
+echo "".$form->input('password',array('div' => false))."";
+echo "".$form->input('remember_me',array('div' => false,'label'=>"recordarme",'type' => 'checkbox'))."";
 
 /*echo $form->input('login',array('div' => false));
 echo $form->input('login',array('div' => false));
@@ -31,7 +31,7 @@ echo $form->inputs(array(
 		'type' => 'checkbox', 'div'=>false,'after' => '<p>' . __('for 2 weeks unless I sign out.', true) . '</p>'),
 ));
 */
-echo '<p>'.$form->submit('Enviar',array('class'=>'submit',"div"=>false)).'</p>';
+echo ''.$form->submit('Enviar',array('class'=>'submit',"div"=>false)).'';
 
 
 echo '<p>' . $html->link(__('forgotten password', true), 
