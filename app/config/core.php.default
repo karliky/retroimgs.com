@@ -164,7 +164,7 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', '0253402a5e536daa4977b9dbdcfbb5fc5f482c3d');
+	Configure::write('Security.salt', md5(__FILE__));
 
 /**
  * Compress CSS output by removing comments, whitespace, repeating tags, etc.
