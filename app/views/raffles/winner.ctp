@@ -1,4 +1,4 @@
-<h1>And the winner is...</h1>
+<h1>Winner:</h1>
 <p>
-	<?php echo $raffle['Ticket']['id']; ?>
+	Ticket number <?php echo $winner; ?>
 </p>
