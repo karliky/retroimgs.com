@@ -4,43 +4,29 @@ $this->set('pageTitle', __('Products', true));
 $paginator->options(array('url' => $this->passedArgs));
 $th = array(
 	$paginator->sort('id'),
-	$paginator->sort('tittle'),
-	$paginator->sort('short_description'),
-	$paginator->sort('long_description'),
-	$paginator->sort('lat'),
-	$paginator->sort('long'),
-	$paginator->sort('zoom'),
+	$paginator->sort('name'),
 	$paginator->sort('price'),
-	$paginator->sort('order'),
-	$paginator->sort('video'),
-	$paginator->sort('video_type'),
-	$paginator->sort('image'),
-	$paginator->sort('acept'),
-	$paginator->sort('acepted_date'),
-	$paginator->sort('categories_id'),
-	$paginator->sort('raffles_id'),
+	$paginator->sort('category_id'),
+	$paginator->sort('provider_id'),
+	$paginator->sort('commission')
+
 );
 echo $html->tableHeaders($th);
 foreach ($data as $i => $row) {
 	extract($row);
 	$tr = array(
 		array(
-			$html->link($Product['id'], array('action' => 'view', $Product['id'])),
-			$Product['tittle'],
-			$Product['short_description'],
-			$Product['long_description'],
-			$Product['lat'],
-			$Product['long'],
-			$Product['zoom'],
+			$html->link($Product['id'], array('action' => 'admin_edit', $Product['id'])),
+			$html->link($Product['name'], array('action' => 'admin_edit', $Product['id'])),
 			$Product['price'],
-			$Product['order'],
-			$Product['video'],
-			$Product['video_type'],
-			$Product['image'],
-			$Product['acept'],
-			$Product['acepted_date'],
-			$Product['categories_id'],
-			$Product['raffles_id'],
+			$Product['provider_id'],
+			$Product['category_id'],
+
+			$Product['commission'],
+			$html->link("Borrar", array('action' => 'delete', $Product['id'])),
+
+
+
 		),
 	);
 	$class = $i%2?'even':'odd';
