@@ -1,4 +1,4 @@
-#Rifalia sql generated on: 2009-06-07 12:06:12 : 1244372292
+#Rifalia sql generated on: 2009-06-07 14:06:31 : 1244377051
 
 DROP TABLE IF EXISTS `categories`;
 DROP TABLE IF EXISTS `emails`;
@@ -93,7 +93,6 @@ CREATE TABLE `products` (
 	`provider_id` int(11) DEFAULT NULL,
 	`commission` float DEFAULT NULL,
 	`category_id` int(11) NOT NULL,
-	`raffle_id` int(11) DEFAULT NULL,
 	`name` varchar(255) DEFAULT NULL,
 	`short_description` varchar(255) DEFAULT NULL,
 	`description` text DEFAULT NULL,
@@ -105,7 +104,6 @@ CREATE TABLE `products` (
 	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
 	KEY idx_products_provider_id (`provider_id`),
 	KEY idx_products_category_id (`category_id`),
-	KEY idx_products_raffle_id (`raffle_id`),
 	KEY idx_products_is_on_raffle (`is_on_raffle`),
 	KEY idx_products_is_approved (`is_approved`));
 
@@ -136,7 +134,8 @@ CREATE TABLE `raffles` (
 	`is_cancelled` tinyint(1) DEFAULT 0 NOT NULL,
 	`cancelled` datetime DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
-	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
+	`updated` datetime DEFAULT NULL,
+	`product_id` int(11) NOT NULL,	PRIMARY KEY  (`id`),
 	KEY idx_raffles_parent_id (`parent_id`),
 	KEY idx_raffles_is_published (`is_published`),
 	KEY idx_raffles_is_assigned (`is_assigned`),
