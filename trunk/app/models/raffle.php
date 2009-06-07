@@ -57,6 +57,7 @@ class Raffle extends AppModel {
  */
 	var $hasMany = array(
 		'Ticket',
+		'Product',
 	);
 
 /**

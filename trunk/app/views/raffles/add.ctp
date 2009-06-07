@@ -9,15 +9,10 @@ echo $form->inputs(array(
 	'id',
 	'available_tickets',
 	'ticket_price',
-	'sold_tickets',
 	'closes',
 	'parent_id',
 	'is_published',
 	'published',
-	'is_assigned',
-	'assigned',
-	'is_cancelled',
-	'cancelled',
 ));
 echo $form->end(__('Submit', true));
 ?></div>

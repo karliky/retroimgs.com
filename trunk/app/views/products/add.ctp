@@ -7,7 +7,6 @@ echo $form->create(null, array('type' => 'file')); // Default to enable file upl
 echo $form->inputs(array(
 	'legend' => false,
 	'id',
-	'raffles_id',
 	'categories_id' => array('options' => array('Temp', 'List', 'Of', 'Options'), 'empty' => true),
 	'tittle' => array('title' => __('Write the name of your product here', true)),
 	'short_description',
