@@ -1,4 +1,8 @@
-<h1>Winner:</h1>
+<h1>Ganador de la rifa:</h1>
 <p>
-	Ticket number <?php echo $winner; ?>
+<?php if(empty($winner)) { ?>
+	No hay ning&uacute;n ticket vendido.
+<?php } else { ?>
+	Ticket premiado en la rifa <?php echo $raffle; ?>: Ticket <?php echo $winner; ?>
+<?php } ?>
 </p>
