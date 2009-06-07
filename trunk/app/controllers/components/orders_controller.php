@@ -9,12 +9,7 @@ class OrdersController extends AppController {
  */
 	var $name = 'Orders';
 
-    function generateOrder($id_ticket, $price, $idUser){
-        $aOrder = array('user_id' => $idUser, 'amount' => $price, "ticket_id" => $id_ticket, "description" => "quien me dejo pilotar esto madre mia");
-        $this->Order->save($aOrder);
-        return $this->Order->getLastInsertID();
-    }
-}
+  
 
 }
 ?>

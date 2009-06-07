@@ -46,14 +46,23 @@ class TicketsController extends AppController {
 	var $name = 'Tickets';
 
     function reserved_ticket($count, $numberTicket, $idRaffle, $userId) {
-         $raffleSearch = $this->Ticket->Raffle->find(array('Raffle_id' =>  $idRaffle)); // Accedo mediante  $numberMax['Raffle']['available_tickets']
+         $raffleSearch = $this->Ticket->Raffle->find(array('Raffle.id' =>  $idRaffle)); // Accedo mediante  $numberMax['Raffle']['available_tickets']
          $price = $raffleSearch['Raffle']['ticket_price'];
+         $total_cost = $price * $count;
          if (!empty($raffleSearch)) { // existe la rifa
                    if ($count != 1){
-                        for ($i=1; $i < $count+1;$i++){
-
+                        if ($this->Ticket->User->haveMoney($userId,$total_cost)){
+                                for ($i=1; $i < $count+1;$i++){
+                                         $id_result = $this->Ticket->find(array('raffle_id' => $idRaffle, "Ticket.user_id" => null), "code", array('rand()'));
+                                         $order = $this->Ticket->Order->generateOrder($id_result['Ticket']['id'], $price, $userId);
+                                         $this->Ticket->User->chargeMoney($userId, $price);
+                                         $this->saveTicket($id_result['Ticket']['id'], $userId);
+                                }
+                                $this->Ticket->Raffle->ticketsBought($idRaffle, $count);
+                                $this->Session->setFlash('Reserva realizada con exito ¡¡ Munchisima suerte campeón tu lo mereces !!.');
+                        }else{
+                             $this->Session->setFlash('No dispones de suficiente saldo.');
                         }
-
                    }else{
                         if (!empty($numberTicket)) { // ha introducido un numero
                             // Comprobar que existe idraffle
@@ -65,28 +74,33 @@ class TicketsController extends AppController {
                             // Tablas a modificar: Raffles ( sold_ticket + 1), Tickets ( code, user_id, rafle_id, transaction_id ), Orders (user_id, amount,
                             // transaction_id, ¿description?)
 
-                                $result = $this->find('count', array('conditions' => array('raffle_id' => $idRaffle, 'code' => $numberTicket, "Ticket.user_id" => null )));
+                                $result = $this->Ticket->find('count', array('conditions' => array('raffle_id' => $idRaffle, 'code' => $numberTicket, "Ticket.user_id" => null )));
                                  if (!$result) {// El numero está libre;
-                                     if ($this->User->haveMoney($price)){
-                                            $order = $this->Order->generateOrder($result['Ticket']['id'], $price, $userId);
-                                            $this->User->charge_money($price);
-                                            $this->Raffle->ticketBought($idRaffle, 1);
+                                     if ($this->Ticket->User->haveMoney($userId, $price)){
+                                            $order = $this->Ticket->Order->generateOrder($result['Ticket']['id'], $price, $userId);
+                                            $this->Ticket->User->chargeMoney($userId, $price);
+                                            $this->Ticket->Raffle->ticketsBought($idRaffle, 1);
+                                            $this->saveTicket($//*result['Ticket']['id'], $userId);
+                                            $this->Session->setFlash('Reserva realizada con exito del numero '.$numberTicket.' ¡¡ Munchisima suerte campeón tu lo mereces !!.');
                                      }else{
-                                       $this->Session->setFlash('No dispones de suficiente saldo.');
+                                       $this->Session->setFlash('No dispones de suficiente saldo racano pon pasta.');
                                      }
                                         //Genero ticket Generoticket($number)
                                         //Genero Order  GeneroOrder($ticket)
                                         //Modifico Rifa  Modificorifa(vendidos + 1)
                                  }else{
-                                     $this->Session->setFlash('El numero no esta disponible');
+                                     $this->Session->setFlash('El numero no esta disponible prueba otro listillo');
                                  }
 
                          }else{
-                             $this->Session->setFlash('No has introducido un numero de Rifa');
+                             $this->Session->setFlash('No has introducido un numero te crees que me chupo el dedo');
                          }
                    }
          }else{
                   $this->Session->setFlash('La rifa no existe');
          }
 	}
+    function saveTicket($id_ticket, $id_user){
+               $this->Ticket->updateAll(array('user_id' => $id_user), array('Ticket.id'=> $id_ticket));
+    }
 }
