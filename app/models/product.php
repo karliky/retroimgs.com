@@ -38,6 +38,5 @@ class Product extends AppModel {
 	var $belongsTo = array(
 		'Category',
 		'Provider',
-		'Raffle',
 	);
 }
