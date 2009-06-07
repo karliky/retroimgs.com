@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	$("#precioVendedor,#precioPapeleta,#factorMagico,#paypalpc,#notariopc,#margenrifalia").blur(function(){
 		$("#warnMsg").hide();
+		$("#warnMsgOK").hide();
 		var pvr = $("#precioVendedor").val();
 		var pp = $("#precioPapeleta").val();
 		var fm = $("#factorMagico").val();
@@ -14,13 +15,13 @@ $(document).ready(function(){
 			pv 				= pvr*fm;
 			iva 			= pv*0.16;
 			totalMenosIva 	= pv-iva;
-			hacienda 		= totalMenosIva*0.15;
-			paypal 			= Math.round(totalMenosIva*paypalpc)/100;
-			rifalia 		= Math.round(totalMenosIva*margenrifalia*100)/100;			
-			notario 		= Math.round(totalMenosIva*notariopc*100)/100;;
+			hacienda 		= Math.round(totalMenosIva*0.15*100)/100;
+			paypal 			= Math.round(totalMenosIva*paypalpc*100)/10000;
+			rifalia 		= Math.round(totalMenosIva*margenrifalia*100)/10000;			
+			notario 		= Math.round(totalMenosIva*notariopc*100)/10000;
 			ingsincargas 	= totalMenosIva-hacienda-paypal-rifalia-notario;
-			badicional 		= Math.round(ingsincargas-pvr*100)/100;
-			numPapeletas 	= pv*pp;
+			badicional 		= Math.round((ingsincargas-pvr)*100)/100;
+			numPapeletas 	= pv/pp;
 			
 			$("#precioVenta").val(pv);
 			$("#iva").val(iva);
@@ -34,6 +35,9 @@ $(document).ready(function(){
 			
 			if(badicional<0){
 				$("#warnMsg").show('slow');
+			}
+			else {
+				$("#warnMsgOK").show('slow');
 			}
 		}
 		
