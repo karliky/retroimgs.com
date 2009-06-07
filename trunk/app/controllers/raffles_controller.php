@@ -56,7 +56,6 @@ class RafflesController extends AppController {
 			}
 		}
 		$this->_setSelects();
-		$this->render('admin_edit');
 	}
 
 	function index() {
