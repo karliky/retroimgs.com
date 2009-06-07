@@ -1,5 +1,5 @@
 <?php /* SVN FILE: $Id$ */
-echo $form->create(null, array('url' => '/' . ltrim($this->params['url']['url'], '/')));
+echo $form->create(null, array( 'class'=>'cmxform','url' => '/' . ltrim($this->params['url']['url'], '/')));
 $out = '';
 $out .= $form->input('login');
 
@@ -31,5 +31,6 @@ $out .= $form->input('tos', array('fieldset' => false, 'type' => 'checkbox',
 ));
 
 echo sprintf($html->tags['fieldset'], '', sprintf($html->tags['legend'], __('Registration', true)) . $out);
-echo $form->end(__('sign up', true));
+echo '<p>'.$form->submit('Enviar',array('class'=>'submit',"div"=>false)).'</p>';
+echo $form->end();
 ?>
