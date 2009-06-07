@@ -13,7 +13,13 @@ DROP TABLE IF EXISTS `settings`;
 DROP TABLE IF EXISTS `tickets`;
 DROP TABLE IF EXISTS `transactions`;
 DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `subscribers`;
 
+CREATE TABLE `subscribers` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(255) DEFAULT NULL,
+	`mail` varchar(255) DEFAULT NULL,
+	`created` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
 
 CREATE TABLE `categories` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
