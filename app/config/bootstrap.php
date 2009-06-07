@@ -32,6 +32,15 @@ $viewPaths        = array($base . 'views' . DS);
 $helperPaths      = array($base . 'views' . DS . 'helpers' . DS);
 $vendorPaths      = array($base . 'vendors' . DS);
 
+
+define("C_PAYPAL_URLSUBMIT","https://www.sandbox.paypal.com/cgi-bin/webscr");
+define("C_PAYPAL_URLCOMPRUEBA","www.sandbox.paypal.com");
+define("C_PAYPAL_URLCOMPRUEBAPUERTO",80);
+define("C_PAYPAL_BUSINESSID","raurop_1244326013_biz@ono.com");
+define("C_PAYPAL_PDTKEY","STjULDQS9ZnfIQhPKBEZHuBryowlPsPJc1-nwkfDdlUnG0yx_VpPIe0yeIi");
+define('C_PAYPAL_BASE_URL', 'http://rifalia/transactions/');
+
+
 Configure::write('Security.level', 'low');
 //Configure::write('Session.start', false);
 Configure::write('Session.cookie', 'RIFALIA');
