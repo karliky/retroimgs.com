@@ -64,13 +64,9 @@ p{margin:0.5em 0;}
 
 
 .message{
-	width:600px;
-}
-
-.error-message{
-	background-color:#FFFF99;
-	border:1px solid #AD2624;
-	color:#AD2624;
+	background-color:#D6E4F0;
+	border:1px solid;
+	color:#333333;
 	font-size:19px;
 	height:40px;
 	margin-bottom:15px;
@@ -78,4 +74,8 @@ p{margin:0.5em 0;}
 	padding-top:20px;
 	text-align:left;
 	width:570px;
+}
+
+.error-message{
+
 }
