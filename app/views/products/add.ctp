@@ -7,9 +7,11 @@ echo $form->create(null, array('type' => 'file')); // Default to enable file upl
 echo $form->inputs(array(
 	'legend' => false,
 	'id',
-	'tittle',
+	'raffles_id',
+	'categories_id' => array('options' => array('Temp', 'List', 'Of', 'Options'), 'empty' => true),
+	'tittle' => array('title' => __('Write the name of your product here', true)),
 	'short_description',
-	'long_description',
+	'long_description' => array('type' => 'textarea'),
 	'lat',
 	'long',
 	'zoom',
@@ -17,11 +19,9 @@ echo $form->inputs(array(
 	'order',
 	'video',
 	'video_type',
-	'image',
+	'image' => array('type' => 'file'),
 	'acept',
-	'acepted_date',
-	'categories_id',
-	'raffles_id',
+	'acepted_date' => array('type' => 'date'),
 ));
 echo $form->end(__('Submit', true));
 ?></div>
