@@ -85,7 +85,17 @@ g)Los daños o perjuicios que se causen o puedan causarse por la falta de entreg
 </li>
 </ul>
 
-<h2>6. DIRECCIÓN DEL TITULAR DE LA WEBSITE</h2>
+6. INGRESOS Y PAGOS
+
+Para poder reservar o adquirir una participación en una rifa, el USUARIO deberá haber ingresado previamente una cantidad en el sistema de Rifalia, como mínimo, por el importe equivalente al precio de esa participación.
+
+Las cantidades mínimas y máximas admitidas por el sistema para efectuar ingresos podrán variar y dependerán de las condiciones vigentes en cada momento.
+
+En cualquier momento el USUARIO podrá solicitar el reintegro de las cantidades ingresadas en el sistema. Rifalia devolverá, a través de una transferencia, ingreso o cualquier otro medio financiero a su disposición, el saldo vigente en ese momento, resultante de detraer de la cantidad ingresada por el USUARIO, los importes de las participaciones adquiridas o reservadas –sin que haya llegado el momento de la ejecución de la reserva- hasta el momento. En caso de que, con posterioridad a la liquidación, se cancelase alguna de las rifas pendientes de apertura en el momento de efectuar dicha liquidación, el USUARIO podrá solicitar el reintegro de la cantidad correspondiente.
+
+Los gastos de devolución de las cantidades reintegradas corresponderán al USUARIO.
+
+<h2>7. DIRECCIÓN DEL TITULAR DE LA WEBSITE</h2>
 
 <p>
 Para cualquier solicitud de información o aclaración sobre las presentes CONDICIONES GENERALES o consultas, los USUARIOS podrán dirigirse a:
