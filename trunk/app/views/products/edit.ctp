@@ -3,9 +3,9 @@ $this->set('pageTitle', __('Edit Product', true));
 ?>
 <div class="form-container">
 <?php
-echo $form->create(null, array('type' => 'file')); // Default to enable file uploads
+echo $form->create(null, array('class'=>'cmxform', 'type' => 'file')); // Default to enable file uploads
 echo $form->inputs(array(
-	'legend' => false,
+	'legend' => "Editar Producto",
 	'id',
 	'tittle',
 	'short_description',

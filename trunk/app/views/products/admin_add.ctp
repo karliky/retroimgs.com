@@ -1,12 +1,12 @@
 <?php
-	$this->set('pageTitle', __('Añadir Producto', true));
+	$this->set('pageTitle', __('Aï¿½adir Producto', true));
 ?>
 <div class="form-container">
 <?php
-echo $form->create("Product", array('type' => 'file')); // Default to enable file uploads
+echo $form->create("Product", array('class'=>'cmxform','type' => 'file')); // Default to enable file uploads
 
 echo $form->inputs(array(
-	'legend' => false,
+	'legend' => "AÃ±adir producto",
 	'id',
 	'category_id',
 	'provider_id',
@@ -17,6 +17,7 @@ echo $form->inputs(array(
 	'price',
 	'video_url',
 ));
+
 
 echo $form->end(__('Submit', true));
 

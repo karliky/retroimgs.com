@@ -7,9 +7,9 @@ if ($this->action === 'admin_add') {
 ?>
 <div class="form-container">
 <?php
-echo $form->create(null, array('type' => 'file')); // Default to enable file uploads
+echo $form->create(null, array('class'=>'cmxform','type' => 'file')); // Default to enable file uploads
 echo $form->inputs(array(
-	'legend' => false,
+	'legend' => "Edición de rifa",
 	'id',
 	'available_tickets',
 	'ticket_price',
