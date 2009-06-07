@@ -39,4 +39,8 @@ class Product extends AppModel {
 		'Category',
 		'Provider',
 	);
+
+	var $hasMany = array(
+		'Raffle',
+	);
 }

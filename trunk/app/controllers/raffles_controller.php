@@ -82,7 +82,7 @@ class RafflesController extends AppController {
 			$this->set('winner_code', $result["Raffle"]["winner_code"]);	
 		}
 
-		$result = $this->Raffle->Product->find(array('raffle_id' => $id ));
+		$result = $this->Raffle->Product->find(array('id' => $result["Raffle"]["product_id"] ));
 		$this->set('productDescription', $result["Product"]["description"]);
 		$this->set('productShortDescription', $result["Product"]["short_description"]);
 		$this->set('price', $result["Product"]["price"]);

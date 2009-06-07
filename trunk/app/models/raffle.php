@@ -36,7 +36,8 @@ class Raffle extends AppModel {
  * @access public
  */
 	var $belongsTo = array(
-		'Winner' => array('className' => 'User')
+		'Winner' => array('className' => 'User'),
+		'Product',
 	);
 
 /**
@@ -46,7 +47,6 @@ class Raffle extends AppModel {
  * @access public
  */
 	var $hasOne = array(
-		'Product',
 	);
 
 /**
@@ -57,7 +57,6 @@ class Raffle extends AppModel {
  */
 	var $hasMany = array(
 		'Ticket',
-		'Product',
 	);
 
 /**
@@ -81,6 +80,16 @@ class Raffle extends AppModel {
 		}
 	}
 
+/**
+ * ticketsBought method
+ *
+ * Increment the number of tickets bought for a Raffle
+ *
+ * @param mixed $id - Raffle id
+ * @param $number - number of used tickets to add
+ * @return void
+ * @access public
+ */
 	function ticketsBought($id, $number) {
 		$raffle = $this->find(array('Raffle.id' => $id));
 		$raffle["Raffle"]["sold_tickets"] += $number;
