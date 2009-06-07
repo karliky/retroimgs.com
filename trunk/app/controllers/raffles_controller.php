@@ -55,7 +55,7 @@ class RafflesController extends AppController {
 				$this->Session->setFlash(__('errors in form', true));
 			}
 		}
-		$this->set('products', $this->Raffle->Product->find('list'));
+		$this->set('products', $this->Raffle->Product->find('list', array('conditions' => array('is_on_raffle' => 0))));
 		$this->_setSelects();
 	}
 
