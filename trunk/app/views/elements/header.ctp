@@ -23,6 +23,8 @@ if ($session->check('Auth.User') && empty($isEmail)) {
 	$menu->add(array(
 		array('title' => __('Your Profile', true), 'url' => array('controller' => 'users', 'action' => 'profile')),
 		array('title' => __('Logout', true), 'url' => array('controller' => 'users', 'action' => 'logout')),
+        // Se han puesto hardcoded los nombres en castellano, para futuras implementaciones es necesario hacerlo con el motor de idiomas del cake.
+        array('title' => __('Cesta', true), 'url' => array('controller' => 'users', 'action' => 'ver_mi_cesta')),
 	));
 } else {
 	$menu->add(array(
@@ -67,7 +69,9 @@ echo $menu->display();
 	        $menu->add(array(
 		        array('title' => __('Your Profile', true), 'url' => array('controller' => 'users', 'action' => 'profile')),
 		        array('title' => __('Logout', true), 'url' => array('controller' => 'users', 'action' => 'logout')),
-	        ));
+                array('title' => __('Cesta', true), 'url' => array('controller' => 'users', 'action' => 'ver_mi_cesta')),
+
+            ));
         } else {
 	        $menu->add(array(
 		        array('title' => __('Register', true), 'url' => array('controller' => 'users', 'action' => 'register')),
