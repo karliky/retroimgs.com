@@ -45,7 +45,7 @@ echo $menu->display();
 
 			</div><!-- Fin del logo -->
 		<div id"usuarioaccion">
-		<?php echo $html->link('Registrarte', array('controller' => 'users', 'action' => 'login')) ?>
+		<?php echo $html->link('Registrarte', array('controller' => 'users', 'action' => 'register')) ?>
         </div>
 		</div><!-- Fin de la cabecera -->
 
