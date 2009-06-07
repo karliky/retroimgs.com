@@ -25,6 +25,8 @@ foreach ($data as $i => $row) {
 			$Product['commission'].'%',
 			$html->link("Borrar", array('action' => 'delete', $Product['id'])),
 			$html->link("Crear Rifa", array('controller'=>'raffles','action' => 'add', $Product['id'])),
+			$html->link("Ver producto", array('action' => 'view', $Product['id'])),
+
 		),
 	);
 	$class = $i%2?'even':'odd';
