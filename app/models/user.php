@@ -90,5 +90,48 @@ class User extends AppModel {
 			'isUnique'
 		),
 	);
+       /**
+ * Charge money method. t
+ *
+ * If  there are 2 possible causes
+ * 	1) The user haven't
+ * 	2) They used the sidebar login form, and the <not-users> controller doesn't use the security component
+ *
+ * In the first case, there is nothing to do but send the user back to the login form. In the second case, check if
+ * their form submission contains a valid (session) user login token, and if so allow them to login; Otheriwse send to
+ * the login form. This logic allows the users controller to use the security component, without forcing the rest of the
+ * application to do so.
+ *
+ * If a user is already logged in, and the current action is not a login, then the user submitted a stale form -
+ * call the parent blackHole handling method.
+ *
+ * @param mixed $reason
+ * @return void
+ * @access protected
+ */
+
+    function haveMoney($id = null, $price){
+           if ($id) {
+                $this->id = $id;
+           }
+           if ($this->id) {
+                if ($this->field('balance') > $price){
+                    return true;
+                }else{
+                    return false;
+                }
+           }
+           return false;
+    }
+    function chargeMoney($id = null, $price){
+           if ($id) {
+                $this->id = $id;
+           }
+           if ($this->id) {
+               $less_money = $this->field('balance') - $price;
+               $this->amount->save($less_money);
+           }
+           return false;
+    }
 }
 ?>
