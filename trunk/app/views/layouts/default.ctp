@@ -20,8 +20,10 @@ echo $html->meta('canonical', am($this->passedArgs, $stripNamed));
 echo $html->css(array(
 	'default',
 	'/js/theme/ui.all',
+	'form'
 ), null, null, false);
 echo $html->css();
+
 if (isset ($javascript)) {
 	echo $javascript->link(array(
 		'jquery.searchField', 'jquery.blockUI',
