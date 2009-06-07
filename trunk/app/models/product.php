@@ -29,6 +29,7 @@
  */
 class Product extends AppModel {
 
+	var $displayField = 'short_description';
 /**
  * belongsTo property
  *

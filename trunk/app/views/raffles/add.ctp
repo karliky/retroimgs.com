@@ -7,10 +7,11 @@ echo $form->create();
 echo $form->inputs(array(
 	'legend' => false,
 	'id',
+	'product_id',
 	'available_tickets',
 	'ticket_price',
 	'closes',
-	'parent_id',
+	//'parent_id',
 	'is_published',
 	'published',
 ));
