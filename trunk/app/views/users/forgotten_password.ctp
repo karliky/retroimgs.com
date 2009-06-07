@@ -5,13 +5,13 @@
 <p><?php __("We'll send you an email that you must read to proceed, this helps to confirm that it's really you requesting to change your password.");
 echo __('All you need to do is check the mail - click the link and enter a new password to regain access to your account.') ?></p>
 <?php
-echo $form->create(null, array('action' => 'forgotten_password'));
+echo $form->create(null, array('class'=>'cmxform','action' => 'forgotten_password'));
 if ($authFields['username'] == 'email') {
 	echo $form->input('email');
 } else {
 	echo $form->input('email', array('label' => __('email or username', true)));
 }
-echo $form->submit(__('reset password', true))	;
+echo '<p>'.$form->submit('Enviar Contraseña',array('class'=>'submit',"div"=>false)).'</p>';
 echo $form->end();
 ?>
 </div>
