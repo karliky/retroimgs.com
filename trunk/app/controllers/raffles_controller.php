@@ -43,7 +43,14 @@ class RafflesController extends AppController {
  * @var string 'Raffles'
  * @access public
  */
+ 
 	var $name = 'Raffles';
+
+    function home(){
+    
+    
+    }
+
 	function add() {
 		if ($this->data) {
 			if ($this->Raffle->save($this->data)) {

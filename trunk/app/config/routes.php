@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: routes.php 7820 2008-11-03 18:27:56Z renan.saddam $ */
+/* SVN FILE: $Id$ */
 
 /**
  * Short description for file.
@@ -22,9 +22,9 @@
  * @package       cake
  * @subpackage    cake.app.config
  * @since         CakePHP(tm) v 0.2.9
- * @version       $Revision: 7820 $
- * @modifiedby    $LastChangedBy: renan.saddam $
- * @lastmodified  $Date: 2008-11-03 19:27:56 +0100 (Mon, 03 Nov 2008) $
+ * @version       $Revision$
+ * @modifiedby    $LastChangedBy$
+ * @lastmodified  $Date$
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -33,7 +33,7 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'products', 'action' => 'index'));
+	Router::connect('/', array('controller' => 'raffles', 'action' => 'home'));
 	Router::connect('/admin/', array('admin' => true, 'controller' => 'products', 'action' => 'index'));
 
 /**
