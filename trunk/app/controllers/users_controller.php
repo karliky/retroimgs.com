@@ -303,27 +303,9 @@ class UsersController extends AppController {
  * @return void
  */
 	function register() {
-		if (Configure::read()) {
-			if ($this->User->find('count')) {
-				$message = __('Registrations are disabled, change the Users.allowRegistrations setting to enable, or login as admin to create users.', true);
-				$this->Session->setFlash($message, 'error');
-				$this->redirect('/');
-			}
-			$message = __('Create a site admin user.', true);
-			$this->Session->setFlash($message);
-		} else {
-			$message = __('Registrations are disabled.', true);
-			$this->Session->setFlash($message, 'info');
-			$this->redirect('/');
-		}
 		if ($this->data) {
 			if (Configure::read() && !$this->User->find('count')) {
-				if (isset($this->User->Group)) {
-					$this->data['User']['group_id'] = $this->User->Group->field('id',
-						array('name' => 'Admin'));
-				} else {
-					$this->data['User']['group'] = 'admin';
-				}
+				$this->data['User']['is_admin'] = true;
 			}
 			list($return, $message) = $this->User->register($this->data);
 			if ($message) {
@@ -333,8 +315,10 @@ class UsersController extends AppController {
 				$this->Auth->login($this->User->id);
 				return $this->redirect('/');
 			}
+		} elseif (Configure::read() && !$this->User->find('count')) {
+			$message = __('Create a site admin user.', true);
+			$this->Session->setFlash($message, 'error');
 		}
-		$this->set('passwordPolicy', $this->User->passwordPolicy());
 	}
 
 /**
