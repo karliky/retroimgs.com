@@ -75,5 +75,10 @@ p{margin:0.5em 0;}
 }
 
 .error-message{
-
+	color:#AD2624;
+	display:block;
+	font-size:12px;
+	font-weight:bold;
+	padding-left:250px;
+	width:137px;
 }
