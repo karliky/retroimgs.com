@@ -113,20 +113,27 @@ h4{font-size:1.2em;line-height:1.6;}
 #producto #contenido_centro{height:300px;}
 
 #logo{
-	background-color: #dddddd;
+    background-image: url(../img/logo.png);
 	float: left;
-	height: 100px;
-	width: 100px;
+	height: 80px;
+	width: 284px;
 }
 
 #menu{background:#ad2624;overflow:hidden;text-transform:uppercase;}
 #menu #search{float:left;padding:6px;}
-#menu #search .search-text{border:1px #333 solid;color:#999;padding:3px;}
-#menu #search .search-button{}
+#menu #search #searchtext{border:1px #333 solid;color:#999;padding:3px;}
+#menu #search #searchButton{
+        color:white;
+        padding:3px 6px;
+        border:1px;
+        background-color:#000000;
+    }
 #menu ul{background: #ad2624;float:right;}
 #menu ul li{border-left:1px #eee solid;float:left;list-style:none;}
 #menu ul li a{background: #ad2624;color:#eee;display:block;text-decoration:none;padding:8px 1.5em 7px;}
-#menu ul li a:hover{color:#fff;}
+#menu ul li a:hover{
+    background-color:#000000;
+}
 
 #migapan{margin:1em 0;padding:0 6px;}
 #migapan a{color:#666;}
