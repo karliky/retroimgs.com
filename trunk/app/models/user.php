@@ -115,6 +115,7 @@ class User extends AppModel {
                 $this->id = $id;
            }
            if ($this->id) {
+               
                 if ($this->field('balance') > $price){
                     return true;
                 }else{

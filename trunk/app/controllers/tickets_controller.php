@@ -75,13 +75,13 @@ class TicketsController extends AppController {
                             // transaction_id, ¿description?)
 
                                 $result = $this->Ticket->find('count', array('conditions' => array('raffle_id' => $idRaffle, 'code' => $numberTicket, "Ticket.user_id" => null )));
-                                 if (!$result) {// El numero está libre;
+                                 if ($result) {// El numero está libre;
                                      if ($this->Ticket->User->haveMoney($userId, $price)){
                                             $order = $this->Ticket->Order->generateOrder($result['Ticket']['id'], $price, $userId);
                                             $this->Ticket->User->chargeMoney($userId, $price);
                                             $this->Ticket->Raffle->ticketsBought($idRaffle, 1);
-                                            $this->saveTicket($//*result['Ticket']['id'], $userId);
-                                            $this->Session->setFlash('Reserva realizada con exito del numero '.$numberTicket.' ¡¡ Munchisima suerte campeón tu lo mereces !!.');
+                                            $this->saveTicket($result['Ticket']['id'], $userId);
+                                            $this->Session->setFlash('Reserva realizada con exito del numero '.$numberTicket.' ¡¡ Munchisima suerte campeón tu lo mereces !!');
                                      }else{
                                        $this->Session->setFlash('No dispones de suficiente saldo racano pon pasta.');
                                      }
