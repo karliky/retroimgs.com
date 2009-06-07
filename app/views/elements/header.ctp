@@ -50,7 +50,7 @@ echo $menu->display();
 		<div id="menu">
 			<form id="search" method="get" action="<?php echo $html->url('/search') ?>">
 		        <div class="input text">
-			        <input class="watermark" name="data[Search][query]" title="Search Rifalia" value="" id="SearchQuery" type="text" size="30" tabindex="1" />
+			        <input name="data[Search][query]" title="Search Rifalia" value="" id="searchtext" type="text" size="30" tabindex="1" />
 			        <input id="searchButton" value="Buscar" type="submit" tabindex="2" />
 		        </div>
 	        </form>
