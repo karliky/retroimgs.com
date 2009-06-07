@@ -37,10 +37,10 @@ class User extends AppModel {
 /**
  * displayField property
  *
- * @var string 'email'
+ * @var string 'login'
  * @access public
  */
-	var $displayField = 'email';
+	var $displayField = 'login';
 
 /**
  * name property
@@ -61,23 +61,28 @@ class User extends AppModel {
 	);
 
 /**
+ * hasMany property
+ *
+ * @var array
+ * @access public
+ */
+	var $hasMany = array(
+		'Order',
+		'Ticket'
+	);
+
+/**
  * validate variable
  *
  * @var array
  * @access public
  */
 	var $validate = array(
-		'username' => array(
+		'login' => array(
 			'missing' => array('rule' => 'notEmpty', 'last' => true),
 			'alphaNumeric' => array('rule' => 'alphaNumeric', 'last' => true),
 			'tooShort' => array('rule' => array('minLength', 3), 'last' => true),
 			'isUnique'
-		),
-		'first_name' => array(
-			'missing' => array('rule' => 'notEmpty')
-		),
-		'last_name' => array(
-			'missing' => array('rule' => 'notEmpty')
 		),
 		'email' => array(
 			'missing' => array('rule' => 'notEmpty', 'last' => true),
