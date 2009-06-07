@@ -4,6 +4,7 @@
 
 <div id="separador">
    	<ul>
+   	   	<li><?php echo $html->link('Aviso legal','/pages/aviso'); ?></li>
    	    <li><?php echo $html->link('Privacidad','/pages/privacidad'); ?></li>
    	    <li><?php echo $html->link('Quienes Somos','#'); ?></li>
    	    <li><?php echo $html->link('Contacto','/contact/us'); ?></li>
