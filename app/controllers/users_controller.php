@@ -179,6 +179,8 @@ class UsersController extends AppController {
 		} else {
 			$this->data = $this->User->read(null, $this->Auth->user('id'));
 		}
+		//$this->User->set('first_name', 'Juanra');
+		$this->data['User']['first_name'] = 'Foo';
 		$this->_setSelects();
 	}
 
