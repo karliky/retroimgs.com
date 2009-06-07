@@ -169,7 +169,7 @@ class UsersController extends AppController {
  */
 	function edit() {
 		if ($this->data) {
-			$this->data['User']['id'] = $this->Auth->user('id');
+			//$this->data['User']['id'] = $this->Auth->user('id');
 			if ($this->User->save($this->data)) {
 				$this->Session->setFlash(__('profile updated', true));
 				return $this->_back();
