@@ -109,13 +109,30 @@ class User extends AppModel {
  * @return void
  * @access protected
  */
+	function addBalance($amount) {
+		if (!$this->id) {
+			return false;
+		}
+		return $this->updateAll(
+			array('balance' => 'balance + ' . $amount),
+			array('id' => $this->id)
+		);
+	}
 
+/**
+ * haveMoney method
+ *
+ * @param mixed $id null
+ * @param mixed $price
+ * @return void
+ * @access public
+ */
     function haveMoney($id = null, $price){
            if ($id) {
                 $this->id = $id;
            }
            if ($this->id) {
-               
+
                 if ($this->field('balance') > $price){
                     return true;
                 }else{
@@ -124,6 +141,15 @@ class User extends AppModel {
            }
            return false;
     }
+
+/**
+ * chargeMoney method
+ *
+ * @param mixed $id null
+ * @param mixed $price
+ * @return void
+ * @access public
+ */
     function chargeMoney($id = null, $price){
            if ($id) {
                 $this->id = $id;
