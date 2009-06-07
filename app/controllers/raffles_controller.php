@@ -98,23 +98,35 @@ class RafflesController extends AppController {
  */
 	function winner($id) {
 
+		// Get raffle to check if winner was previously selected
+		$raffle = $this->Raffle->find(array('Raffle.id' => $id));
+		if(!empty($raffle["Raffle"]["winner_id"])) {
+			$winner = $raffle["Raffle"]["winner_id"];
+			$winnerCode = $raffle["Raffle"]["winner_code"];
+
+			$this->set('winner', $winner);
+			$this->set('raffle', $id);
+			$this->Session->setFlash('And the winner was... '.$winner);
+			return;
+		}
+
+		// Select a random winner from tickets assigned to users
 		$result = $this->Raffle->Ticket->find(array('raffle_id' => $id, "not" => array("Ticket.user_id" => null)), array("id", "code"), array('rand()'));
 		$winner = $result["Ticket"]["id"];
 		$winnerCode = $result["Ticket"]["code"];
 
 		$this->set('winner', $winner);
 		$this->set('raffle', $id);
+		$this->Session->setFlash('And the winner is... '.$winner);
 
+		// Save winner info in Raffle
 		if(!empty($winner)) {
-			$raffle = $this->Raffle->find(array('Raffle.id' => $id));
 			$raffle["Raffle"]["winner_id"] = $winner;
 			$raffle["Raffle"]["winner_code"] = $winnerCode;
 			$raffle["Raffle"]["is_assigned"] = 1;
 			$raffle["Raffle"]["assigned"] = date('Y-m-d H:i:s');
 			$this->Raffle->save($raffle);
 		}
-
-		$this->Session->setFlash('And the winner is... '.$winner);
 	}
 }
 ?>
