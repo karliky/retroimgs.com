@@ -38,17 +38,13 @@ if (isset ($javascript)) {
 echo $scripts_for_layout;
 ?>
 </head>
-<body>
+<body class="<?=$this->action?>">
 	<div id="contenedor">
 		<?php echo $this->element('header'); ?>
-		<div id='wrapper' class="clearfix">
-			<div id="content"><?php
-				echo $this->element('flash');
-				echo $content_for_layout;
-			?></div>
-			<?php echo $this->element('menu/side'); ?>
-			<?php //echo $this->element('hover_menu'); ?>
-		</div>
+		<div id="contenido"><?php
+			echo $this->element('flash');
+			echo $content_for_layout;
+		?></div>
 		<?php echo $this->element('footer'); ?>
 	</div>
 <?php echo $javascript->link(); ?>
