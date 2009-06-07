@@ -2,20 +2,22 @@
 .home #contenido_der{float:right;width:390px;}
 .home #contenido_iz{float:left;width:550px;}
 
-.producto_destacado{position:relative;height:280px;margin-bottom:1em;}
+.stock_boletos{background:#ad2624;color:#fff;font-size:1.2em;margin-top:0;padding:0.5em 0;}
+
+.producto_destacado{position:relative;height:280px;margin-bottom:20px;}
 .producto_destacado .titulo{background:#fff url(../img/icon_boleto.png) 8px center no-repeat;left:0;position:absolute;top:20px;padding:0.5em 1em 0.5em 3em;}
 .producto_destacado .descripcion{background:#fff;height:160px;position:absolute;bottom:20px;right:20px;width:220px;text-align:center;}
-.producto_destacado .descripcion .stock_boletos{background:#ad2624;color:#fff;font-size:1.2em;margin-top:0;padding:0.5em 0;}
 .producto_destacado .descripcion .precio{font-size: 0.8em;margin-top:-0.5em;}
 .producto_destacado .descripcion .boton_reserva{bottom:10px;position:absolute;width:220px;}
 .producto_destacado .descripcion .boton_reserva a{margin:0 10px;}
 
-.producto {border-right:1px dashed #ccc;float:left;margin:0 0 25px 0;padding:0 10px;width:253px;}	
+#resto_productos{margin:0 0 0 -10px;}
+.producto {border-right:1px #ccc dashed;float:left;margin:0 0 20px 0;padding:0 10px 0 10px; width:259px;}	
 .producto h3 {background:url(../img/icon_boleto.png) 0 5px no-repeat;font-size:1em;height:2.5em;margin-bottom:1em;padding:0.5em 0 0.5em 2.5em;}
 .producto img {float:left;}
 .producto .descripcion {float:left;margin-left:20px;width:120px;}
 .producto .descripcion p {font-size:0.8em;}
-.producto .stock_boletos {font-size:1em;}
-.producto .boton_reserva a {display:block;float:left;margin-top:1em;width:100%;}
+.producto .stock_boletos{text-align:center;}
 .producto .precio {float:left;}
 .producto .precio strong{color:#ad2624;font: bold 2.4em/1em Georgia,serif; padding-left:10px;}
+.producto .boton_reserva a {display:block;float:left;margin-top:1em;width:100%;}

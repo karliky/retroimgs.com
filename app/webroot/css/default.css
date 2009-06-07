@@ -1,3 +1,6 @@
+@import 'reset.css' ;
+@import 'home.css';
+
 .alineaderecha{float:right;}
 .alineaizquierda{float:left;}
 .alineacentro{display:block;text-align:center;width:100%;}

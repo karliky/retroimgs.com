@@ -45,7 +45,13 @@ class RafflesController extends AppController {
  */
  
 	var $name = 'Raffles';
+	
+	function beforeFilter(){
+		$this->Auth->allow('home');
+		parent::beforeFilter();
+	}
 
+    
     function home(){
     
     
