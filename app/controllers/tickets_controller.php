@@ -74,8 +74,8 @@ class TicketsController extends AppController {
                             // Tablas a modificar: Raffles ( sold_ticket + 1), Tickets ( code, user_id, rafle_id, transaction_id ), Orders (user_id, amount,
                             // transaction_id, ¿description?)
 
-                                $result = $this->Ticket->find('count', array('conditions' => array('raffle_id' => $idRaffle, 'code' => $numberTicket, "Ticket.user_id" => null )));
-                                 if ($result) {// El numero está libre;
+                                $result = $this->Ticket->find(array('code' => $numberTicket, "Ticket.user_id" => null ));
+                              if ($result['Ticket']['id']!= null) {// El numero está libre;
                                      if ($this->Ticket->User->haveMoney($userId, $price)){
                                             $order = $this->Ticket->Order->generateOrder($result['Ticket']['id'], $price, $userId);
                                             $this->Ticket->User->chargeMoney($userId, $price);
