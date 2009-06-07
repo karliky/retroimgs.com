@@ -90,13 +90,13 @@ class RafflesController extends AppController {
 		$this->set('remainingTickets', $result["Raffle"]["available_tickets"] - $result["Raffle"]["sold_tickets"]);
 
 		if(!empty($result["Raffle"]["winner_id"])){
-			$user = $this->Raffle->Ticket->User->find(array("id" => $result["Raffle"]["winner_id"]));
+			$user = $this->Raffle->Ticket->User->find(array("User.id" => $result["Raffle"]["winner_id"]));
 			$this->set('winner_id', $result["Raffle"]["winner_id"]);	
 			$this->set('winner_user', $user["User"]["login"]);	
 			$this->set('winner_code', $result["Raffle"]["winner_code"]);	
 		}
 
-		$result = $this->Raffle->Product->find(array('id' => $result["Raffle"]["product_id"] ));
+		$result = $this->Raffle->Product->find(array('Product.id' => $result["Raffle"]["product_id"] ));
 		$this->set('productDescription', $result["Product"]["description"]);
 		$this->set('productShortDescription', $result["Product"]["short_description"]);
 		$this->set('price', $result["Product"]["price"]);
