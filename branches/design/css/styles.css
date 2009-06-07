@@ -5,19 +5,25 @@
 body{color:#333;font:normal 0.9em/1.5em Helvetica,Arial,sans-serif;}
 
 /* TIPOGRAFIA*/
-h1,h2,h3,h4{font-family:"Trebuchet MS";}
+h1,h2,h3,h4{font-family:"Trebuchet MS";font-weight:bold;margin-bottom:0.5em;}
 h2{font-size:1.6em;line-height:1.2;}
 h3{font-size:1.4em;line-height:1.4;}
 h4{font-size:1.2em;line-height:1.6;}
+p{margin:0.5em 0;}
 
 /* DISTRIBUCION */
 #cabecera{height: 125px;}
 #contenedor{margin:20px auto;width:960px;}
 #contenido{}
 
-/* HOME */
-.home #contenido_der{background:#ccc;float:right;height:430px;width:390px;}
-.home #contenido_iz{background:#ddd;float:left;height:430px;width:550px;}
+/* BOTONES */
+.precio strong{color:#ad2624;font: bold 2em/1em Georgia,serif;}
+.boton_reserva {text-align:center;width:220px;}
+.boton_reserva a{background:#ad2624;color:#fff;display:block;font-weight:bold;padding:0.5em 0;text-decoration:none;}
+
+/* INICIO */
+.home #contenido_der{float:right;height:430px;width:390px;}
+.home #contenido_iz{float:left;height:430px;width:550px;}
 
 #contenedor_destacado{}
 #contenedor_destacado .producto_destacado{position:relative;height:280px;margin-bottom:1em;}
@@ -26,16 +32,24 @@ h4{font-size:1.2em;line-height:1.6;}
 #contenedor_destacado .producto_destacado .descripcion p{font-size:0.9em;padding:0 0.5em;}
 #contenedor_destacado .producto_destacado .descripcion .stock_boletos{background:#ad2624;color:#fff;font-size:1.2em;margin-bottom:0.5em;padding:0.5em 0;}
 #contenedor_destacado .producto_destacado .descripcion .precio{font-size: 0.8em;}
-#contenedor_destacado .producto_destacado .descripcion .precio strong{color:#ad2624;font: bold 2em/1em Georgia,serif;}
-#contenedor_destacado .producto_destacado .descripcion #boton_reserva{bottom:10px;position:absolute;text-align:center;width:220px;}
-#contenedor_destacado .producto_destacado .descripcion #boton_reserva a{background:#ad2624;color:#fff;display:block;font-weight:bold;padding:0.5em 0;margin:0 10px;text-decoration:none;}
+#contenedor_destacado .producto_destacado .descripcion .boton_reserva{bottom:10px;position:absolute;}
+#contenedor_destacado .producto_destacado .descripcion .boton_reserva a{margin:0 10px;}
 
 #columna_productos_derecha{}
 
 .producto{}
 
 /* PRODUCTO */
+.producto #contenido_der,.producto #contenido_iz{width:470px;}
+.producto #contenido_der{float:right;}
 .producto #contenido_centro{height:300px;}
+
+.producto #imagen{margin-bottom:10px;}
+.producto #miniaturas{margin-left:-10px;overflow:hidden;}
+.producto #miniaturas .miniatura{float:left;margin:0 0 10px 10px;}
+.producto #miniaturas .last{margin-right:0;}
+
+.producto .boton_reserva,.producto .precio strong{display:block;float:left;width:50%;}
 
 #logo{
 	background-color: #dddddd;
@@ -46,7 +60,7 @@ h4{font-size:1.2em;line-height:1.6;}
 
 #menu{background:#ad2624;height:40px;overflow:hidden;text-transform:uppercase;}
 #menu #search{float:left;padding:8px;}
-#menu #search .search-text{border:1px #333 solid;color:#999;padding:3px;}
+#menu #search .search-text{border:1px #333 solid;color:#999;padding:3px;width:454px;}
 #menu #search .search-button{}
 #menu ul{float:right;}
 #menu ul li{border-left:1px #eee solid;float:left;list-style:none;}
