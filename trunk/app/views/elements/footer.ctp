@@ -4,6 +4,7 @@
 
 <div id="separador">
    	<ul>
+   		<li><?php echo $html->link('FAQ','/pages/faq'); ?></li>
    	   	<li><?php echo $html->link('Aviso legal','/pages/aviso'); ?></li>
    	    <li><?php echo $html->link('Privacidad','/pages/privacidad'); ?></li>
    	    <li><?php echo $html->link('Quienes Somos','#'); ?></li>
@@ -11,7 +12,7 @@
    	    <li><a href="http://blog.rifalia.com">Blog</a></li>
    	    <li><a href="http://twitter.com/rifalia.com">Twitter</a></li>
    	    <li><a href="#">Facebook</a></li>
-   	    <? /* <li><?php echo $html->link('Blog','http://blog.rifalia.com'); ?></li>
+   	    <?php /* <li><?php echo $html->link('Blog','http://blog.rifalia.com'); ?></li>
    	    <li><?php echo $html->link('Twitter','http://twitter.com/rifalia.com'); ?></li>
    	    <li><?php echo $html->link('Facebook','#'); ?></li> */ ?>
      </ul>
