@@ -61,3 +61,21 @@ p{margin:0.5em 0;}
 #pie li a{display:block;float:left;overflow:hidden;text-indent:-9999px;}
 #pie a.sponsor1{background:url('../img/iweekend.jpg') no-repeat;height:65px;width:190px;}
 #pie p{color:#999;margin-top:10px;text-align:center;}
+
+
+.message{
+	width:600px;
+}
+
+.error-message{
+	background-color:#FFFF99;
+	border:1px solid #AD2624;
+	color:#AD2624;
+	font-size:19px;
+	height:40px;
+	margin-bottom:15px;
+	padding-left:30px;
+	padding-top:20px;
+	text-align:left;
+	width:570px;
+}
