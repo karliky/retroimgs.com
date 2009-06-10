@@ -8,6 +8,7 @@ echo $form->create("Product", array('class'=>'cmxform','type' => 'file')); // De
 echo $form->inputs(array(
 	'legend' => false,
 	'id',
+	'Media.filename' => array('type' => 'file'),
 	'category_id',
 	'provider_id',
 	'name',

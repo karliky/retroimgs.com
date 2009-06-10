@@ -43,10 +43,10 @@ echo $menu->display();
 		<div id="usuarioaccion">
 		<?php echo $html->link('Registrarte', array('controller' => 'users', 'action' => 'register')) ?>
         </div>
-        
+
             <h1><a href="/" title="Rifalia" rel="home"><span>Rifalia</span></a></h1>
-			<p class="tagline">Te lo mereces</p>	
-	    
+			<p class="tagline">Te lo mereces</p>
+
 		</div><!-- Fin de la cabecera -->
 
 		<div id="menu">
