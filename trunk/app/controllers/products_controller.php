@@ -29,6 +29,7 @@
  * @subpackage    rifalia.controllers
  */
 class ProductsController extends AppController {
+
 /**
  * name property
  *
@@ -101,51 +102,6 @@ class ProductsController extends AppController {
 		}
 		return $this->_back();
 	}
-
-	/**
- * add method
- *
- * @return void
- * @access public
- */
-	function admin_add() {
-
-		if ($this->data) {
-
-				//debug($this->data);
-			    $this->Product->set( $this->data );
-
-			    if ($this->Product->validates()) {
-					$this->Session->setFlash(__('Valida  ok', true));
-					if ($this->Product->saveAll($this->data)) {
-						$display = $this->Product->display();
-						$this->Session->setFlash(sprintf(__('Producto "%1$s" añadido', true), $display));
-
-						//return $this->_back();
-						 $this->redirect(array('controller' => 'products', 'action' => 'index'));
-					} else {
-						$this->data = $this->Product->data;
-						$this->Session->setFlash(__('errors in form', true));
-					}
-
-				 } else {
-
-				 //	$this->Session->setFlash(__('NO VALIDA BIEN', true));
-				   	$errors = $this->Product->invalidFields();
-
-				 }
-
-		}
-
-
-		$this->set('providers', $this->Product->Provider->find('list'));
-		$this->set('categories', $this->Product->Category->find('list'));
-
-		$this->render('admin_add');
-	}
-
-
-
 
 	function admin_edit($id) {
 		if ($this->data) {
