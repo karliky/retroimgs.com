@@ -4,12 +4,12 @@
 				<ul id="contenedor_destacado">
 					<li class="producto_destacado">
 						<img src="./img/audi.png">
-						<div class="titulo"><h2>Audi TT 2,8 140 CV</h2></div>
+						<div class="titulo"><h2>Audi TT 2.0T 197 CV</h2></div>
 						<div class="descripcion">
 							<p class="stock_boletos">S&oacute;lo quedan 20 boletos</p>
 							<p>Antes de 1 d. 30 min. 20 sec.</p>
 							<p class="precio">Tu boleto por solo <strong>1,30 €</strong></p>
-							<div class="boton_reserva"><a href="#">¡Reserva ahora!</a></div>
+							<div class="boton_reserva"><a href="/users/register">¡Reserva ahora!</a></div>
 						</div>
 					</li>
 				</ul>
@@ -22,7 +22,7 @@
             	<p class="stock_boletos">S&oacute;lo quedan <br />20 boletos</p>
             	<p>Antes de <br />1 d. 30 min. 20 sec.</p>
 							<p class="precio">Tu boleto por solo <strong>1,30 €</strong></p>
-							<div class="boton_reserva"><a href="#">¡Reserva ahora!</a></div>
+							<div class="boton_reserva"><a href="/users/register">¡Reserva ahora!</a></div>
 						</div>
 					</div>
 					<div class="producto">
@@ -33,7 +33,7 @@
             	<p>Antes de <br />1 d. 30 min. 20 sec.</p>
 			</div>
 			<p class="precio">Tu boleto por solo <strong>1,30 €</strong></p>
-			<div class="boton_reserva"><a href="#">¡Reserva ahora!</a></div>
+			<div class="boton_reserva"><a href="/users/register">¡Reserva ahora!</a></div>
 
 					</div>
 					<div class="producto">
@@ -43,7 +43,7 @@
             	<p class="stock_boletos">S&oacute;lo quedan <br />20 boletos</p>
             	<p>Antes de <br />1 d. 30 min. 20 sec.</p>
 							<p class="precio">Tu boleto por solo <strong>1,30 €</strong></p>
-							<div class="boton_reserva"><a href="#">¡Reserva ahora!</a></div>
+							<div class="boton_reserva"><a href="/users/register">¡Reserva ahora!</a></div>
 						</div>
 					</div>
 					<div class="producto">
@@ -53,7 +53,7 @@
             	<p class="stock_boletos">S&oacute;lo quedan <br />20 boletos</p>
             	<p>Antes de <br />1 d. 30 min. 20 sec.</p>
 							<p class="precio">Tu boleto por solo <strong>1,30 €</strong></p>
-							<div class="boton_reserva"><a href="#">¡Reserva ahora!</a></div>
+							<div class="boton_reserva"><a href="/users/register">¡Reserva ahora!</a></div>
 						</div>
 					</div>
 				</div><!-- Fin del resto de productos -->
@@ -63,7 +63,7 @@
 			<div id="contenido_der">
 
 
-			           	<p class="boton-rifa-big"><a href="#" onclick="alert('En estos momentos no esta disponible');return false" title="Crea tu propia rifa">Crea tu propia rifa</a></p>
+			           	<p class="boton-rifa-big"><a href="/users/register" title="Crea tu propia rifa">Crea tu propia rifa</a></p>
 
                 <div id="siedebar-a">
 
@@ -170,4 +170,4 @@ $rss = new RssReader ("http://blog.rifalia.com/feed/");
 
 			
 			
-			</div><!-- Fin del contenido_der -->
+			</div><!-- Fin del contenido_der -->Index: views/contact/us.ctp

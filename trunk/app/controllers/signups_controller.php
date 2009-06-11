@@ -49,6 +49,12 @@ class SignupsController extends AppController {
 		'Signup' => array(
 		),
 	);
+	//var $components = array('Security');
+	function beforeFilter() {
+		$this->Auth->allow('add');
+		//$this->Security->blackHoleCallback = '_blackHole';
+		parent::beforeFilter();
+	}
 
 /**
  * admin_add method
@@ -236,5 +242,22 @@ class SignupsController extends AppController {
 			$this->Session->setFlash(__('Invalid signup', true));
 			return $this->_back();
 		}
+	}
+	function add() {
+		if ($this->data) {
+			if ($this->Signup->save($this->data)) {
+				$this->Session->setFlash('Gracias por tu interes');
+				return $this->_back();
+			} else {
+				$this->data = $this->Signup->data;
+				$this->Session->setFlash('Lo siento, intentalo de nuevo');
+			}
+		}
+		$this->_setSelects();
+		$this->render('admin_edit');
+	}
+	function _blackHole($reason) {
+		$this->Session->setFlash('Lo siento, intentalo de nuevo 2');
+		$this->_back();
 	}
 }
