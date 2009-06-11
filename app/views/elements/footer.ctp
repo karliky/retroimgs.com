@@ -10,7 +10,7 @@
    	    <li><?php echo $html->link('Quienes Somos','#'); ?></li>
    	    <li><?php echo $html->link('Contacto','/contact/us'); ?></li>
    	    <li><a href="http://blog.rifalia.com">Blog</a></li>
-   	    <li><a href="http://twitter.com/rifalia.com">Twitter</a></li>
+   	    <li><a href="http://twitter.com/rifalia">Twitter</a></li>
    	    <li><a href="#">Facebook</a></li>
    	    <?php /* <li><?php echo $html->link('Blog','http://blog.rifalia.com'); ?></li>
    	    <li><?php echo $html->link('Twitter','http://twitter.com/rifalia.com'); ?></li>
