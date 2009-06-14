@@ -1,3 +1,5 @@
+
+
 <?php
 $this->set('pageTitle', __('New Product', true));
 ?>
@@ -7,7 +9,6 @@ echo $form->create(null, array('type' => 'file','class'=>'cmxform')); // Default
 echo $form->inputs(array(
 	'legend' => "Crear producto",
 	'id',
-	'Media.fieldname' => array('type' => 'file'),
 	'categories_id' => array('options' => array('Temp', 'List', 'Of', 'Options'), 'empty' => true),
 	'tittle' => array('title' => __('Write the name of your product here', true)),
 	'short_description',
@@ -33,16 +34,16 @@ $javascript->link('productsAdd', false);
 	<fieldset>
 	<legend>Cálculo del modelo de ingresos</legend>
 	<p><label for="precioVendedor">Precio Vendedor</label>
-		<input type="text" name="precioVendedor" id="precioVendedor"></p>
-
+		<input type="text" name="precioVendedor" id="precioVendedor"></p>	
+		
 	<p><label for="precioVenta">Precio Salida</label>
 		<input type="text" name="precioVenta" id="precioVenta" disabled="disabled"></p>
-
+		
 	<p><label for="precioPapeleta">Precio Papeleta</label>
 		<input type="text" name="precioPapeleta" id="precioPapeleta"></p>
 	<p><label for="factorMagico">Fáctor Mágico</label>
 		<input type="text" name="factorMagico" id="factorMagico"></p>
-
+	
 	<p><label for="numPapeletas">Num Papeletas</label>
 		<input type="text" name="numPapeletas" id="numPapeletas" style="font-weight:bold" disabled="disabled"></p>
 
@@ -56,7 +57,7 @@ $javascript->link('productsAdd', false);
 		<input type="text" name="notario" id="notario" disabled="disabled"> <input style="width:30px" type="text" name="notariopc" id="notariopc" value="4">%</p>
 	<p><label for="rifalia">margen rifalia</label>
 		<input type="text" name="rifalia" id="rifalia" disabled="disabled"><input style="width:30px" type="text" name="margenrifalia" id="margenrifalia" value="15">%</p>
-
+		
 	<p><label for="ingsincargas">ingreso sin cargas</label>
 		<input type="text" name="ingsincargas" id="ingsincargas" disabled="disabled"></p>
 	<p><label for="benefadicio">bºadicional</label>

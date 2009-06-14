@@ -36,14 +36,14 @@ class Product extends AppModel {
  * @var string 'name'
  * @access public
  */
-	var $displayField = 'name';
+		var $displayField = 'name';
 
-/**
- * belongsTo property
- *
- * @var array
- * @access public
- */
+	/**
+	 * belongsTo property
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $belongsTo = array (
 		'Media',
 		'Category',
@@ -51,22 +51,10 @@ class Product extends AppModel {
 
 	);
 
-/**
- * hasOne property
- *
- * @var array
- * @access public
- */
 	var $hasOne = array(
 		'Raffle',
 	);
 
-/**
- * validate property
- *
- * @var array
- * @access public
- */
 	var $validate = array (
 		'commission' => array (
 			'rule' => 'numeric',
@@ -82,6 +70,7 @@ class Product extends AppModel {
 		),
 		'description' => array (
 			'rule' => 'notEmpty',
+
 			'message' => 'Falta la descripción '
 		),
 		'price' => array (
@@ -93,5 +82,8 @@ class Product extends AppModel {
 			'rule' => 'url',
 			'message' => 'La url de video no está bien '
 		)
+
+
 	);
+
 }

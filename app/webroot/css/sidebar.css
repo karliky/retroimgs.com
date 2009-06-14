@@ -1,0 +1,63 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#contenido_der .boton-rifa-big a {
+	display:block;
+	background:url(../img/btn_rifa.jpg) top left no-repeat;
+	width:396px;
+	height:79px;
+	text-indent:-9999px;
+	overflow:hidden;
+	}
+	
+#siedebar-a {
+	float:left;
+	width:250px;
+	}
+	
+#siedebar-a h2 a {
+	color:#fff;
+	text-decoration:none;
+	padding:8px 15px;
+	font-size:14px;
+	display:block;
+	background-color:#B6913A;
+	background-image:url(../img/feedicon.png);
+	background-position: top right ;
+	background-repeat:no-repeat;
+	margin-top:20px;
+	}
+	
+	
+#siedebar-a .sidebar-blog h2 a { background-color:#737224;}
+
+#siedebar-a ul li ul li a {color:#666; font-size:12px; padding:0 10px 0 25px; display:block; margin:5px 0; text-decoration:none; }
+
+#siedebar-a ul li ul li a:hover {color:#000; text-decoration:underline;}
+
+#siedebar-a ul .sidebar-premiados  li  a { background:url(../img/feed_premiados.png) 0  3px no-repeat; }
+#siedebar-a ul .sidebar-blog  li  a { background:url(../img/feed_blog.png) 0  3px no-repeat; }
+
+#twitter_div { background:url(../img/twitter_icon.png) top left no-repeat; padding:0 0 0 75px;  font-size:12px;}
+
+#twitter_div a {color:#462600; float:left;}
+#siedebar-a ul .sidebar-twitter  li  a { padding:0; font-style:italic; }
+
+
+
+#siedebar-b {
+	float:right;
+	width:120px;
+	}
+	
+#siedebar-b h2 {
+	font-size:10px;
+	margin:20px 0 10px 0;
+	border-bottom:1px solid #ccc;
+	}
+
+#siedebar-b li {
+	margin:0 0 20px 0;
+	}
+
+

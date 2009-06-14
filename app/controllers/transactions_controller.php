@@ -61,21 +61,18 @@ class TransactionsController extends AppController {
             $this->redirect("success/".$id);
             return;
         }
-		$this->Session->setFlash('Lo siento. Vuelve a intentarlo. La conexión con PayPal ha fallado.');
-		$this->redirect(array('action' => 'add'));
+        $this->redirect('failure/'.$id);
     }
 
     function success($id)
     {
         $this->Transaction->find('first', array(
-			   'conditions' => array('Transaction.id' => $id, 'transaction_type' => 'confirmed_payment')
-		));
-        $data = $this->Transaction->read(null, $id);
+                   'conditions' => array('Transaction.id' => $id, 'transaction_type' => 'confirmed_payment')
+            ));
+        $this->Transaction->read(null, $id);
         if(!$this->Transaction->commitMe()){
-			$this->Session->setFlash('Lo siento. Vuelve a intentarlo. La conexión con PayPal ha fallado.');
-			$this->redirect(array('action' => 'add'));
+            $this->redirect('failure/'.$id);
         }
-        $this->data = $this->Transaction->read(null, $id);
     }
 
     function failure($id)
@@ -86,7 +83,6 @@ class TransactionsController extends AppController {
     {
 
     }
-
 /**
  * admin_multi_add method
  *

@@ -88,13 +88,14 @@ class Raffle extends AppModel {
  *
  * Increment the number of tickets bought for a Raffle
  *
- * @TODO this should be triggered by Ticket::afterSave
  * @param mixed $id - Raffle id
  * @param $number - number of used tickets to add
  * @return void
  * @access public
  */
 	function ticketsBought($id, $number) {
-		return $this->updateAll(array('Raffle.sold_tickets' => 'Raffle.sold_tickets + ' . $number), array('id' => $id));
+		$raffle = $this->find(array('Raffle.id' => $id));
+		$raffle["Raffle"]["sold_tickets"] += $number;
+		$this->save($raffle);
 	}
 }

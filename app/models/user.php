@@ -90,8 +90,7 @@ class User extends AppModel {
 			'isUnique'
 		),
 	);
-
-/**
+       /**
  * Charge money method. t
  *
  * If  there are 2 possible causes
@@ -106,7 +105,6 @@ class User extends AppModel {
  * If a user is already logged in, and the current action is not a login, then the user submitted a stale form -
  * call the parent blackHole handling method.
  *
- * @TODO which method is this docblock documenting
  * @param mixed $reason
  * @return void
  * @access protected
@@ -134,8 +132,11 @@ class User extends AppModel {
                 $this->id = $id;
            }
            if ($this->id) {
+
                 if ($this->field('balance') > $price){
                     return true;
+                }else{
+                    return false;
                 }
            }
            return false;
@@ -154,7 +155,10 @@ class User extends AppModel {
                 $this->id = $id;
            }
            if ($this->id) {
-               $this->updateAll(array('balance' => 'balance - ' . $price), array('id' => $this->id));
+               $this->updateAll(array('balance' => 'balance - ' . $price), array('id'=>$this->id));
+               //$user = $this->find(array('id' =>$id));
+				//$resta = $user['User']['balance'] - $price;
+                //$this->saveField('balance', $resta);
           }
     }
 }
