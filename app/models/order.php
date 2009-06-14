@@ -40,9 +40,24 @@ class Order extends AppModel {
 		'User',
 	);
 
-      function generateOrder($id_ticket, $price, $idUser){
-        $aOrder = array('user_id' => $idUser, 'amount' => $price, "ticket_id" => $id_ticket, "description" => "quien me dejo pilotar esto madre mia");
-        $this->save($aOrder);
-        return $this->getLastInsertID();
-    }
+/**
+ * generateOrder method
+ *
+ * @param mixed $ticket_id
+ * @param mixed $amount
+ * @param mixed $user_id
+ * @param mixed $description null
+ * @return void
+ * @access public
+ */
+	function generateOrder($ticket_id, $amount, $user_id, $description = null){
+		if (!$description) {
+			$description = __('default order description', true);
+		}
+		$this->create();
+		if ($this->save(compact('ticket_id', 'amount', 'user_id', 'description')) {
+			return $this->id;
+		}
+		return false;
+	}
 }

@@ -50,33 +50,44 @@ class Ticket extends AppModel {
 	var $hasMany = array(
 		'Order',
 	);
-    function reserved_ticket($numberTicket, $idRaffle, $userId) {
-		if (!empty($numberTicket)) { // ha introducido un numero
-            // Comprobar que existe idraffle
-            // Comprobar que el numero introducido está en el rango
-            // Todo Ok  Creo transsaccion
-            // Asigno al ticket el id transaccion
-            // Creo el order y le asigno el id transaccion.
-            // Relleno el campo amount que me vendrá dado por el ratio de precio de la rifa.
-            // Tablas a modificar: Raffles ( sold_ticket + 1), Tickets ( code, user_id, rafle_id, transaction_id ), Orders (user_id, amount,
-            // transaction_id, ¿description?)
-            $raffleSearch = $this->Raffle->find(array('id' =>  $idRaffle)); // Accedo mediante  $numberMax['Raffle']['available_tickets']
-            $numberMax = $raffleSearch['Raffle']['available_tickets'];
-            $price = $raffleSearch['Raffle']['ticket_price'];
-            if (!empty($raffleSearch)) { // existe la rifa
-                $result = $this->find('count', array('conditions' => array('raffle_id' => $idRaffle, 'code' => $numberTicket, "Ticket.user_id" => null )));
-                 if (!$result) {// El numero está libre;
-                        if ($this->User->have_money($price)){
-                            $this->User->charge_money($price);
-                            
-                        }
-                        //Genero ticket Generoticket($number)
-                        //Genero Order  GeneroOrder($ticket)
-                        //Modifico Rifa  Modificorifa(vendidos + 1)
-                 }               
-             }
 
-         }
+/**
+ * reserved_ticket method
+ *
+ * @param mixed $code null
+ * @param mixed $raflle_id null
+ * @param mixed $user_id null
+ * @return void
+ * @access public
+ */
+    function reserved_ticket($code = null, $raflle_id = null, $user_id = null) {
+		if (empty($code)) {
+			return false;
+		}
+		$raffle = $this->Raffle->find('first', array(
+			'fields' => array('id', 'available_tickets', 'ticket_price'),
+			'conditions' => array('id' =>  $raffle_id),
+			'recursive' => -1
+		);
+		if (empty($raffle)) {
+			return false;
+		}
+		$result = $this->find('count', array(
+			'conditions' => array(
+				'raffle_id' => $raffle_id,
+				'code' => $code,
+				'user_id' => null
+			),
+			'recursive' => -1
+		));
+		if ($result) {// El numero está libre;
+			if ($this->User->have_money($price)){
+				$this->User->charge_money($price);
+
+			}
+			//Genero ticket Generoticket($number)
+			//Genero Order  GeneroOrder($ticket)
+			//Modifico Rifa  Modificorifa(vendidos + 1)
+		}
 	}
-	
 }

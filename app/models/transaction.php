@@ -27,13 +27,7 @@
  * @package       rifalia
  * @subpackage    rifalia.models
  */
-class Transaction extends AppModel
-{
-
-
-    var $valid_amounts = array(
-        5, 20, 50, 100, 200
-    );
+class Transaction extends AppModel {
 
 /**
  * belongsTo property
@@ -56,20 +50,23 @@ class Transaction extends AppModel
         'Ticket',
     );
 
+/**
+ * validAmounts property
+ *
+ * @var array
+ * @access public
+ */
+    var $validAmounts = array(
+        5, 20, 50, 100, 200
+    );
 
-    public function commitMe()
-    {
-		/**
-		* @todo Enclose this into an attomic transaction
-		*/
-        $this->data['Transaction']['transaction_type'] = 'credited_payment';
-        $this->User->addBalance($this->data['Transaction']['amount']);
-		$this->save();
-		return true; // tmp fake return
-    }
-
-    public function beforeSave()
-    {
+/**
+ * beforeSave method
+ *
+ * @return void
+ * @access public
+ */
+    public function beforeSave() {
         if(!$this->id){
             $this->data['Transaction']['payment_requested']  = date('Y-m-d h:m:s');
         }
@@ -77,28 +74,68 @@ class Transaction extends AppModel
         return true;
     }
 
-    public function setDefaults($defaults = array())
-    {
-        $this->setAmount(empty($defaults['amount']) ? @$this->data['Transaction']['amount'] : $defaults['amount'] );
+/**
+ * commitMe method
+ *
+ * @todo Enclose this into an attomic transaction
+ * @return void
+ * @access public
+ */
+	public function commitMe() {
+		$this->data['Transaction']['transaction_type'] = 'credited_payment';
+		$this->User->addBalance($this->data['Transaction']['amount']);
+		$this->save();
+		return true; // tmp fake return
+	}
 
-        $strict_options = array(
-            'payment_gateway_id' => 1,
-            'transaction_type' => 'payment_request',
-            'amount' => $this->data['Transaction']['amount'],
-            'description' => sprintf('Rifalia %d', $this->data['Transaction']['amount']),
-            'connection_details' => @serialize(@$_REQUEST),
-            'authorisation_code' => '',
-        );
-        $this->data['Transaction'] = array_merge($this->data['Transaction'], array_merge($defaults, $strict_options));
+/**
+ * setDefaults method
+ *
+ * @param array $defaults array()
+ * @return void
+ * @access public
+ */
+	public function setDefaults($defaults = array()) {
+		if (empty($defaults['amount'])) {
+			if (empty($this->data['Transaction']['amount'])) {
+				$defaults['amount'] = $this->data['Transaction']['amount'];
+			} else {
+				$defaults['amount'] = 0;
+			}
+		}
+		$this->setAmount($defaults['amount']);
+
+		$strict_options = array(
+				'payment_gateway_id' => 1,
+				'transaction_type' => 'payment_request',
+				'amount' => $this->data['Transaction']['amount'],
+				'description' => sprintf('Rifalia %d', $this->data['Transaction']['amount']),
+				'connection_details' => @serialize(@$_REQUEST),
+				'authorisation_code' => '',
+				);
+		$this->data['Transaction'] = array_merge($this->data['Transaction'], array_merge($defaults, $strict_options));
+	}
+
+/**
+ * setAmount method
+ *
+ * @param mixed $amount
+ * @return void
+ * @access public
+ */
+    public function setAmount($amount) {
+        $this->data['Transaction']['amount'] = in_array($amount, $this->validAmounts) ? $amount : 50;
     }
 
-    public function setAmount($amount)
-    {
-        $this->data['Transaction']['amount'] = in_array($amount, $this->valid_amounts) ? $amount : 50;
-    }
-
-    public function validatesProcessorResponse($processor_params)
-    {
+/**
+ * validatesProcessorResponse method
+ *
+ * @TODO remove inline comments. decypher
+ * @param mixed $processor_params
+ * @return void
+ * @access public
+ */
+    public function validatesProcessorResponse($processor_params) {
         // asignamos el comando para la sincronizacin de la notificacion
         $sReq = 'cmd=_notify-synch';
 
@@ -148,14 +185,4 @@ class Transaction extends AppModel
         $this->save();
         return $result;
     }
-
-
-            /*
-             *
-             *  $this->Transaction->setAmount($this->data['Transaction']['amount']);
-            $this->Transaction->setDefaults($this->data);
-    created 	datetime 			S 	NULL 		Navegar los valores distintivos 	Cambiar 	Eliminar 	Primaria 	ònico 	êndice 	Texto completo
-    updated
-             */
-
 }
