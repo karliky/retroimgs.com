@@ -60,7 +60,7 @@ class Ticket extends AppModel {
  * @return void
  * @access public
  */
-    function reserved_ticket($code = null, $raflle_id = null, $user_id = null) {
+	function reserved_ticket($code = null, $raflle_id = null, $user_id = null) {
 		if (empty($code)) {
 			return false;
 		}
@@ -68,7 +68,7 @@ class Ticket extends AppModel {
 			'fields' => array('id', 'available_tickets', 'ticket_price'),
 			'conditions' => array('id' =>  $raffle_id),
 			'recursive' => -1
-		);
+		));
 		if (empty($raffle)) {
 			return false;
 		}
@@ -81,7 +81,7 @@ class Ticket extends AppModel {
 			'recursive' => -1
 		));
 		if ($result) {// El numero está libre;
-			if ($this->User->have_money($price)){
+			if ($this->User->have_money($price)) {
 				$this->User->charge_money($price);
 
 			}
