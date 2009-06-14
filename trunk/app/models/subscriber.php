@@ -29,7 +29,20 @@
  */
 class Subscriber extends AppModel {
 
+/**
+ * name property
+ *
+ * @var string 'Subscriber'
+ * @access public
+ */
 	var $name = 'Subscriber';
+
+/**
+ * validate property
+ *
+ * @var array
+ * @access public
+ */
 	var $validate = array(
 		'name' => array(
 			'rule' => 'notEmpty'
