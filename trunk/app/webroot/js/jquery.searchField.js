@@ -4,7 +4,7 @@
  *
  * Copyright (c) 2008 J�örn Zaefferer
  * 
- * $Id: jquery.searchField.js 6233 2009-02-17 18:38:23Z joern.zaefferer $
+ * $Id$
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
