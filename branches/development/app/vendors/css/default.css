@@ -23,11 +23,11 @@ p{margin:0.5em 0;}
 /* BOTONES */
 .precio strong{color:#ad2624;font: bold 2em/1em Georgia,serif;}
 .boton_reserva {text-align:center;}
-.boton_reserva a{background:#639500 url(../img/bg_button.png) bottom left repeat-x;border:1px solid #344E01;color:#fff;display:block;font-weight:bold;padding:0.5em 0;text-decoration:none;}
-.boton_reserva a:hover{background:#3E5D00 url(../img/bg_button.png) top left repeat-x;}
+.boton_reserva a{background:#639500 url(images/bg_button.png) bottom left repeat-x;border:1px solid #344E01;color:#fff;display:block;font-weight:bold;padding:0.5em 0;text-decoration:none;}
+.boton_reserva a:hover{background:#3E5D00 url(images/bg_button.png) top left repeat-x;}
 
 /* CABECERA */
-#cabecera h1 a {background:url(../img/logo.png) left center no-repeat;display:block;height:125px;width:100%;}
+#cabecera h1 a {background:url(images/logo.png) left center no-repeat;display:block;height:125px;width:100%;}
 #cabecera h1 a span, .tagline {display:none;}
 #usuarioaccion {bottom:0;position:absolute;right:0;}
 
@@ -59,7 +59,7 @@ p{margin:0.5em 0;}
 #pie ul{height:65px;}
 #pie li{display:inline;}
 #pie li a{display:block;float:left;overflow:hidden;text-indent:-9999px;}
-#pie a.sponsor1{background:url('../img/iweekend.jpg') no-repeat;height:65px;width:190px;}
+#pie a.sponsor1{background:url('images/iweekend.jpg') no-repeat;height:65px;width:190px;}
 #pie p{color:#999;margin-top:10px;text-align:center;}
 .message{
 	background-color:#D6E4F0;

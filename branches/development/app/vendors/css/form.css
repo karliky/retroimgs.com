@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 /* CSS Document */
 
 /**********************************
@@ -13,7 +14,7 @@ form.cmxform{
 
 form.cmxform fieldset {
 	margin-bottom: 10px;
-	
+
 }
 
 form.cmxform legend {
@@ -60,7 +61,7 @@ form.cmxform label.error {
 
 form.cmxform input.submit {
 	margin-left: 250px;
-	background-image:url(../images/submit-background.gif);
+	background-image:url(images/submit-background.gif);
 	color:#FFF;
 	font-size:14px;
 	height:25px;
@@ -69,7 +70,7 @@ form.cmxform input.submit {
 	padding:0px 15px 0px 15px;
 	border:1px solid #344E01;
 	cursor:pointer;
-	
+
 }
 
 /*\*//*/ form.cmxform legend { display: inline-block; } /* IE Mac legend fix */
@@ -100,7 +101,7 @@ form.cmxform legend, form.cmxform label {
 form.cmxform fieldset {
 	border: none;
 	border-top: 1px solid #C9DCA6;
-	background: url(../images/cmxform-fieldset.gif) left bottom repeat-x;
+	background: url(images/cmxform-fieldset.gif) left bottom repeat-x;
 	background-color: #F8FDEF;
 }
 
@@ -110,7 +111,7 @@ form.cmxform fieldset fieldset {
 
 form.cmxform fieldset p, form.cmxform fieldset fieldset {
 	padding: 5px 10px 7px;
-	background: url(../images/cmxform-divider.gif) left bottom repeat-x;
+	background: url(images/cmxform-divider.gif) left bottom repeat-x;
 }
 
 form.cmxform label.error, label.error {
@@ -123,5 +124,4 @@ input {	border: 1px solid #7F9BD9;}
 input:focus { border: 2px solid #7F9BD9; }
 input.error { border: 1px dotted red; }
 form.cmxform .gray * { color: gray; }
-
 

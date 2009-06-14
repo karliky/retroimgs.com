@@ -1,0 +1,6 @@
+define("C_PAYPAL_URLSUBMIT","https://www.sandbox.paypal.com/cgi-bin/webscr");
+define("C_PAYPAL_URLCOMPRUEBA","www.sandbox.paypal.com");
+define("C_PAYPAL_URLCOMPRUEBAPUERTO",80);
+define("C_PAYPAL_BUSINESSID","some@email.com");
+define("C_PAYPAL_PDTKEY","your private key");
+define('C_PAYPAL_BASE_URL', Router::url('/transactions/', true));

@@ -4,7 +4,7 @@
 
 #contenido_der .boton-rifa-big a {
 	display:block;
-	background:url(../img/btn_rifa.jpg) top left no-repeat;
+	background:url(images/btn_rifa.jpg) top left no-repeat;
 	width:396px;
 	height:79px;
 	text-indent:-9999px;
@@ -23,7 +23,7 @@
 	font-size:14px;
 	display:block;
 	background-color:#B6913A;
-	background-image:url(../img/feedicon.png);
+	background-image:url(images/feedicon.png);
 	background-position: top right ;
 	background-repeat:no-repeat;
 	margin-top:20px;
@@ -35,10 +35,10 @@
 
 #siedebar-a ul li ul li a:hover {color:#000; text-decoration:underline;}
 
-#siedebar-a ul .sidebar-premiados  li  a { background:url(../img/feed_premiados.png) 0  3px no-repeat; }
-#siedebar-a ul .sidebar-blog  li  a { background:url(../img/feed_blog.png) 0  3px no-repeat; }
+#siedebar-a ul .sidebar-premiados  li  a { background:url(images/feed_premiados.png) 0  3px no-repeat; }
+#siedebar-a ul .sidebar-blog  li  a { background:url(images/feed_blog.png) 0  3px no-repeat; }
 
-#twitter_div { background:url(../img/twitter_icon.png) top left no-repeat; padding:0 0 0 75px;  font-size:12px;}
+#twitter_div { background:url(images/twitter_icon.png) top left no-repeat; padding:0 0 0 75px;  font-size:12px;}
 
 #twitter_div a {color:#462600; float:left;}
 #siedebar-a ul .sidebar-twitter  li  a { padding:0; font-style:italic; }

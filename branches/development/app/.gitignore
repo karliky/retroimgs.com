@@ -14,7 +14,10 @@
 config/core.php
 config/database.php
 config/editor.php
+config/paypal.php
 errors.err
+nbproject
+plugins/debug_kit
 tags
 tmp/*
 uploads/*
