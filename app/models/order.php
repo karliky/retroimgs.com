@@ -50,12 +50,12 @@ class Order extends AppModel {
  * @return void
  * @access public
  */
-	function generateOrder($ticket_id, $amount, $user_id, $description = null){
+	function generateOrder($ticket_id, $amount, $user_id, $description = null) {
 		if (!$description) {
 			$description = __('default order description', true);
 		}
 		$this->create();
-		if ($this->save(compact('ticket_id', 'amount', 'user_id', 'description')) {
+		if ($this->save(compact('ticket_id', 'amount', 'user_id', 'description'))) {
 			return $this->id;
 		}
 		return false;
