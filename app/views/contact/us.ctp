@@ -1,4 +1,4 @@
-<?php /* SVN FILE: $Id: us.ctp 971 2009-04-27 15:13:51Z ad7six $ */
+<?php /* SVN FILE: $Id$ */
 echo $form->create('Contact', array('class'=>'cmxform', 'url' => Router::normalize($this->here)));
 $cats = array(
 	'?' => '? Pregunta',

@@ -1,4 +1,4 @@
-<?php /* SVN FILE: $Id: login.ctp 968 2009-04-26 20:17:37Z ad7six $ */ ?>
+<?php /* SVN FILE: $Id$ */ ?>
 <div class="container form">
 <?php
 if (empty($this->params['isAjax'])) {

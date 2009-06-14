@@ -4680,7 +4680,7 @@ jQuery.each([ "Height", "Width" ], function(i, name){
  *
  * Copyright (c) 2008 J�örn Zaefferer
  * 
- * $Id: jquery.searchField.js 6233 2009-02-17 18:38:23Z joern.zaefferer $
+ * $Id$
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -5272,7 +5272,7 @@ $(function() {
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * Revision: $Id: jquery.form.js 6061 2009-01-07 01:43:18Z malsup $
+ * Revision: $Id$
  */
 ;(function($) {
 
