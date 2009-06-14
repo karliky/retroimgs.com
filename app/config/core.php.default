@@ -27,6 +27,17 @@
  */
 
 /**
+ * These settings are used by the class serving css and js files
+ * Store: if a request for a none-existant css/js file is recieved - save the result to the webroot?
+ * Minify: Use a minify routing (yui-compressor)?
+ * Concat: Concatenate requests together?
+ */
+Configure::write('MiCompressor.store', true);
+Configure::write('MiCompressor.minify', false);
+Configure::write('MiCompressor.concat', false);
+
+
+/**
  * CakePHP Debug Level:
  *
  * Production Mode:
@@ -40,7 +51,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 2);
+Configure::write('debug', 2);
 
 /**
  * Application wide charset encoding
