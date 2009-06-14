@@ -170,4 +170,4 @@ $rss = new RssReader ("http://blog.rifalia.com/feed/");
 
 			
 			
-			</div><!-- Fin del contenido_der -->Index: views/contact/us.ctp
+			</div><!-- Fin del contenido_der -->
