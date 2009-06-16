@@ -16,7 +16,7 @@ if ($fields['confirmation']) {
 
 $inputs['token'] = array('legend' => __('token', true), 'size' => 40, 'default' => $token, "div"=>false);
 echo "<p>".$form->inputs($inputs, array('div'=>false))."</p>";
-//echo $form->end(__('Submit', true));
+echo $form->end(__('Submit', true));
 
 ?>
 </fieldset>
