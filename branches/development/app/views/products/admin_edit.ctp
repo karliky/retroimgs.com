@@ -1,30 +1,27 @@
 <?php
-
-	$this->set('pageTitle', __('Editar Producto', true));
-
-
+if ($this->action === 'admin_add') {
+	$this->set('pageTitle', __('New Product', true));
+} else {
+	$this->set('pageTitle', __('Edit Product', true));
+}
 ?>
 <div class="form-container">
 <?php
-echo $form->create("Product", array('class'=>'cmxform', 'type' => 'file')); // Default to enable file uploads
-
+echo $form->create(null, array('type' => 'file')); // Default to enable file uploads
 echo $form->inputs(array(
 	'legend' => false,
 	'id',
-	'category_id',
-	'provider_id',
+	'provider_id' => array('empty' => true),
+	'category_id' => array('empty' => true),
 	'name',
 	'short_description',
 	'description',
-	'commission' => array('size'=>'1', 'label'=> '% de Comision'),
-	'price' => array('size'=>'4', 'label'=> 'Precio en euros'),
+	'price',
+	'commission',
 	'video_url',
+	'is_on_raffle',
 	'is_approved',
 ));
-
-
-if ($this->action === 'admin_add') {
-	$form->inputs('is_approved');
-}
 echo $form->end(__('Submit', true));
+echo $this->element('product_commission_form');
 ?></div>

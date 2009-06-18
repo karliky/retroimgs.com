@@ -9,7 +9,6 @@ $tr = array(
 	array(__d('field_names', 'Product Provider', true), $Provider?$Provider['name']:''),
 	array(__d('field_names', 'Product Commission', true), $Product['commission']),
 	array(__d('field_names', 'Product Category', true), $Category?$Category['name']:''),
-	array(__d('field_names', 'Product Raffle', true), $Raffle?$Raffle['id']:''),
 	array(__d('field_names', 'Product Name', true), $Product['name']),
 	array(__d('field_names', 'Product Short Description', true), $Product['short_description']),
 	array(__d('field_names', 'Product Description', true), $Product['description']),
