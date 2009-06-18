@@ -33,24 +33,25 @@
  */
 Router::parseExtensions('ajax');
 
-/**
- * Here, we are connecting '/' (base path) to controller called 'Pages',
- * its action called 'display', and we pass a param to select the view file
- * to use (in this case, /app/views/pages/home.ctp)...
- */
 	Router::connect('/', array('controller' => 'raffles', 'action' => 'index'));
 	Router::connect('/admin/', array('admin' => true, 'controller' => 'products', 'action' => 'index'));
 
-/**
- * ...and connect the rest of 'Pages' controller's urls.
- */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
 /**
  * If the code reaches here, there  is no cached or vendor-served css/js/etc file.
+ * Serve images and files that look like app-generated requests via the media controller
  */
-Router::connect('/css/*', array('controller' => 'dev', 'action' => 'serve'));
-Router::connect('/js/*', array('controller' => 'dev', 'action' => 'serve'));
-Router::connect('/files/*', array('controller' => 'media', 'action' => 'view'));
-Router::connect('/img/*', array('controller' => 'media', 'action' => 'view'));
-?>
+Router::connect('/img/c/:id-:filename', array('controller' => 'media', 'action' => 'serve'),
+	array('id' => '\d+', 'filename' => '.*\.(png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF|bmp|BMP)'));
+Router::connect('/files/c/:id-:filename', array('controller' => 'media', 'action' => 'serve'), array('id' => '\d+'));
+
+/**
+ * Forward css and js files to the dev controller
+ */
+Router::connect('/(css|js)/*', array('controller' => 'dev', 'action' => 'serve'));
+
+/**
+ * Capture missing images and files and prevent them swallowing flash messages and generally being a pain
+ */
+Router::connect('/(img|files)/*', array('controller' => 'dev', 'action' => 'null'));
