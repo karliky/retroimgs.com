@@ -29,11 +29,16 @@
  */
 
 /**
+ * the ajax 'extension' is used to ensure there's no cache-confusion between ajax requests, and fullpage requests
+ */
+Router::parseExtensions('ajax');
+
+/**
  * Here, we are connecting '/' (base path) to controller called 'Pages',
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'raffles', 'action' => 'home'));
+	Router::connect('/', array('controller' => 'raffles', 'action' => 'index'));
 	Router::connect('/admin/', array('admin' => true, 'controller' => 'products', 'action' => 'index'));
 
 /**

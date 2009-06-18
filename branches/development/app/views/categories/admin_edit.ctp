@@ -7,10 +7,11 @@ if ($this->action === 'admin_add') {
 ?>
 <div class="form-container">
 <?php
-echo $form->create(null, array('type' => 'file')); // Default to enable file uploads
+echo $form->create();
 echo $form->inputs(array(
 	'legend' => false,
 	'id',
+	'parent_id' => array('empty' => true),
 	'name',
 	'description',
 ));

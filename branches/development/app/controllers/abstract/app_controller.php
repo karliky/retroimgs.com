@@ -39,7 +39,7 @@ class AppController extends Controller {
  * @access public
  */
 	var $components = array(
-		//'SwissArmy',
+		'SwissArmy',
 		'MiSession',
 		'Auth', 'RequestHandler'
 	);

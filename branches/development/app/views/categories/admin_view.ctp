@@ -6,6 +6,7 @@ $this->set('pageTitle', $Category['name']);
 <?php
 $tr = array(
 	array(__d('field_names', 'Category Id', true), $Category['id']),
+	array(__d('field_names', 'Category Parent Id', true), $Category['parent_id']),
 	array(__d('field_names', 'Category Name', true), $Category['name']),
 	array(__d('field_names', 'Category Description', true), $Category['description']),
 );
