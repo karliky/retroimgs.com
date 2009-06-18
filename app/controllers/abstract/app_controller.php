@@ -39,7 +39,13 @@ class AppController extends Controller {
  * @access public
  */
 	var $components = array(
-		'SwissArmy',
+		'SwissArmy' => array(
+			'cookieAuth' => array(
+				'username' => 'login',
+				'password' => 'password',
+				'+2 weeks'
+			)
+		),
 		'MiSession',
 		'Auth', 'RequestHandler'
 	);
@@ -135,6 +141,10 @@ class AppController extends Controller {
 	function beforeFilter() {
 		Configure::read('Session.start', true);
 		$this->Session->activate('/');
+		$this->Auth->fields = array(
+			'username' => 'login',
+			'password' => 'password'
+		);
 		if (isset($this->SwissArmy)) {
 			$this->SwissArmy->setDefaultPageTitle();
 			$this->SwissArmy->handlePostActions();
