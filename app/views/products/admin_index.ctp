@@ -8,26 +8,27 @@ $th = array(
 	$paginator->sort('price'),
 	$paginator->sort('category_id'),
 	$paginator->sort('provider_id'),
-	$paginator->sort('commission')
-
+	$paginator->sort('commission'),
+	'options',
 );
 echo $html->tableHeaders($th);
 foreach ($data as $i => $row) {
-
 	extract($row);
+	$options = array(
+		$html->link(__('Delete', true), array('action' => 'delete', $Product['id']), array('class'=>'button')),
+		$html->link(__('Create Raffle', true), array('controller' => 'raffles', 'action' => 'add', $Product['id']), array('class'=>'button')),
+	);
 	$tr = array(
 		array(
 			$html->link($Product['id'], array('action' => 'admin_edit', $Product['id'])),
 			$html->link($Product['name'], array('action' => 'admin_edit', $Product['id'])),
-			$Product['price'].'&euro;',
+			$Product['price'] . '€',
 			$Category['name'],
 			$Provider['name'],
-			$Product['commission'].'%',
-			$html->link("Borrar", array('action' => 'delete', $Product['id'])),
-			$html->link('Crear Rifa', '/raffles/add/'.$Product['id'], array('class'=>'button')),
+			$Product['commission'] . '%',
+			implode($options, ' - ')
 		),
 	);
-echo
 	$class = $i%2?'even':'odd';
 	echo $html->tableCells($tr, compact('class'), compact('class'));
 }

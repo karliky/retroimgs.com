@@ -1,8 +1,8 @@
 <?php
 /**
- * Short description for products_controller.php
+ * Short description for providers_controller.php
  *
- * Long description for products_controller.php
+ * Long description for providers_controller.php
  *
  * PHP versions 4 and 5
  *
@@ -21,21 +21,21 @@
  */
 
 /**
- * ProductsController class
+ * ProvidersController class
  *
  * @uses          AppController
  * @package       rifalia
  * @subpackage    rifalia.controllers
  */
-class ProductsController extends AppController {
+class ProvidersController extends AppController {
 
 /**
  * name property
  *
- * @var string 'Products'
+ * @var string 'Providers'
  * @access public
  */
-	var $name = 'Products';
+	var $name = 'Providers';
 
 /**
  * paginate property
@@ -44,7 +44,7 @@ class ProductsController extends AppController {
  * @access public
  */
 	var $paginate = array(
-		'Product' => array(
+		'Provider' => array(
 		),
 	);
 
@@ -86,14 +86,14 @@ class ProductsController extends AppController {
  */
 	function admin_add() {
 		if ($this->data) {
-			if ($this->Product->saveAll($this->data)) {
-				$display = $this->Product->display();
-				$this->Session->setFlash(sprintf(__('Product "%1$s" added', true), $display));
+			if ($this->Provider->saveAll($this->data)) {
+				$display = $this->Provider->display();
+				$this->Session->setFlash(sprintf(__('Provider "%1$s" added', true), $display));
 				return $this->_back();
 			} else {
-				$this->data = $this->Product->data;
+				$this->data = $this->Provider->data;
 				if (Configure::read()) {
-					$this->Session->setFlash(implode($this->Product->validationErrors, '<br />'));
+					$this->Session->setFlash(implode($this->Provider->validationErrors, '<br />'));
 				} else {
 					$this->Session->setFlash(__('errors in form', true));
 				}
@@ -111,16 +111,16 @@ class ProductsController extends AppController {
  * @access public
  */
 	function admin_delete($id = null) {
-		$this->Product->id = $id;
-		if ($id && $this->Product->exists()) {
-			$display = $this->Product->display($id);
-			if ($this->Product->del($id)) {
-				$this->Session->setFlash(sprintf(__('Product %1$s "%2$s" deleted', true), $id, $display));
+		$this->Provider->id = $id;
+		if ($id && $this->Provider->exists()) {
+			$display = $this->Provider->display($id);
+			if ($this->Provider->del($id)) {
+				$this->Session->setFlash(sprintf(__('Provider %1$s "%2$s" deleted', true), $id, $display));
 			} else {
-				$this->Session->setFlash(sprintf(__('Problem deleting Product %1$s "%2$s"', true), $id, $display));
+				$this->Session->setFlash(sprintf(__('Problem deleting Provider %1$s "%2$s"', true), $id, $display));
 			}
 		} else {
-			$this->Session->setFlash(sprintf(__('Product with id %1$s doesn\'t exist', true), $id));
+			$this->Session->setFlash(sprintf(__('Provider with id %1$s doesn\'t exist', true), $id));
 		}
 		return $this->_back();
 	}
@@ -134,20 +134,20 @@ class ProductsController extends AppController {
  */
 	function admin_edit($id = null) {
 		if ($this->data) {
-			if ($this->Product->saveAll($this->data)) {
-				$display = $this->Product->display();
-				$this->Session->setFlash(sprintf(__('Product "%1$s" updated', true), $display));
+			if ($this->Provider->saveAll($this->data)) {
+				$display = $this->Provider->display();
+				$this->Session->setFlash(sprintf(__('Provider "%1$s" updated', true), $display));
 				return $this->_back();
 			} else {
-				$this->data = $this->Product->data;
+				$this->data = $this->Provider->data;
 				if (Configure::read()) {
-					$this->Session->setFlash(implode($this->Product->validationErrors, '<br />'));
+					$this->Session->setFlash(implode($this->Provider->validationErrors, '<br />'));
 				} else {
 					$this->Session->setFlash(__('errors in form', true));
 				}
 			}
 		} elseif ($id) {
-			$this->data = $this->Product->read(null, $id);
+			$this->data = $this->Provider->read(null, $id);
 		} else {
 			return $this->_back();
 		}
@@ -167,7 +167,7 @@ class ProductsController extends AppController {
 			$conditions = array();
 		}
 		if ($conditions) {
-			$this->set('filters', $this->Product->searchFilterFields());
+			$this->set('filters', $this->Provider->searchFilterFields());
 			$this->set('addFilter', true);
 		}
 		$this->data = $this->paginate($conditions);
@@ -194,7 +194,7 @@ class ProductsController extends AppController {
 			'id LIKE' => $input . '%',
 			'name LIKE' => $input . '%',
 		);
-		if (!$this->data = $this->Product->find('list', compact('conditions'))) {
+		if (!$this->data = $this->Provider->find('list', compact('conditions'))) {
 			$this->output = '0';
 			return;
 		}
@@ -216,19 +216,19 @@ class ProductsController extends AppController {
 				}
 				$data[$key] = $row;
 			}
-			if ($this->Product->saveAll($data, array('validate' => 'first', 'atomic' => false))) {
-				$this->Session->setFlash(sprintf(__('Products added', true)));
+			if ($this->Provider->saveAll($data, array('validate' => 'first', 'atomic' => false))) {
+				$this->Session->setFlash(sprintf(__('Providers added', true)));
 				$this->_back();
 			} else {
 				if (Configure::read()) {
-					$this->Session->setFlash(implode($this->Product->validationErrors, '<br />'));
+					$this->Session->setFlash(implode($this->Provider->validationErrors, '<br />'));
 				} else {
 					$this->Session->setFlash(__('Some or all additions did not succeed', true));
 				}
 			}
 		} else {
-			$this->data = array('1' => array('Product' => $this->Product->create()));
-			$this->data[1]['Product']['id'] = null;
+			$this->data = array('1' => array('Provider' => $this->Provider->create()));
+			$this->data[1]['Provider']['id'] = null;
 		}
 		$this->_setSelects();
 		$this->render('admin_multi_edit');
@@ -249,11 +249,11 @@ class ProductsController extends AppController {
 				}
 				$data[$key] = $row;
 			}
-			if ($this->Product->saveAll($data, array('validate' => 'first'))) {
-				$this->Session->setFlash(sprintf(__('Products updated', true)));
+			if ($this->Provider->saveAll($data, array('validate' => 'first'))) {
+				$this->Session->setFlash(sprintf(__('Providers updated', true)));
 			} else {
 				if (Configure::read()) {
-					$this->Session->setFlash(implode($this->Product->validationErrors, '<br />'));
+					$this->Session->setFlash(implode($this->Provider->validationErrors, '<br />'));
 				} else {
 					$this->Session->setFlash(__('Some or all updates did not succeed', true));
 				}
@@ -276,9 +276,9 @@ class ProductsController extends AppController {
  */
 	function admin_search($term = null) {
 		if ($this->data) {
-			$term = trim($this->data['Product']['query']);
+			$term = trim($this->data['Provider']['query']);
 			$url = array(urlencode($term));
-			if ($this->data['Product']['extended']) {
+			if ($this->data['Provider']['extended']) {
 				$url['extended'] = true;
 			}
 			$this->redirect($url);
@@ -288,8 +288,8 @@ class ProductsController extends AppController {
 		if (!$term) {
 			$this->redirect(array('action' => 'index'));
 		}
-		$conditions = $this->Product->searchConditions($term, isset($this->passedArgs['extended']));
-		$this->Session->setFlash(sprintf(__('All products matching the term "%1$s"', true), htmlspecialchars($term)));
+		$conditions = $this->Provider->searchConditions($term, isset($this->passedArgs['extended']));
+		$this->Session->setFlash(sprintf(__('All providers matching the term "%1$s"', true), htmlspecialchars($term)));
 		$this->data = $this->paginate($conditions);
 		$this->_setSelects();
 		$this->render('admin_index');
@@ -302,9 +302,9 @@ class ProductsController extends AppController {
  * @access public
  */
 	function admin_view() {
-		$this->data = $this->Product->read(null, $id);
+		$this->data = $this->Provider->read(null, $id);
 		if(!$this->data) {
-			$this->Session->setFlash(__('Invalid product', true));
+			$this->Session->setFlash(__('Invalid provider', true));
 			return $this->_back();
 		}
 	}
@@ -326,10 +326,7 @@ class ProductsController extends AppController {
  * @access protected
  */
 	function _setSelects() {
-		$sets['raffles'] = $this->Product->Raffle->find('list');
-		$sets['media'] = $this->Product->Media->find('list');
-		$sets['categories'] = $this->Product->Category->generateTreeList();
-		$sets['providers'] = $this->Product->Provider->find('list');
+		$sets['products'] = $this->Provider->Product->find('list');
 		$this->set($sets);
 	}
 }
