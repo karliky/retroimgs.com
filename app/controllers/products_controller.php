@@ -65,6 +65,12 @@ class ProductsController extends AppController {
  * @link http://book.cakephp.org/view/60/Callbacks
  */
 	function beforeFilter() {
+		if (!empty($this->data['MediaLink'])) {
+			if (empty($this->data['MediaLink']['media_id']) && $this->data['Media']['filename']['error'] == 4) {
+				unset ($this->data['MediaLink']);
+				unset ($this->data['Media']);
+			}
+		}
 		parent::beforeFilter();
 	}
 
@@ -88,6 +94,10 @@ class ProductsController extends AppController {
 		if ($this->data) {
 			if ($this->Product->saveAll($this->data)) {
 				$display = $this->Product->display();
+				if ($this->Product->MediaLink->id) {
+					$this->Product->MediaLink->saveField('model', 'Product');
+					$this->Product->Media->saveField('description', $display);
+				}
 				$this->Session->setFlash(sprintf(__('Product "%1$s" added', true), $display));
 				return $this->_back();
 			} else {
@@ -136,11 +146,20 @@ class ProductsController extends AppController {
 		if ($this->data) {
 			if ($this->Product->saveAll($this->data)) {
 				$display = $this->Product->display();
+				if ($this->Product->MediaLink->id) {
+					$this->Product->MediaLink->saveField('model', 'Product');
+					$this->Product->Media->saveField('description', $display);
+				}
 				$this->Session->setFlash(sprintf(__('Product "%1$s" updated', true), $display));
 				return $this->_back();
 			} else {
 				$this->data = $this->Product->data;
 				if (Configure::read()) {
+					foreach ($this->Product->validationErrors as $field => &$val) {
+						if (is_array($val)) {
+							$val = implode($val, '<br />');
+						}
+					}
 					$this->Session->setFlash(implode($this->Product->validationErrors, '<br />'));
 				} else {
 					$this->Session->setFlash(__('errors in form', true));
@@ -327,7 +346,6 @@ class ProductsController extends AppController {
  */
 	function _setSelects() {
 		$sets['raffles'] = $this->Product->Raffle->find('list');
-		$sets['media'] = $this->Product->Media->find('list');
 		$sets['categories'] = $this->Product->Category->generateTreeList();
 		$sets['providers'] = $this->Product->Provider->find('list');
 		$this->set($sets);

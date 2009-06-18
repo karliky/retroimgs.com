@@ -36,7 +36,9 @@ class Raffle extends AppModel {
  * @access public
  */
 	var $belongsTo = array(
-		'Winner' => array('className' => 'User'),
+		'Winner' => array(
+			'className' => 'User'
+		),
 		'Product',
 	);
 
@@ -56,8 +58,19 @@ class Raffle extends AppModel {
  * @access public
  */
 	var $hasMany = array(
-		'Ticket',
+		//'Ticket',
 	);
+
+/**
+ * beforeSave method
+ *
+ * @return void
+ * @access public
+ */
+	function beforeSave() {
+		$this->begin();
+		return true;
+	}
 
 /**
  * afterSave method
@@ -71,16 +84,42 @@ class Raffle extends AppModel {
 	function afterSave($created) {
 		if ($created) {
 			if (!empty($this->data)) {
-				$aTickets = array();
-				for($i=0; $i<$this->data['Raffle']['available_tickets']; $i++) {
-					$aTickets[$i] = array('code' => $i, 'raffle_id' => $this->id);
-				}
-				$this->Ticket->saveAll($aTickets);
-				$product = $this->Ticket->Raffle->Product->find(array('Product.id' => $this->data['Raffle']['product_id']));
-				$product['Product']['is_on_raffle'] = 1;
-				$product = $this->Ticket->Raffle->Product->save($product);
+				$this->_createTickets($this->id, $this->data['Raffle']['available_tickets']);
+				$this->Product->id = $this->data['Raffle']['product_id'];
+				$product = $this->Product->saveField('is_on_raffle', true);
 			}
 		}
+		$this->commit();
+	}
+
+/**
+ * createTickets method
+ *
+ * @param mixed $id
+ * @param mixed $limit
+ * @return void
+ * @access protected
+ */
+	function _createTickets($id, $limit) {
+
+/*
+ * This needs setting up in the db
+		$this->query('DELIMITER //
+DROP PROCEDURE IF EXISTS CreateTickets//
+CREATE PROCEDURE CreateTickets(rId int(11), tLimit int(11))
+  BEGIN
+  DECLARE c int(11);
+  SET c = 1;
+  START TRANSACTION;
+  WHILE c <= tLimit DO
+    INSERT INTO tickets (code, raffle_id, created) VALUES (c, rId, NOW());
+    SET c = c + 1;
+  END WHILE;
+  COMMIT;
+END//
+DELIMITER ;');
+*/
+		$this->query("CALL CreateTickets($id, $limit);");
 	}
 
 /**
@@ -96,5 +135,58 @@ class Raffle extends AppModel {
  */
 	function ticketsBought($id, $number) {
 		return $this->updateAll(array('Raffle.sold_tickets' => 'Raffle.sold_tickets + ' . $number), array('id' => $id));
+	}
+
+/**
+ * winner method
+ *
+ * Find the winner for the raffle
+ *
+ * If $perform is true and there is no existing winner - make a winner and return them
+ *
+ * @param mixed $id null
+ * @param bool $perform false
+ * @return void
+ * @access public
+ */
+	function winner($id = null, $perform = false) {
+		if ($id) {
+			$this->id = $id;
+		}
+		if (!$this->id || !$this->exists()) {
+			return false;
+		}
+		$this->read(array('id', 'winner_id', 'winner_code'));
+		if(!empty($this->data[$this->alias]['winner_id'])) {
+			$this->data[$this->alias]['existing'] = true;
+			return $this->data[$this->alias];
+		}
+
+		$result = $this->Ticket->find('first', array(
+			'conditions' => array(
+				'raffle_id' => $this->id,
+				'NOT' => array('Ticket.user_id' => null)
+			),
+			'fields' => array('user_id', 'code'),
+			'order' => 'rand()'
+		));
+		if (!$result || !$perform) {
+			return false;
+		}
+
+		$toSave = array(
+			'winner_id'=> $result['Ticket']['user_id'],
+			'winner_code'=> $result['Ticket']['code'],
+			'is_assigned' => true,
+			'assigned' => date('Y-m-d H:i:s')
+		);
+		if ($this->save($toSave)) {
+			return array(
+				'existing' => false,
+				'winner_id' => $result['Ticket']['user_id'],
+				'winner_code'=> $result['Ticket']['code'],
+			);
+		}
+		return false;
 	}
 }
