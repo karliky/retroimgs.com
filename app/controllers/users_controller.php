@@ -61,10 +61,6 @@ class UsersController extends AppController {
  */
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->fields = array(
-			'username' => 'login',
-			'password' => 'password'
-		);
 		$this->set('authFields', $this->Auth->fields);
 		$this->Auth->allow('switch_language', 'register', 'forgotten_password', 'reset_password',
 			'confirm_account', 'logout', 'back', 'register');
