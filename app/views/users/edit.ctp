@@ -12,7 +12,7 @@ echo $form->create(null, array('type' => 'file', 'class'=>'cmxform'));
 <fieldset>
 <legend>Introduce los datos personales</legend>
 	<?php
-	echo '<p>'.$form->input('login',array('div' => false)).'</p>';
+	echo '<p>'.$form->input('username',array('div' => false)).'</p>';
 	echo '<p>'.$form->input('email',array('div' => false)).'</p>';
 	echo '<p>'.$form->input('password',array('div' => false)).'</p>';
 	echo '<p>'.$form->input('address',array('div' => false)).'</p>';

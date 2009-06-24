@@ -1,6 +1,6 @@
 /* INICIO */
-.home #contenido_der{float:right;width:390px;}
-.home #contenido_iz{float:left;width:550px;}
+#contenido_der{float:right;width:390px;}
+#contenido_iz{float:left;width:550px;}
 
 .stock_boletos{background:#ad2624;color:#fff;font-size:1.2em;margin-top:0;padding:0.5em 0;}
 

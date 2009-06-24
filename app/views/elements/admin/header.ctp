@@ -26,8 +26,16 @@
 					'url' => array('prefix' => null, 'plugin' => null, 'controller' => 'products', 'action' => 'index')
 				),
 				array(
+					'title' => __('Providers', true),
+					'url' => array('prefix' => null, 'plugin' => null, 'controller' => 'providers', 'action' => 'index')
+				),
+				array(
 					'title' => __('Categories', true),
 					'url' => array('prefix' => null, 'plugin' => null, 'controller' => 'categories', 'action' => 'index')
+				),
+				array(
+					'title' => __('Pics', true),
+					'url' => array('prefix' => null, 'plugin' => null, 'controller' => 'media', 'action' => 'index')
 				),
 				array(
 					'title' => __('Subscriptions', true),

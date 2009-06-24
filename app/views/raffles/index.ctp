@@ -21,7 +21,7 @@ foreach ($data as $i => $row) {
 			$Raffle['available_tickets'],
 			$Raffle['available_tickets'] - $Raffle['sold_tickets'],
 			$Raffle['closes'],
-			!empty($Raffle['winner_code'])?$Winner['login']:'Rifa abierta',
+			!empty($Raffle['winner_code'])?$Winner['username']:'Rifa abierta',
 			$Raffle['winner_code'],
 		),
 	);

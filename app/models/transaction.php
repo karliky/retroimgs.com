@@ -30,13 +30,22 @@
 class Transaction extends AppModel {
 
 /**
+ * actsAs property
+ *
+ * @var array
+ * @access public
+ */
+	var $actsAs = array(
+		'Enum' => array('payment_gateway'),
+	);
+
+/**
  * belongsTo property
  *
  * @var array
  * @access public
  */
     var $belongsTo = array(
-        'PaymentGateway',
         'User',
     );
 

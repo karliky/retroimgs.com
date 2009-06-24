@@ -89,7 +89,7 @@ class MiFormHelper extends FormHelper {
 				$referer = '/';
 			}
 		}
-		$referer = $this->hidden('_App.referer', array('default' => '/' . ltrim($referer, '/')));
+		$referer = $this->hidden('App.referer', array('default' => '/' . ltrim($referer, '/')));
 		return preg_replace('#</fieldset>#', $referer . '</fieldset>', $return);
 	}
 
@@ -441,8 +441,8 @@ class MiFormHelper extends FormHelper {
 			if (strpos($fieldName, '.')) {
 				$alias = explode('.', $fieldName);
 				if (count($alias == 3)) {
-					$alias = $alias[1];
 					$replace = $alias[0] . '.' . $alias[1];
+					$alias = $alias[1];
 				} else {
 					$replace = $alias[0];
 				}

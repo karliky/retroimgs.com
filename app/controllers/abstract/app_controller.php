@@ -39,13 +39,7 @@ class AppController extends Controller {
  * @access public
  */
 	var $components = array(
-		'SwissArmy' => array(
-			'cookieAuth' => array(
-				'username' => 'login',
-				'password' => 'password',
-				'+2 weeks'
-			)
-		),
+		'SwissArmy',
 		'MiSession',
 		'Auth', 'RequestHandler'
 	);
@@ -59,7 +53,8 @@ class AppController extends Controller {
 	var $helpers = array(
 		'MiHtml', 'MiJavascript', 'MiForm',
 		'Menu' => array('genericElement' => false),
-		'Form', 'Html'
+		'Form', 'Html',
+		'Rifalia',
 	);
 
 /**
@@ -102,7 +97,14 @@ class AppController extends Controller {
  */
 	function __construct() {
 		if (Configure::read() && App::import('Component', 'DebugKit.Toolbar')) {
-			$this->components = am(array('DebugKit.Toolbar' => array('forceEnable' => true)), $this->components);
+			if (App::import('Vendor', 'DebugKit.Tidy')) {
+				$this->components = am(array('DebugKit.Toolbar' => array(
+					'panels' =>	array('history', 'session', 'request', 'sqlLog', 'timer', 'log', 'variables', 'DebugKit.Tidy'),
+					'forceEnable' => true,
+				)), $this->components);
+			} else {
+				$this->components = am(array('DebugKit.Toolbar' => array('forceEnable' => true)), $this->components);
+			}
 		}
 		return parent::__construct();
 	}
@@ -141,10 +143,6 @@ class AppController extends Controller {
 	function beforeFilter() {
 		Configure::read('Session.start', true);
 		$this->Session->activate('/');
-		$this->Auth->fields = array(
-			'username' => 'login',
-			'password' => 'password'
-		);
 		if (isset($this->SwissArmy)) {
 			$this->SwissArmy->setDefaultPageTitle();
 			$this->SwissArmy->handlePostActions();

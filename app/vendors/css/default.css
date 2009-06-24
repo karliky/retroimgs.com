@@ -1,6 +1,12 @@
-@import 'reset.css';@import 'home.css';@import 'sidebar.css';
+@import 'reset.css';@import 'home.css'; @import 'sidebar.css';
 
-
+.clearfix:after, {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
 
 .alineaderecha{float:right;}
 .alineaizquierda{float:left;}
@@ -81,4 +87,7 @@ p{margin:0.5em 0;}
 	font-weight:bold;
 	padding-left:250px;
 	width:137px;
+}
+.clear {
+	clear:both;
 }

@@ -13,10 +13,11 @@ $th = array(
 	$paginator->sort('published'),
 	$paginator->sort('is_assigned'),
 	$paginator->sort('assigned'),
-	$paginator->sort('Winner.login'),
+	$paginator->sort('Winner.username'),
 	$paginator->sort('winner_code'),
 	$paginator->sort('is_cancelled'),
 	$paginator->sort('cancelled'),
+	$paginator->sort('Product.name'),
 );
 echo $html->tableHeaders($th);
 foreach ($data as $i => $row) {
@@ -33,10 +34,11 @@ foreach ($data as $i => $row) {
 			$Raffle['published'],
 			$Raffle['is_assigned'],
 			$Raffle['assigned'],
-			$Winner?$Winner['login']:'',
+			$Winner?$Winner['username']:'',
 			$Raffle['winner_code'],
 			$Raffle['is_cancelled'],
 			$Raffle['cancelled'],
+			$Product?$Product['name']:'',
 		),
 	);
 	$class = $i%2?'even':'odd';

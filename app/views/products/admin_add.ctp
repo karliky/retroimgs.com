@@ -1,8 +1,6 @@
-<?php
-	$this->set('pageTitle', __('New Product', true));
-?>
 <div class="form-container">
 <?php
+$this->set('pageTitle', __('New Product', true));
 echo $form->create("Product", array('class'=>'cmxform','type' => 'file')); // Default to enable file uploads
 
 echo $form->inputs(array(

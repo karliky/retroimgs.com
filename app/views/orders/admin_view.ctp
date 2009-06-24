@@ -6,7 +6,7 @@ $this->set('pageTitle', $Order['id']);
 <?php
 $tr = array(
 	array(__d('field_names', 'Order Id', true), $Order['id']),
-	array(__d('field_names', 'Order User', true), $User?$User['login']:''),
+	array(__d('field_names', 'Order User', true), $User?$User['username']:''),
 	array(__d('field_names', 'Order Amount', true), $Order['amount']),
 	array(__d('field_names', 'Order Transaction', true), $Transaction?$Transaction['id']:''),
 	array(__d('field_names', 'Order Ticket', true), $Ticket?$Ticket['id']:''),

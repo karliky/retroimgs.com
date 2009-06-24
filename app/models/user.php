@@ -37,10 +37,10 @@ class User extends AppModel {
 /**
  * displayField property
  *
- * @var string 'login'
+ * @var string 'username'
  * @access public
  */
-	var $displayField = 'login';
+	var $displayField = 'username';
 
 /**
  * name property
@@ -68,7 +68,8 @@ class User extends AppModel {
  */
 	var $hasMany = array(
 		'Order',
-		'Ticket'
+		'Ticket',
+		'Membership'
 	);
 
 /**
@@ -78,7 +79,7 @@ class User extends AppModel {
  * @access public
  */
 	var $validate = array(
-		'login' => array(
+		'username' => array(
 			'missing' => array('rule' => 'notEmpty', 'last' => true),
 			'alphaNumeric' => array('rule' => 'alphaNumeric', 'last' => true),
 			'tooShort' => array('rule' => array('minLength', 3), 'last' => true),
@@ -92,24 +93,11 @@ class User extends AppModel {
 	);
 
 /**
- * Charge money method. t
+ * addBalance method
  *
- * If  there are 2 possible causes
- * 	1) The user haven't
- * 	2) They used the sidebar login form, and the <not-users> controller doesn't use the security component
- *
- * In the first case, there is nothing to do but send the user back to the login form. In the second case, check if
- * their form submission contains a valid (session) user login token, and if so allow them to login; Otheriwse send to
- * the login form. This logic allows the users controller to use the security component, without forcing the rest of the
- * application to do so.
- *
- * If a user is already logged in, and the current action is not a login, then the user submitted a stale form -
- * call the parent blackHole handling method.
- *
- * @TODO which method is this docblock documenting
- * @param mixed $reason
+ * @param mixed $amount
  * @return void
- * @access protected
+ * @access public
  */
 	function addBalance($amount) {
 		if (!$this->id) {
@@ -119,6 +107,52 @@ class User extends AppModel {
 			array('balance' => 'balance + ' . $amount),
 			array('id' => $this->id)
 		);
+	}
+
+/**
+ * displayName method
+ *
+ * @param mixed $id null
+ * @return void
+ * @access public
+ */
+	function displayName($id = null, $default = 'unknown') {
+		if (!$id) {
+			return $default;
+		}
+		if (is_scalar($id)) {
+			$Inst =& ClassRegistry::init('User');
+			if ($id === $Inst->id && !empty($Inst->data['User']['username'])) {
+				$data = $this->data['User'];
+			} else {
+				$data = $Inst->find('first', array(
+					'fields' => array('username'),
+					'conditions' => array('User.id' => $id)
+				));
+				$data = $data['User'];
+			}
+		} else {
+			$data = $id;
+			if (isset($data['User'])) {
+				$data = $data['User'];
+			}
+			if (empty($data['username'])) {
+				if (empty($data['id'])) {
+					return $default;
+				}
+				$Inst =& ClassRegistry::init('User');
+				if ($id === $Inst->id && !empty($Inst->data[$Inst->alias]['username'])) {
+					$data = $data['User'];
+				} else {
+					$data = $Inst->find('first', array(
+						'fields' => array('username'),
+						'conditions' => array('User.id' => $id)
+					));
+					$data = $data['User'];
+				}
+			}
+		}
+		return $data['username'];
 	}
 
 /**

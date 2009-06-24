@@ -4,6 +4,7 @@ $this->set('pageTitle', __('Products', true));
 $paginator->options(array('url' => $this->passedArgs));
 $th = array(
 	$paginator->sort('id'),
+	__('Pic', true),
 	$paginator->sort('name'),
 	$paginator->sort('price'),
 	$paginator->sort('category_id'),
@@ -21,6 +22,7 @@ foreach ($data as $i => $row) {
 	$tr = array(
 		array(
 			$html->link($Product['id'], array('action' => 'admin_edit', $Product['id'])),
+			$html->image($Media, 'icon'),
 			$html->link($Product['name'], array('action' => 'admin_edit', $Product['id'])),
 			$Product['price'] . '€',
 			$Category['name'],
