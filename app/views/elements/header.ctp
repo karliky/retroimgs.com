@@ -39,7 +39,6 @@ echo $menu->display();
 */ ?>
 
 		<div id="cabecera">
-
 		<div id="usuarioaccion">
 		<?php echo $html->link('Registrarte', array('controller' => 'users', 'action' => 'register')) ?>
         </div>
@@ -65,15 +64,17 @@ echo $menu->display();
         if ($session->check('Auth.User') && empty($isEmail)) {
 	        if ($session->check('Auth.User.is_admin')) {
 		        $menu->add(array(
+					array('title' => __('Your Profile', true), 'url' => array('controller' => 'users', 'action' => 'profile')),
 			        array('title' => __('Admin', true), 'url' => '/admin'),
+					array('title' => __('Logout', true), 'url' => array('controller' => 'users', 'action' => 'logout')),
 		        ));
-	        }
-	        $menu->add(array(
-		        array('title' => __('Your Profile', true), 'url' => array('controller' => 'users', 'action' => 'profile')),
-		        array('title' => __('Logout', true), 'url' => array('controller' => 'users', 'action' => 'logout')),
-                array('title' => __('Cesta', true), 'url' => array('controller' => 'users', 'action' => 'ver_mi_cesta')),
-
-            ));
+	        } else {
+				$menu->add(array(
+					array('title' => __('Your Profile', true), 'url' => array('controller' => 'users', 'action' => 'profile')),
+					array('title' => __('Logout', true), 'url' => array('controller' => 'users', 'action' => 'logout')),
+					array('title' => __('Cesta', true), 'url' => array('controller' => 'users', 'action' => 'ver_mi_cesta')),
+				));
+			}
         } else {
 	        $menu->add(array(
 		        array('title' => __('Login', true), 'url' => array('controller' => 'users', 'action' => 'login'), 'htmlAttributes' => array('class' => 'login')),

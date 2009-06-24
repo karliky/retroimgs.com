@@ -50,34 +50,4 @@ class FeedItem {
 		$this->url = $matches[1];
 		return array('title' => $title, 'url' => $this->url);
 	}
-
-/**
- * get_title method
- *
- * @return void
- * @access public
- */
-	function get_title (){
-		return $this->title;
-	}
-
-/**
- * get_url method
- *
- * @return void
- * @access public
- */
-	function get_url (){
-		return $this->url;
-	}
-
-/**
- * get_description method
- *
- * @return void
- * @access public
- */
-	function get_description (){
-		return $this->description;
-	}
 }

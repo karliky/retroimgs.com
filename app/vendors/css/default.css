@@ -54,7 +54,7 @@ p{margin:0.5em 0;}
 #alerta{background:pink;border:1px red solid;margin:1em 0;padding:0 6px;}
 
 /* FOOTER */
-#separador{background-color:#AD2624;height:25px;margin-bottom:1.5em;width:960px;}
+#separador{background-color:#AD2624;height:25px;margin-bottom:1.5em;width:960px;clear:both}
 #separador ul{float:right;}
 #separador li{display:inline;line-height:25px;border-right:1px solid #fff;padding-right:1em;}
 #separador li.last{display:inline;border-right:none;}

@@ -24,6 +24,11 @@
  */
 
 /**
+ * MiCache is used as a hashmap in various places, in almost all requests
+ */
+App::import('Vendor', 'MiCache');
+
+/**
  * AppController class
  *
  * @uses          Controller
@@ -40,6 +45,7 @@ class AppController extends Controller {
  */
 	var $components = array(
 		'SwissArmy',
+		'Site',
 		'MiSession',
 		'Auth', 'RequestHandler'
 	);

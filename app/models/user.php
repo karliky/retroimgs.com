@@ -69,6 +69,7 @@ class User extends AppModel {
 	var $hasMany = array(
 		'Order',
 		'Ticket',
+		'Transaction',
 		'Membership'
 	);
 
