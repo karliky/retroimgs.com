@@ -48,6 +48,7 @@ class Organization extends AppModel {
 			'className' => 'Membership',
 			'conditions' => array(
 				'Contact.is_contact' => true,
+				'Contact.contact_priority' => 1
 			)
 		),
 		'Contact' => array(
@@ -67,4 +68,28 @@ class Organization extends AppModel {
 	var $hasMany = array(
 		'Membership',
 	);
+
+/**
+ * byDomain method
+ *
+ * Find the organization ID that 'owns'the domain being requested. if there's no domain found and no organizations
+ * exist at all - create the first organization and mark as the main organization. This will be rifalia in the case
+ * of the main website
+ *
+ * @param string $domain ''
+ * @return void
+ * @access public
+ */
+	function byDomain($domain = '') {
+		$result = $this->field('id', array('domain' => $domain));
+		if (!$result && !$this->find('count')) {
+			$this->create();
+			$this->save(array(
+				'is_main_site' => 1,
+				'domain' => $domain
+			));
+			$result = $this->id;
+		}
+		return $result;
+	}
 }

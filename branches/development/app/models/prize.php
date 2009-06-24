@@ -60,6 +60,11 @@ class Prize extends AppModel {
 			'className' => 'Organization',
 			'conditions' => array('Organization.type' => 'Provider')
 		),
+		'Product',
+		'Raffle',
+		'WinningTicket' => array(
+			'className' => 'Ticket'
+		)
 	);
 
 /**
@@ -69,7 +74,6 @@ class Prize extends AppModel {
  * @access public
  */
 	var $hasOne = array(
-		'Raffle',
 		'MediaLink'  => array(
 			'foreignKey' => 'foreign_key',
 			'conditions' => array(
@@ -77,10 +81,11 @@ class Prize extends AppModel {
 				'MediaLink.main' => 1,
 			)
 		),
-		'Media'  => array(
+		'Pic'  => array(
+			'className' => 'Media',
 			'foreignKey' => false,
 			'conditions' => array(
-				'MediaLink.media_id = Media.id'
+				'MediaLink.media_id = Pic.id'
 			)
 		)
 	);

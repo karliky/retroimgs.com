@@ -49,8 +49,17 @@ class Ticket extends AppModel {
 		'Raffle',
 		'Transaction',
 		'User',
+	);
+
+/**
+ * hasOne property
+ *
+ * @var array
+ * @access public
+ */
+	var $hasOne = array(
 		'Prize' => array(
-			'className' => 'Product'
+			'foreignKey' => 'winning_ticket_id'
 		)
 	);
 

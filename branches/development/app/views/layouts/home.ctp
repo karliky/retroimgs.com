@@ -50,7 +50,7 @@ echo $scripts_for_layout;
 				<p class="boton-rifa-big"><a href="/users/register" title="Crea tu propia rifa">Crea tu propia rifa</a></p>
 				<?php echo $this->element('sidebar-a'); ?>
 				<?php echo $this->element('sidebar-b'); ?>
-			?></div>
+			</div>
 		<?php echo $this->element('footer'); ?>
 	</div>
 <?php echo $javascript->link(); ?>

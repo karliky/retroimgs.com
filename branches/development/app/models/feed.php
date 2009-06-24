@@ -63,16 +63,16 @@ class Feed {
 	function read($url) {
 		$this->url = $url;
 		$this->data = implode ("", file($url));
-		return $this->get_items();
+		return $this->items();
 	}
 
 /**
- * get_items method
+ * items method
  *
  * @return void
  * @access public
  */
-	function get_items() {
+	function items() {
 		if (!$this->data) {
 			return false;
 		}

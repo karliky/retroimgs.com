@@ -302,14 +302,25 @@ class UsersController extends AppController {
  */
 	function register() {
 		if ($this->data) {
+			$membership = array(
+				'organization_id' => Configure::read('App.site_id')
+			);
 			if (Configure::read() && !$this->User->find('count')) {
-				$this->data['User']['is_admin'] = true;
+				$membership['is_admin'] = true;
+				$membership['is_contact'] = true;
 			}
-			list($return, $message) = $this->User->register($this->data);
+			list($return, $message) = $this->User->register($this->data['User'], array(
+				'username',
+				'email',
+				'password',
+				'password_confirm'
+			));
 			if ($message) {
 				$this->Session->setFlash($message);
 			}
 			if ($return) {
+				$membership['user_id'] = $this->User->id;
+				$this->User->Membership->save($membership);
 				$this->Auth->login($this->User->id);
 				return $this->redirect('/');
 			}

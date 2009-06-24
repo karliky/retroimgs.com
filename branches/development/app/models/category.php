@@ -30,16 +30,6 @@
 class Category extends AppModel {
 
 /**
- * hasMany property
- *
- * @var array
- * @access public
- */
-	var $hasMany = array(
-		'Product',
-	);
-
-/**
  * actsAs property
  *
  * @var array

@@ -37,7 +37,6 @@ class Raffle extends AppModel {
  */
 	var $belongsTo = array(
 		'Organization',
-		'Product',
 	);
 
 /**
@@ -47,16 +46,12 @@ class Raffle extends AppModel {
  * @access public
  */
 	var $hasOne = array(
-	);
-
-/**
- * hasMany property
- *
- * @var array
- * @access public
- */
-	var $hasMany = array(
-		//'Ticket',
+		'MainPrize' => array(
+			'className' => 'Prize',
+			'conditions' => array(
+				'MainPrize.position' => 1
+			)
+		)
 	);
 
 /**
@@ -83,8 +78,8 @@ class Raffle extends AppModel {
 		if ($created) {
 			if (!empty($this->data)) {
 				$this->_createTickets($this->id, $this->data['Raffle']['available_tickets']);
-				$this->Product->id = $this->data['Raffle']['product_id'];
-				$product = $this->Product->saveField('is_on_raffle', true);
+				$this->Prize->id = $this->data['Raffle']['product_id'];
+				$product = $this->Prize->saveField('is_on_raffle', true);
 			}
 		}
 		$this->commit();

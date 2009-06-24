@@ -1,4 +1,4 @@
-<h2><a href="http://twitter.com/rifalia" title="Canal Tweeter">Canal Tweeter</a></h2>
+<h2><a href="http://twitter.com/rifalia" title="Canal Tweeter">Canal Twitter</a></h2>
 <ul>
 	<li>
 		<div id="twitter_div">
