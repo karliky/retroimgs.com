@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Rifalia schema generated on: 2009-06-22 19:06:48 : 1245691068*/
+/* Rifalia schema generated on: 2009-06-23 14:06:32 : 1245760052*/
 class RifaliaSchema extends CakeSchema {
 	var $name = 'Rifalia';
 
@@ -90,13 +90,16 @@ class RifaliaSchema extends CakeSchema {
 		'user_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
 		'organization_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
 		'is_admin' => array('type' => 'boolean', 'null' => true, 'default' => '0'),
+		'admin_priority' => array('type' => 'integer', 'null' => false, 'default' => '1', 'length' => 2),
 		'is_contact' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
+		'contact_priority' => array('type' => 'integer', 'null' => false, 'default' => '1', 'length' => 2),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
 	);
 	var $orders = array(
 		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary'),
+		'organization_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
 		'user_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'index'),
 		'ticket_id' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36, 'key' => 'index'),
 		'amount' => array('type' => 'float', 'null' => false, 'default' => NULL),
@@ -109,6 +112,8 @@ class RifaliaSchema extends CakeSchema {
 		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary'),
 		'type' => array('type' => 'string', 'null' => false, 'default' => 'Provider', 'length' => 20),
 		'name' => array('type' => 'string', 'null' => true, 'default' => NULL),
+		'domain' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'is_main_site' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'default_commission' => array('type' => 'integer', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
@@ -116,9 +121,13 @@ class RifaliaSchema extends CakeSchema {
 	);
 	var $prizes = array(
 		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary'),
+		'organization_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
 		'category_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
 		'provider_id' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36, 'key' => 'index'),
 		'product_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'index'),
+		'raffle_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
+		'winning_ticket_id' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36),
+		'position' => array('type' => 'integer', 'null' => false, 'default' => '1', 'length' => 2),
 		'commission' => array('type' => 'float', 'null' => true, 'default' => NULL),
 		'name' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'slug' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 150),
@@ -136,18 +145,9 @@ class RifaliaSchema extends CakeSchema {
 		'modified_by_ip' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_prizes_provider_id' => array('column' => 'provider_id', 'unique' => 0), 'idx_prizes_category_id' => array('column' => 'category_id', 'unique' => 0), 'idx_prizes_product_id' => array('column' => 'product_id', 'unique' => 0))
 	);
-	var $prizes_raffles = array(
-		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary'),
-		'raffle_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
-		'prize_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
-		'ticket_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
-		'order' => array('type' => 'integer', 'null' => true, 'default' => '1', 'length' => 2),
-		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
-	);
 	var $products = array(
 		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary'),
+		'organization_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
 		'category_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'index'),
 		'commission' => array('type' => 'float', 'null' => true, 'default' => NULL),
 		'name' => array('type' => 'string', 'null' => true, 'default' => NULL),
@@ -157,10 +157,7 @@ class RifaliaSchema extends CakeSchema {
 		'price' => array('type' => 'float', 'null' => true, 'default' => NULL),
 		'video_url' => array('type' => 'string', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'created_by_ip' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'length' => 1),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'modified_by' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36),
-		'modified_by_ip' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'idx_products_category_id' => array('column' => 'category_id', 'unique' => 0))
 	);
 	var $raffles = array(
@@ -200,11 +197,12 @@ class RifaliaSchema extends CakeSchema {
 	);
 	var $tickets = array(
 		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary'),
+		'organization_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
 		'raffle_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'index'),
 		'user_id' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36),
 		'transaction_id' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36, 'key' => 'index'),
-		'prize_id' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36),
 		'number' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'status' => array('type' => 'integer', 'null' => false, 'default' => '1', 'length' => 2),
 		'random' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
@@ -212,6 +210,7 @@ class RifaliaSchema extends CakeSchema {
 	);
 	var $transactions = array(
 		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary'),
+		'organization_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36),
 		'user_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'index'),
 		'payment_gateway' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 20),
 		'transaction_type' => array('type' => 'string', 'null' => true, 'default' => NULL),

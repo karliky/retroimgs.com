@@ -1,4 +1,4 @@
-#Rifalia sql generated on: 2009-06-22 19:06:56 : 1245691076
+#Rifalia sql generated on: 2009-06-23 14:06:36 : 1245760056
 
 DROP TABLE IF EXISTS `categories`;
 DROP TABLE IF EXISTS `emails`;
@@ -9,7 +9,6 @@ DROP TABLE IF EXISTS `memberships`;
 DROP TABLE IF EXISTS `orders`;
 DROP TABLE IF EXISTS `organizations`;
 DROP TABLE IF EXISTS `prizes`;
-DROP TABLE IF EXISTS `prizes_raffles`;
 DROP TABLE IF EXISTS `products`;
 DROP TABLE IF EXISTS `raffles`;
 DROP TABLE IF EXISTS `settings`;
@@ -94,12 +93,15 @@ CREATE TABLE `memberships` (
 	`user_id` varchar(36) NOT NULL,
 	`organization_id` varchar(36) NOT NULL,
 	`is_admin` tinyint(1) DEFAULT 0,
+	`admin_priority` int(2) DEFAULT 1 NOT NULL,
 	`is_contact` tinyint(1) DEFAULT 0 NOT NULL,
+	`contact_priority` int(2) DEFAULT 1 NOT NULL,
 	`updated` datetime DEFAULT NULL,
 	`created` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
 
 CREATE TABLE `orders` (
 	`id` varchar(36) NOT NULL,
+	`organization_id` varchar(36) NOT NULL,
 	`user_id` varchar(36) NOT NULL,
 	`ticket_id` varchar(36) DEFAULT NULL,
 	`amount` float NOT NULL,
@@ -113,15 +115,21 @@ CREATE TABLE `organizations` (
 	`id` varchar(36) NOT NULL,
 	`type` varchar(20) DEFAULT 'Provider' NOT NULL,
 	`name` varchar(255) DEFAULT NULL,
+	`domain` varchar(255) NOT NULL,
+	`is_main_site` tinyint(1) DEFAULT 0 NOT NULL,
 	`default_commission` int(11) DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
 	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
 
 CREATE TABLE `prizes` (
 	`id` varchar(36) NOT NULL,
+	`organization_id` varchar(36) NOT NULL,
 	`category_id` int(11) NOT NULL,
 	`provider_id` varchar(36) DEFAULT NULL,
 	`product_id` varchar(36) NOT NULL,
+	`raffle_id` varchar(36) NOT NULL,
+	`winning_ticket_id` varchar(36) DEFAULT NULL,
+	`position` int(2) DEFAULT 1 NOT NULL,
 	`commission` float DEFAULT NULL,
 	`name` varchar(255) DEFAULT NULL,
 	`slug` varchar(150) DEFAULT NULL,
@@ -141,17 +149,9 @@ CREATE TABLE `prizes` (
 	KEY idx_prizes_category_id (`category_id`),
 	KEY idx_prizes_product_id (`product_id`));
 
-CREATE TABLE `prizes_raffles` (
-	`id` varchar(36) NOT NULL,
-	`raffle_id` varchar(36) NOT NULL,
-	`prize_id` varchar(36) NOT NULL,
-	`ticket_id` varchar(36) NOT NULL,
-	`order` int(2) DEFAULT 1,
-	`updated` datetime DEFAULT NULL,
-	`created` datetime DEFAULT NULL,	PRIMARY KEY  (`id`));
-
 CREATE TABLE `products` (
 	`id` varchar(36) NOT NULL,
+	`organization_id` varchar(36) NOT NULL,
 	`category_id` varchar(36) NOT NULL,
 	`commission` float DEFAULT NULL,
 	`name` varchar(255) DEFAULT NULL,
@@ -161,10 +161,7 @@ CREATE TABLE `products` (
 	`price` float DEFAULT NULL,
 	`video_url` varchar(255) DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
-	`created_by_ip` int(1) DEFAULT NULL,
-	`modified` datetime DEFAULT NULL,
-	`modified_by` varchar(36) DEFAULT NULL,
-	`modified_by_ip` varchar(36) DEFAULT NULL,	PRIMARY KEY  (`id`),
+	`modified` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
 	KEY idx_products_category_id (`category_id`));
 
 CREATE TABLE `raffles` (
@@ -206,11 +203,12 @@ CREATE TABLE `signups` (
 
 CREATE TABLE `tickets` (
 	`id` varchar(36) NOT NULL,
+	`organization_id` varchar(36) NOT NULL,
 	`raffle_id` varchar(36) NOT NULL,
 	`user_id` varchar(36) DEFAULT NULL,
 	`transaction_id` varchar(36) DEFAULT NULL,
-	`prize_id` varchar(36) DEFAULT NULL,
 	`number` int(11) NOT NULL,
+	`status` int(2) DEFAULT 1 NOT NULL,
 	`random` int(11) DEFAULT NULL,
 	`created` datetime DEFAULT NULL,
 	`updated` datetime DEFAULT NULL,	PRIMARY KEY  (`id`),
@@ -220,6 +218,7 @@ CREATE TABLE `tickets` (
 
 CREATE TABLE `transactions` (
 	`id` varchar(36) NOT NULL,
+	`organization_id` varchar(36) NOT NULL,
 	`user_id` varchar(36) NOT NULL,
 	`payment_gateway` varchar(20) DEFAULT NULL,
 	`transaction_type` varchar(255) DEFAULT NULL,
