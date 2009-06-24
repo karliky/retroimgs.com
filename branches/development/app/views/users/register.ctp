@@ -1,7 +1,7 @@
 <?php /* SVN FILE: $Id$ */
 echo $form->create(null, array( 'class'=>'cmxform','url' => '/' . ltrim($this->params['url']['url'], '/')));
 $out = '';
-$out .= $form->input('login');
+$out .= $form->input('username');
 
 /*
 $firstName = $form->input('first_name', array('fieldset' => false, 'div' => 'floater'));

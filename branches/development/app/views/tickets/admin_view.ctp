@@ -7,7 +7,7 @@ $this->set('pageTitle', $Ticket['id']);
 $tr = array(
 	array(__d('field_names', 'Ticket Id', true), $Ticket['id']),
 	array(__d('field_names', 'Ticket Code', true), $Ticket['code']),
-	array(__d('field_names', 'Ticket User', true), $User?$User['login']:''),
+	array(__d('field_names', 'Ticket User', true), $User?$User['username']:''),
 	array(__d('field_names', 'Ticket Raffle', true), $Raffle?$Raffle['id']:''),
 	array(__d('field_names', 'Ticket Transaction', true), $Transaction?$Transaction['id']:''),
 );

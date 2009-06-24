@@ -36,9 +36,7 @@ class Raffle extends AppModel {
  * @access public
  */
 	var $belongsTo = array(
-		'Winner' => array(
-			'className' => 'User'
-		),
+		'Organization',
 		'Product',
 	);
 
@@ -102,6 +100,21 @@ class Raffle extends AppModel {
  */
 	function _createTickets($id, $limit) {
 		$this->query("CALL CreateTickets($id, $limit);");
+		ClassRegistry::init('Ticket')->randomize(array('Ticket.raffle_id' => $id));
+	}
+
+/**
+ * featured method
+ *
+ * @TODO stub
+ * @param mixed $limit
+ * @param array $params array()
+ * @return void
+ * @access public
+ */
+	function featured($limit, $params = array()) {
+		$params['limit'] = $limit;
+		return $this->find('all', $params);
 	}
 
 /**

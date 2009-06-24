@@ -7,7 +7,7 @@ $this->set('pageTitle', $Transaction['id']);
 $tr = array(
 	array(__d('field_names', 'Transaction Id', true), $Transaction['id']),
 	array(__d('field_names', 'Transaction Payment Gateway', true), $PaymentGateway?$PaymentGateway['name']:''),
-	array(__d('field_names', 'Transaction User', true), $User?$User['login']:''),
+	array(__d('field_names', 'Transaction User', true), $User?$User['username']:''),
 	array(__d('field_names', 'Transaction Transaction Type', true), $Transaction['transaction_type']),
 	array(__d('field_names', 'Transaction Description', true), $Transaction['description']),
 	array(__d('field_names', 'Transaction Amount', true), $Transaction['amount']),

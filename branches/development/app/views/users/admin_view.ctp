@@ -1,12 +1,12 @@
 <?php
 extract($data);
-$this->set('pageTitle', $User['login']);
+$this->set('pageTitle', $User['username']);
 ?>
 <table>
 <?php
 $tr = array(
 	array(__d('field_names', 'User Id', true), $User['id']),
-	array(__d('field_names', 'User Login', true), $User['login']),
+	array(__d('field_names', 'User Login', true), $User['username']),
 	array(__d('field_names', 'User Email', true), $User['email']),
 	array(__d('field_names', 'User Address', true), $User['address']),
 	array(__d('field_names', 'User Phone', true), $User['phone']),

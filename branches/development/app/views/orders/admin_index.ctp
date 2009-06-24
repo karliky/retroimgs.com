@@ -4,7 +4,7 @@ $this->set('pageTitle', __('Orders', true));
 $paginator->options(array('url' => $this->passedArgs));
 $th = array(
 	$paginator->sort('id'),
-	$paginator->sort('User.login'),
+	$paginator->sort('User.username'),
 	$paginator->sort('amount'),
 	$paginator->sort('Transaction.id'),
 	$paginator->sort('Ticket.id'),
@@ -16,7 +16,7 @@ foreach ($data as $i => $row) {
 	$tr = array(
 		array(
 			$html->link($Order['id'], array('action' => 'view', $Order['id'])),
-			$User?$User['login']:'',
+			$User?$User['username']:'',
 			$Order['amount'],
 			$Transaction?$Transaction['id']:'',
 			$Ticket?$Ticket['id']:'',

@@ -9,7 +9,7 @@ Use: cmxform template
 ***********************************/
 
 form.cmxform{
-	width: 800px;
+	/* width: 800px; */
 }
 
 form.cmxform fieldset {
@@ -85,7 +85,7 @@ Name: cmxform Styles
 
 ***********************************/
 form.cmxform {
-	width: 600px;
+	/* width: 600px; */
 	font-size: 1.0em;
 	color: #333;
 }
@@ -124,4 +124,3 @@ input {	border: 1px solid #7F9BD9;}
 input:focus { border: 2px solid #7F9BD9; }
 input.error { border: 1px dotted red; }
 form.cmxform .gray * { color: gray; }
-

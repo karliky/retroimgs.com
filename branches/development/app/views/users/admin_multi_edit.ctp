@@ -24,7 +24,7 @@ foreach ($data as $i => $row) {
 	$tr = array(
 		array(
 			$User['id'] . $form->input($i . '.User.id', array('type' => 'hidden')),
-			$form->input($i . '.User.login', array('div' => false, 'label' => false)),
+			$form->input($i . '.User.username', array('div' => false, 'label' => false)),
 			$form->input($i . '.User.email', array('div' => false, 'label' => false)),
 			$form->input($i . '.User.address', array('div' => false, 'label' => false)),
 			$form->input($i . '.User.phone', array('div' => false, 'label' => false)),

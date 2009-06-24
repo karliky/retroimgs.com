@@ -38,4 +38,14 @@ class Category extends AppModel {
 	var $hasMany = array(
 		'Product',
 	);
+
+/**
+ * actsAs property
+ *
+ * @var array
+ * @access public
+ */
+	var $actsAs = array(
+		'Tree'
+	);
 }

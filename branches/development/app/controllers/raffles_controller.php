@@ -47,6 +47,11 @@ class RafflesController extends AppController {
 		'Raffle' => array(
 		),
 	);
+	var $helpers = array('Rifalia', 'Time');
+
+/**
+ * Enter Description Here
+ */
 
 /**
  * Called after the controller action is run and rendered.
@@ -85,7 +90,8 @@ class RafflesController extends AppController {
  * @return void
  * @access public
  */
-	function admin_add() {
+	function admin_add($productId = null) {
+		$this->Raffle->create();
 		if ($this->data) {
 			if ($this->Raffle->saveAll($this->data)) {
 				$display = $this->Raffle->display();
@@ -99,6 +105,8 @@ class RafflesController extends AppController {
 					$this->Session->setFlash(__('errors in form', true));
 				}
 			}
+		} else {
+			$this->data['Raffle']['product_id'] = $productId;
 		}
 		$this->_setSelects();
 		$this->render('admin_edit');
@@ -309,6 +317,7 @@ class RafflesController extends AppController {
 		}
 	}
 	function home() {
+		$this->render('home_old');
 	}
 
 /**
@@ -318,6 +327,13 @@ class RafflesController extends AppController {
  * @access public
  */
 	function index() {
+		if ($this->here == $this->webroot) {
+			$featured = $this->Raffle->featured(1, $this->paginate['Raffle']);
+			$featuredIds = Set::extract($featured, '/Raffle/id');
+			$data = $this->paginate(array('NOT' => array('Raffle.id' => $featuredIds)));
+			$this->set(compact('data', 'featured'));
+			return $this->render('home');
+		}
 		$this->set('data', $this->paginate());
 	}
 
@@ -337,7 +353,7 @@ class RafflesController extends AppController {
 		if(!empty($result["Raffle"]["winner_id"])){
 			$user = $this->Raffle->Ticket->User->find(array("User.id" => $result["Raffle"]["winner_id"]));
 			$this->set('winner_id', $result["Raffle"]["winner_id"]);
-			$this->set('winner_user', $user["User"]["login"]);
+			$this->set('winner_user', $user["User"]["username"]);
 			$this->set('winner_code', $result["Raffle"]["winner_code"]);
 		}
 

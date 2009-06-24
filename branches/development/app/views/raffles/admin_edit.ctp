@@ -7,21 +7,16 @@ if ($this->action === 'admin_add') {
 ?>
 <div class="form-container">
 <?php
-echo $form->create(null, array('class'=>'cmxform','type' => 'file')); // Default to enable file uploads
+echo $form->create(null, array('class'=>'cmxform'));
 echo $form->inputs(array(
-	'legend' => "Edición de rifa",
+	'legend' => false,
 	'id',
+	'product_id' => array('class' => 'lookup', 'empty' => true),
 	'available_tickets',
 	'ticket_price',
-	'sold_tickets',
 	'closes',
-	'parent_id',
 	'is_published',
 	'published',
-	'is_assigned',
-	'assigned',
-	'winner_id' => array('empty' => true),
-	'winner_code',
 	'is_cancelled',
 	'cancelled',
 ));

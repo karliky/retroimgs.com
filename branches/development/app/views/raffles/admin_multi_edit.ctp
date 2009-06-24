@@ -1,7 +1,6 @@
 <?php
 $this->set('pageTitle', __('Raffles', true));
-?>
-<?php echo $form->create(null, array('url' => $this->passedArgs)); ?>
+echo $form->create(); ?>
 <table>
 <?php
 $th = array(
@@ -19,6 +18,7 @@ $th = array(
 	__d('fieldnames', 'Raffle Winner Code', true),
 	__d('fieldnames', 'Raffle Is Cancelled', true),
 	__d('fieldnames', 'Raffle Cancelled', true),
+	__d('fieldnames', 'Raffle Product', true),
 );
 echo $html->tableHeaders($th);
 foreach ($data as $i => $row) {
@@ -42,6 +42,7 @@ foreach ($data as $i => $row) {
 			$form->input($i . '.Raffle.winner_code', array('div' => false, 'label' => false)),
 			$form->input($i . '.Raffle.is_cancelled', array('div' => false, 'label' => false)),
 			$form->input($i . '.Raffle.cancelled', array('div' => false, 'label' => false)),
+			$form->input($i . '.Raffle.product_id', array('div' => false, 'label' => false, 'empty' => true)),
 		),
 	);
 	$class = $i%2?'even':'odd';

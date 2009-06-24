@@ -4,7 +4,7 @@ $this->set('pageTitle', __('Users', true));
 $paginator->options(array('url' => $this->passedArgs));
 $th = array(
 	$paginator->sort('id'),
-	$paginator->sort('login'),
+	$paginator->sort('username'),
 	$paginator->sort('email'),
 	$paginator->sort('address'),
 	$paginator->sort('phone'),
@@ -19,7 +19,7 @@ foreach ($data as $i => $row) {
 	$tr = array(
 		array(
 			$html->link($User['id'], array('action' => 'view', $User['id'])),
-			$User['login'],
+			$User['username'],
 			$User['email'],
 			$User['address'],
 			$User['phone'],

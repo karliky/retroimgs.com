@@ -1,7 +1,6 @@
 <?php
 $this->set('pageTitle', __('Tickets', true));
-?>
-<?php echo $form->create(null, array('url' => $this->passedArgs)); ?>
+echo $form->create(); ?>
 <table>
 <?php
 $th = array(

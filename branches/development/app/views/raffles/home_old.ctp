@@ -3,7 +3,7 @@
 				
 				<ul id="contenedor_destacado">
 					<li class="producto_destacado">
-						<img src="./img/audi.png">
+						<img src="/img/audi.png">
 						<div class="titulo"><h2>Audi TT 2.0T 197 CV</h2></div>
 						<div class="descripcion">
 							<p class="stock_boletos">S&oacute;lo quedan 20 boletos</p>
@@ -13,11 +13,10 @@
 						</div>
 					</li>
 				</ul>
-				
 				<div id="resto_productos">
 					<div class="producto">
           	<h3>Siemens Dualset Inalambrico</h3>
-            <img src="img/product_example.jpg" title="Siemens Dualset Inalambrico" />
+            <img src="/img/product_example.jpg" title="Siemens Dualset Inalambrico" />
             <div class="descripcion">
             	<p class="stock_boletos">S&oacute;lo quedan <br />20 boletos</p>
             	<p>Antes de <br />1 d. 30 min. 20 sec.</p>
@@ -27,7 +26,7 @@
 					</div>
 					<div class="producto">
           	<h3>Siemens Dualset Inalambrico</h3>
-            <img src="img/product_example.jpg" title="Siemens Dualset Inalambrico" />
+            <img src="/img/product_example.jpg" title="Siemens Dualset Inalambrico" />
             <div class="descripcion">
             	<p class="stock_boletos">S&oacute;lo quedan <br />20 boletos</p>
             	<p>Antes de <br />1 d. 30 min. 20 sec.</p>
@@ -38,7 +37,7 @@
 					</div>
 					<div class="producto">
           	<h3>Siemens Dualset Inalambrico</h3>
-            <img src="img/product_example.jpg" title="Siemens Dualset Inalambrico" />
+            <img src="/img/product_example.jpg" title="Siemens Dualset Inalambrico" />
             <div class="descripcion">
             	<p class="stock_boletos">S&oacute;lo quedan <br />20 boletos</p>
             	<p>Antes de <br />1 d. 30 min. 20 sec.</p>
@@ -48,7 +47,7 @@
 					</div>
 					<div class="producto">
           	<h3>Siemens Dualset Inalambrico</h3>
-            <img src="img/product_example.jpg" title="Siemens Dualset Inalambrico" />
+            <img src="/img/product_example.jpg" title="Siemens Dualset Inalambrico" />
             <div class="descripcion">
             	<p class="stock_boletos">S&oacute;lo quedan <br />20 boletos</p>
             	<p>Antes de <br />1 d. 30 min. 20 sec.</p>
@@ -160,10 +159,10 @@ $rss = new RssReader ("http://blog.rifalia.com/feed/");
                 <div id="siedebar-b">
                 	<h2>Tiendas rifalia</h2>
                 	<ul>
-                    	<li><a href="#"><img src="img/tiendas/audi.gif" /></a></li>
-                        <li><a href="#"><img src="img/tiendas/fnac.gif" /></a></li>
-                        <li><a href="#"><img src="img/tiendas/corte_ingles.gif" /></a></li>
-                        <li><a href="#"><img src="img/tiendas/zara.gif" /></a></li>
+                    	<li><a href="#"><img src="/img/tiendas/audi.gif" /></a></li>
+                        <li><a href="#"><img src="/img/tiendas/fnac.gif" /></a></li>
+                        <li><a href="#"><img src="/img/tiendas/corte_ingles.gif" /></a></li>
+                        <li><a href="#"><img src="/img/tiendas/zara.gif" /></a></li>
                     </ul>
 
                 </div><!-- Fin del sidebar-B -->

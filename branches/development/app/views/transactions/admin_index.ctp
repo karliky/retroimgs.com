@@ -5,7 +5,7 @@ $paginator->options(array('url' => $this->passedArgs));
 $th = array(
 	$paginator->sort('id'),
 	$paginator->sort('PaymentGateway.name'),
-	$paginator->sort('User.login'),
+	$paginator->sort('User.username'),
 	$paginator->sort('transaction_type'),
 	$paginator->sort('amount'),
 	$paginator->sort('authorisation_code'),
@@ -19,7 +19,7 @@ foreach ($data as $i => $row) {
 		array(
 			$html->link($Transaction['id'], array('action' => 'view', $Transaction['id'])),
 			$PaymentGateway?$PaymentGateway['name']:'',
-			$User?$User['login']:'',
+			$User?$User['username']:'',
 			$Transaction['transaction_type'],
 			$Transaction['amount'],
 			$Transaction['authorisation_code'],

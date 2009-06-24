@@ -5,7 +5,7 @@ $paginator->options(array('url' => $this->passedArgs));
 $th = array(
 	$paginator->sort('id'),
 	$paginator->sort('code'),
-	$paginator->sort('User.login'),
+	$paginator->sort('User.username'),
 	$paginator->sort('Raffle.id'),
 	$paginator->sort('Transaction.id'),
 );
@@ -16,7 +16,7 @@ foreach ($data as $i => $row) {
 		array(
 			$html->link($Ticket['id'], array('action' => 'view', $Ticket['id'])),
 			$Ticket['code'],
-			$User?$User['login']:'',
+			$User?$User['username']:'',
 			$Raffle?$Raffle['id']:'',
 			$Transaction?$Transaction['id']:'',
 		),

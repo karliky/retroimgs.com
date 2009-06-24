@@ -15,10 +15,11 @@ $tr = array(
 	array(__d('field_names', 'Raffle Published', true), $Raffle['published']),
 	array(__d('field_names', 'Raffle Is Assigned', true), $Raffle['is_assigned']),
 	array(__d('field_names', 'Raffle Assigned', true), $Raffle['assigned']),
-	array(__d('field_names', 'Raffle Winner', true), $Winner?$Winner['login']:''),
+	array(__d('field_names', 'Raffle Winner', true), $Winner?$Winner['username']:''),
 	array(__d('field_names', 'Raffle Winner Code', true), $Raffle['winner_code']),
 	array(__d('field_names', 'Raffle Is Cancelled', true), $Raffle['is_cancelled']),
 	array(__d('field_names', 'Raffle Cancelled', true), $Raffle['cancelled']),
+	array(__d('field_names', 'Raffle Product', true), $Product?$Product['name']:''),
 );
 echo $html->tableCells($tr);
 ?>
