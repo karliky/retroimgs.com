@@ -34,7 +34,7 @@
 Router::parseExtensions('ajax');
 
 	Router::connect('/', array('controller' => 'raffles', 'action' => 'index'));
-	Router::connect('/admin/', array('admin' => true, 'controller' => 'products', 'action' => 'index'));
+	Router::connect('/admin/', array('admin' => true, 'controller' => 'raffles', 'action' => 'index'));
 
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
