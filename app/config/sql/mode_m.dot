@@ -1,0 +1,31 @@
+digraph G {
+overlap=false;
+splines=true;
+edge [fontname="Helvetica", fontsize=8];
+ranksep=0.1;
+nodesep=0.1;
+node [shape=record, fontname="Helvetica", fontsize=9];
+	"Category" [shape=Mrecord, label="{<0> Category|{<f0> id\lparent_id\llft\lrght\lname\ldescription\lcreated\lupdated\l|<f1> string[36]\lstring[36]\linteger[11]\linteger[11]\lstring[255]\ltext\ldatetime\ldatetime\l}}"];
+	"Membership" [shape=Mrecord, label="{<0> Membership|{<f0> id\luser_id\lorganization_id\lis_admin\lis_contact\lupdated\lcreated\l|<f1> string[36]\lstring[36]\lstring[36]\lboolean[1]\lboolean[1]\ldatetime\ldatetime\l}}"];
+	"Order" [shape=Mrecord, label="{<0> Order|{<f0> id\luser_id\lticket_id\lamount\ldescription\lcreated\lupdated\l|<f1> string[36]\lstring[36]\lstring[36]\lfloat\lstring[255]\ldatetime\ldatetime\l}}"];
+	"Organization" [shape=Mrecord, label="{<0> Organization|{<f0> id\ltype\lname\ldefault_commission\lcreated\lupdated\l|<f1> string[36]\lstring[20], default: \"Provider\"\lstring[255]\linteger[11]\ldatetime\ldatetime\l}}"];
+	"Product" [shape=Mrecord, label="{<0> Product|{<f0> id\lcategory_id\lcommission\lname\lslug\lshort_description\ldescription\lprice\lvideo_url\lcreated\lcreated_by_ip\lmodified\lmodified_by\lmodified_by_ip\l|<f1> string[36]\lstring[36]\lfloat\lstring[255]\lstring[150]\lstring[255]\ltext\lfloat\lstring[255]\ldatetime\linteger[1]\ldatetime\lstring[36]\lstring[36]\l}}"];
+	"Raffle" [shape=Mrecord, label="{<0> Raffle|{<f0> id\lparent_id\lorganization_id\lavailable_tickets\lticket_price\lsold_tickets\lcloses\lis_published\lpublished\lis_assigned\lassigned\lis_cancelled\lcancelled\lcreated\lupdated\l|<f1> string[36]\lstring[36]\lstring[36]\lstring[255]\lstring[255]\lstring[255]\ldatetime\lboolean[1]\ldatetime\lboolean[1]\ldatetime\lboolean[1]\ldatetime\ldatetime\ldatetime\l}}"];
+	"Ticket" [shape=Mrecord, label="{<0> Ticket|{<f0> id\lraffle_id\luser_id\ltransaction_id\lprize_id\lnumber\lrandom\lcreated\lupdated\l|<f1> string[36]\lstring[36]\lstring[36]\lstring[36]\lstring[36]\linteger[11]\linteger[11]\ldatetime\ldatetime\l}}"];
+	"Transaction" [shape=Mrecord, label="{<0> Transaction|{<f0> id\luser_id\lpayment_gateway\ltransaction_type\ldescription\lamount\lconnection_details\lauthorisation_code\lpayment_requested\lpayment_response\lcreated\lupdated\l|<f1> string[36]\lstring[36]\lstring[20]\lstring[255]\ltext\linteger[11]\ltext\lstring[255]\ldatetime\ldatetime\ldatetime\ldatetime\l}}"];
+	"User" [shape=Mrecord, label="{<0> User|{<f0> id\lusername\lemail\lpassword\laddress\lphone\lbalance\lis_virtual\lis_enabled\lis_email_verified\lupdated\lcreated\l|<f1> string[36]\lstring[40]\lstring[50]\lstring[40]\lstring[255]\lstring[255]\lfloat\lboolean[1]\lboolean[1]\lboolean[1]\ldatetime\ldatetime\l}}"];
+	"Product" -> "Category" [label="Product->Category"]
+	"Membership" -> "Organization" [label="Membership->Organization"]
+	"Membership" -> "User" [label="Membership->User"]
+	"Order" -> "Ticket" [label="Order->Ticket"]
+	"Order" -> "User" [label="Order->User"]
+	"Membership" -> "Organization" [label="Membership->Organization"]
+	"User" -> "Organization" [label="User->Organization"]
+	"Raffle" -> "Organization" [label="Raffle->Organization"]
+	"Raffle" -> "Product" [label="Raffle->Product"]
+	"Ticket" -> "Product" [label="Ticket->Prize"]
+	"Ticket" -> "Raffle" [label="Ticket->Raffle"]
+	"Ticket" -> "Transaction" [label="Ticket->Transaction"]
+	"Ticket" -> "User" [label="Ticket->User"]
+	"Transaction" -> "User" [label="Transaction->User"]
+}
