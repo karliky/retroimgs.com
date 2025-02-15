@@ -66,7 +66,7 @@ export default function About() {
           <div className="bg-gray-800/30 p-6 rounded-lg">
             <p className="text-gray-300">
               Have questions or suggestions? We&apos;d love to hear from you! Reach out to us at{' '}
-              <a href="mailto:contact@retroimgs.com" className="text-purple-400 hover:text-purple-300">
+              <a href="mailto:karliky@gmail.com" className="text-purple-400 hover:text-purple-300">
                 contact@retroimgs.com
               </a>
             </p>
