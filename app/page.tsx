@@ -13,8 +13,8 @@ export default function Home() {
         <div className="relative space-y-6 text-center md:text-left">
           {/* Glowing text effect */}
           <h1 className="text-6xl md:text-7xl font-bold tracking-tighter">
-            <span className="bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 text-transparent bg-clip-text animate-gradient">
-              RetroImgs
+            <span className="">
+              Your retro gaming images catalog
             </span>
           </h1>
 
@@ -60,7 +60,7 @@ export default function Home() {
         {/* Hero Image - Updated styling */}
         <div className="relative aspect-square md:aspect-auto md:h-[600px] rounded-lg overflow-hidden order-first md:order-last">
           <Image
-            src="https://images.unsplash.com/photo-1584212166146-8a6b4eb62fcc?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="/pexels-stasknop-9100862.jpg"
             alt="Retro gaming setup with purple lighting"
             fill
             className="object-cover object-[75%_50%]"

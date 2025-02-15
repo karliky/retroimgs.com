@@ -34,6 +34,24 @@ export default function ApiDocs() {
               </pre>
               <p className="text-gray-400">Returns a specific game screenshot.</p>
             </div>
+
+            <div className="bg-gray-800/30 p-6 rounded-lg space-y-4">
+              <h3 className="text-xl font-bold">Query Parameters</h3>
+              <div className="space-y-3">
+                <p className="text-gray-400">All endpoints support the following query parameters:</p>
+                <ul className="list-disc list-inside space-y-2 text-gray-400">
+                  <li><code className="text-purple-400">width</code> - Desired width in pixels</li>
+                  <li><code className="text-purple-400">height</code> - Desired height in pixels</li>
+                  <li><code className="text-purple-400">fit</code> - Resize mode (cover, contain, fill, inside, outside)</li>
+                  <li><code className="text-purple-400">format</code> - Output format (jpeg, png, webp)</li>
+                  <li><code className="text-purple-400">quality</code> - Image quality (1-100)</li>
+                </ul>
+                <p className="text-gray-400">Example:</p>
+                <pre className="bg-black/50 p-4 rounded">
+                  <code>GET https://api.retroimgs.com/random?width=800&height=600&format=webp&quality=90</code>
+                </pre>
+              </div>
+            </div>
           </div>
         </div>
       </section>
