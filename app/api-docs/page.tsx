@@ -29,7 +29,8 @@ export default function ApiDocs() {
 
   // Function to construct API URL based on current config
   const constructApiUrl = () => {
-    const baseUrl = 'https://retroimgs.com/api';
+    // Use window.location.origin to get the current domain
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
     const params = new URLSearchParams({
       width: config.width.toString(),
       height: config.height.toString(),
@@ -40,13 +41,13 @@ export default function ApiDocs() {
 
     switch (activeEndpoint) {
       case 'random':
-        return `${baseUrl}/random?${params}`;
+        return `${baseUrl}/api/random?${params}`;
       case 'console':
-        return `${baseUrl}/console/nes?${params}`;
+        return `${baseUrl}/api/console/nes?${params}`;
       case 'game':
-        return `${baseUrl}/game/123?${params}`;
+        return `${baseUrl}/api/game/123?${params}`;
       default:
-        return `${baseUrl}/random?${params}`;
+        return `${baseUrl}/api/random?${params}`;
     }
   };
 

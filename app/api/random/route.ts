@@ -1,22 +1,17 @@
 import { NextRequest } from 'next/server';
 import { processImage } from '../_lib/imageProcessor';
 import { join } from 'path';
+import { corsHeaders, handleCors } from '../_lib/cors';
 
-// Add CORS headers to the response
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // In production, specify your domain
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
-
-// Add OPTIONS handler for CORS preflight
-export async function OPTIONS() {
-  return new Response(null, {
-    headers: corsHeaders
-  });
+export async function OPTIONS(request: NextRequest) {
+  return handleCors(request);
 }
 
 export async function GET(request: NextRequest): Promise<Response> {
+  // Handle CORS preflight
+  const corsResponse = handleCors(request);
+  if (corsResponse) return corsResponse;
+
   try {
     const searchParams = request.nextUrl.searchParams;
     
@@ -46,14 +41,14 @@ export async function GET(request: NextRequest): Promise<Response> {
       headers: {
         'Content-Type': contentType,
         'Cache-Control': 'public, max-age=31536000, immutable',
-        ...corsHeaders // Add CORS headers to the response
+        ...corsHeaders
       }
     });
   } catch (error) {
     console.error('Error processing image:', error);
     return new Response('Error processing image', { 
       status: 500,
-      headers: corsHeaders // Add CORS headers even to error responses
+      headers: corsHeaders
     });
   }
 } 

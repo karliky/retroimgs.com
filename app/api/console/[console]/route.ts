@@ -1,23 +1,20 @@
 import { NextRequest } from 'next/server';
 import { processImage } from '../../_lib/imageProcessor';
 import { join } from 'path';
+import { corsHeaders, handleCors } from '../../_lib/cors';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
-
-export async function OPTIONS() {
-  return new Response(null, {
-    headers: corsHeaders
-  });
+export async function OPTIONS(request: NextRequest) {
+  return handleCors(request);
 }
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ console: string }> }
 ): Promise<Response> {
+  // Handle CORS preflight
+  const corsResponse = handleCors(request);
+  if (corsResponse) return corsResponse;
+
   try {
     const searchParams = request.nextUrl.searchParams;
     const consoleName = (await params).console;
