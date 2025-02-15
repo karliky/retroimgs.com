@@ -1,5 +1,4 @@
 import sharp from 'sharp';
-import { join } from 'path';
 
 export type ImageProcessingOptions = {
   width?: number;

@@ -4,10 +4,12 @@ import { join } from 'path';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+  { params }: { params: Promise<{ id: string }> }
+): Promise<Response> {
   try {
     const searchParams = request.nextUrl.searchParams;
+    const gameId = (await params).id;
+    console.log(`Processing image for game: ${gameId}`);
     
     // Get image processing parameters
     const width = searchParams.get('width') ? parseInt(searchParams.get('width')!) : undefined;

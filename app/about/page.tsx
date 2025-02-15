@@ -11,8 +11,8 @@ export default function About() {
           <h2 className="text-2xl font-bold text-purple-400">Our Mission</h2>
           <p className="text-gray-300 leading-relaxed">
             RetroImgs was born from a simple idea: make it easy for developers and retro gaming enthusiasts 
-            to access high-quality screenshots from classic video games. Whether you're building a website, 
-            creating a presentation, or just need some nostalgic placeholder images, we've got you covered.
+            to access high-quality screenshots from classic video games. Whether you&apos;re building a website, 
+            creating a presentation, or just need some nostalgic placeholder images, we&apos;ve got you covered.
           </p>
         </section>
 
@@ -65,7 +65,7 @@ export default function About() {
           <h2 className="text-2xl font-bold text-purple-400">Contact Us</h2>
           <div className="bg-gray-800/30 p-6 rounded-lg">
             <p className="text-gray-300">
-              Have questions or suggestions? We'd love to hear from you! Reach out to us at{' '}
+              Have questions or suggestions? We&apos;d love to hear from you! Reach out to us at{' '}
               <a href="mailto:contact@retroimgs.com" className="text-purple-400 hover:text-purple-300">
                 contact@retroimgs.com
               </a>

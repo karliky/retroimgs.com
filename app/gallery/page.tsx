@@ -148,7 +148,7 @@ export default function Gallery() {
             <div className="space-y-2 text-sm text-gray-400">
               <p>Category: {selectedCategory === 'all' ? 'All' : selectedCategory}</p>
               <p>Brand: {selectedBrand === 'all' ? 'All' : selectedBrand}</p>
-              {searchQuery && <p>Search: "{searchQuery}"</p>}
+              {searchQuery && <p>Search: &quot;{searchQuery}&quot;</p>}
             </div>
           </div>
         </div>

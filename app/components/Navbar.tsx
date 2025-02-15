@@ -1,17 +1,11 @@
 'use client';
 import { Camera, Code, Home, Menu, X, Gamepad2 } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 export default function Navbar() {
-  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  const isActive = (path: string) => {
-    return pathname === path ? 'text-cyan-400' : 'text-gray-300 hover:text-white';
-  };
-
   return (
     <header className="bg-black/50 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { processImage } from '../_lib/imageProcessor';
 import { join } from 'path';
 
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest): Promise<Response> {
   try {
     const searchParams = request.nextUrl.searchParams;
     
