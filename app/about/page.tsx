@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="py-12 space-y-12">
+    <div className="min-h-[calc(100vh-6rem)] py-8 space-y-12">
       <header className="space-y-4">
         <h1 className="text-4xl font-bold">About RetroImgs</h1>
         <p className="text-gray-400">The story behind your favorite retro gaming image API</p>

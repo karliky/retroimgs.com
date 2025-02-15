@@ -60,7 +60,7 @@ export default function Gallery() {
   });
 
   return (
-    <div className="py-12 space-y-12">
+    <div className="min-h-[calc(100vh-6rem)] py-8 space-y-12">
       <header className="space-y-4">
         <h1 className="text-4xl font-bold">Console Gallery</h1>
         <p className="text-gray-400">Browse our collection of retro gaming systems</p>
@@ -90,7 +90,7 @@ export default function Gallery() {
                 onClick={() => setSelectedCategory('all')}
                 className={`px-4 py-2 rounded-lg text-left transition-colors duration-200 ${
                   selectedCategory === 'all'
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-cyan-600 text-white'
                     : 'bg-gray-800/30 text-gray-300 hover:bg-gray-800/50'
                 }`}
               >
@@ -102,7 +102,7 @@ export default function Gallery() {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-lg text-left transition-colors duration-200 ${
                     selectedCategory === category
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-cyan-600 text-white'
                       : 'bg-gray-800/30 text-gray-300 hover:bg-gray-800/50'
                   }`}
                 >
@@ -120,7 +120,7 @@ export default function Gallery() {
                 onClick={() => setSelectedBrand('all')}
                 className={`px-4 py-2 rounded-lg text-left transition-colors duration-200 ${
                   selectedBrand === 'all'
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-cyan-600 text-white'
                     : 'bg-gray-800/30 text-gray-300 hover:bg-gray-800/50'
                 }`}
               >
@@ -132,7 +132,7 @@ export default function Gallery() {
                   onClick={() => setSelectedBrand(brand)}
                   className={`px-4 py-2 rounded-lg text-left transition-colors duration-200 ${
                     selectedBrand === brand
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-cyan-600 text-white'
                       : 'bg-gray-800/30 text-gray-300 hover:bg-gray-800/50'
                   }`}
                 >

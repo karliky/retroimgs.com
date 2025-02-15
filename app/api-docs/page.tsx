@@ -1,6 +1,6 @@
 export default function ApiDocs() {
   return (
-    <div className="py-12 space-y-12">
+    <div className="min-h-[calc(100vh-6rem)] py-8 space-y-12">
       <header className="space-y-4">
         <h1 className="text-4xl font-bold">API Documentation</h1>
         <p className="text-gray-400">Everything you need to know about using the RetroImgs API.</p>
