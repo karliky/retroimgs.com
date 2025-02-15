@@ -14,7 +14,7 @@ export default function ApiDocs() {
             <div className="bg-gray-800/30 p-6 rounded-lg space-y-4">
               <h3 className="text-xl font-bold">Random Image</h3>
               <pre className="bg-black/50 p-4 rounded">
-                <code>GET https://api.retroimgs.com/random</code>
+                <code>GET https://retroimgs.com/api/random</code>
               </pre>
               <p className="text-gray-400">Returns a random retro game screenshot.</p>
             </div>
@@ -22,7 +22,7 @@ export default function ApiDocs() {
             <div className="bg-gray-800/30 p-6 rounded-lg space-y-4">
               <h3 className="text-xl font-bold">Console Specific</h3>
               <pre className="bg-black/50 p-4 rounded">
-                <code>{'GET https://api.retroimgs.com/console/{console-name}'}</code>
+                <code>{'GET https://retroimgs.com/api/console/{console-name}'}</code>
               </pre>
               <p className="text-gray-400">Returns a random screenshot from a specific console.</p>
             </div>
@@ -30,7 +30,7 @@ export default function ApiDocs() {
             <div className="bg-gray-800/30 p-6 rounded-lg space-y-4">
               <h3 className="text-xl font-bold">Game Specific</h3>
               <pre className="bg-black/50 p-4 rounded">
-                <code>{'GET https://api.retroimgs.com/game/{game-id}'}</code>
+                <code>{'GET https://retroimgs.com/api/game/{game-id}'}</code>
               </pre>
               <p className="text-gray-400">Returns a specific game screenshot.</p>
             </div>
@@ -48,7 +48,7 @@ export default function ApiDocs() {
                 </ul>
                 <p className="text-gray-400">Example:</p>
                 <pre className="bg-black/50 p-4 rounded">
-                  <code>GET https://api.retroimgs.com/random?width=800&height=600&format=webp&quality=90</code>
+                  <code>GET https://retroimgs.com/api/random?width=800&height=600&format=webp&quality=90</code>
                 </pre>
               </div>
             </div>
