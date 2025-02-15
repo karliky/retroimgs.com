@@ -136,8 +136,8 @@ export default function ApiDocs() {
                     <li><code className="text-purple-400">quality</code> - Image quality (1-100)</li>
                   </ul>
                   <p className="text-gray-400">Example:</p>
-                  <pre className="bg-black/50 p-4 rounded">
-                    <code>GET https://retroimgs.com/api/random?width=800&height=600&format=webp&quality=90</code>
+                  <pre className="bg-black/50 p-4 rounded overflow-x-auto">
+                    <code className="break-all whitespace-pre-wrap">GET https://retroimgs.com/api/random?width=800&height=600&format=webp&quality=90</code>
                   </pre>
                 </div>
               </div>
