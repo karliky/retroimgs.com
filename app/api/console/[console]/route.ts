@@ -2,6 +2,18 @@ import { NextRequest } from 'next/server';
 import { processImage } from '../../_lib/imageProcessor';
 import { join } from 'path';
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+export async function OPTIONS() {
+  return new Response(null, {
+    headers: corsHeaders
+  });
+}
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ console: string }> }
@@ -36,11 +48,15 @@ export async function GET(
     return new Response(processedImage, {
       headers: {
         'Content-Type': contentType,
-        'Cache-Control': 'public, max-age=31536000, immutable'
+        'Cache-Control': 'public, max-age=31536000, immutable',
+        ...corsHeaders
       }
     });
   } catch (error) {
     console.error('Error processing image:', error);
-    return new Response('Error processing image', { status: 500 });
+    return new Response('Error processing image', { 
+      status: 500,
+      headers: corsHeaders
+    });
   }
 } 
