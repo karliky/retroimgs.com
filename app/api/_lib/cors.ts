@@ -6,10 +6,10 @@ export const corsHeaders = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
 
-export function handleCors(request: NextRequest) {
+export function handleCors(request: NextRequest): Response | undefined {
   // Handle preflight requests
   if (request.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
-  return null;
+  return undefined;
 } 
