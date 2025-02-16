@@ -123,7 +123,11 @@ export default function Home() {
 
           {/* Enhanced value proposition */}
           <p className="text-gray-400 text-lg">
-            Power your retro gaming projects with the most comprehensive game screenshot API. 
+            Power your{' '}
+            <span className="inline-block bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold hover:animate-pulse transition-all duration-300">
+              retro gaming projects
+            </span>
+            {' '}with the most comprehensive game screenshot API. 
             Access high-quality images from NES, SNES, PlayStation, and 200+ classic gaming platforms. 
             Perfect for developers, content creators, and retro gaming enthusiasts.
           </p>
