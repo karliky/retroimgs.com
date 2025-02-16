@@ -98,14 +98,14 @@ export default function Home() {
         
         {/* Main content */}
         <div className="relative space-y-6 text-center lg:text-left">
-          {/* Glowing text effect */}
+          {/* Optimized headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter">
             <span>
-              Your retro gaming images catalog
+              Retro Gaming Image API
             </span>
           </h1>
 
-          {/* Feature badges */}
+          {/* Feature badges with enhanced copy */}
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
             <div className="bg-purple-500/10 border border-purple-500/20 rounded-full px-6 py-2 flex items-center gap-2">
               <Terminal size={16} className="text-purple-400" />
@@ -121,25 +121,27 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Enhanced value proposition */}
           <p className="text-gray-400 text-lg">
-            The perfect Lorem Ipsum for retro video game images.
-            Access thousands of classic gaming screenshots through our simple API.
+            Power your retro gaming projects with the most comprehensive game screenshot API. 
+            Access high-quality images from NES, SNES, PlayStation, and 200+ classic gaming platforms. 
+            Perfect for developers, content creators, and retro gaming enthusiasts.
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons with stronger action words */}
           <div className="flex gap-4 justify-center lg:justify-start">
             <Link 
               href="/api-docs"
               className="group relative px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-all duration-200 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative">Get Started</span>
+              <span className="relative">Start Free Trial</span>
             </Link>
             <Link 
               href="/gallery"
               className="px-8 py-3 bg-gray-800/50 hover:bg-gray-800/70 text-gray-300 rounded-lg transition-colors duration-200"
             >
-              Browse Gallery
+              Explore Library
             </Link>
           </div>
         </div>
