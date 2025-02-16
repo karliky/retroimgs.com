@@ -29,8 +29,7 @@ export default function ApiDocs() {
 
   // Function to construct API URL based on current config
   const constructApiUrl = () => {
-    // Use window.location.origin to get the current domain
-    const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+    // Remove window.location.origin as it causes hydration mismatch
     const params = new URLSearchParams({
       width: config.width.toString(),
       height: config.height.toString(),
@@ -41,13 +40,13 @@ export default function ApiDocs() {
 
     switch (activeEndpoint) {
       case 'random':
-        return `${baseUrl}/api/random?${params}`;
+        return `/api/random?${params}`;
       case 'console':
-        return `${baseUrl}/api/console/nes?${params}`;
+        return `/api/console/nes?${params}`;
       case 'game':
-        return `${baseUrl}/api/game/123?${params}`;
+        return `/api/game/123?${params}`;
       default:
-        return `${baseUrl}/api/random?${params}`;
+        return `/api/random?${params}`;
     }
   };
 
