@@ -91,71 +91,73 @@ export default function Home() {
   const row3Images = getImageSubset(6, 6);
 
   return (
-    <div className="min-h-[90vh] flex items-center justify-center py-12 lg:py-24">
-      <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto px-4">
-        {/* Decorative scanlines overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,_rgba(0,0,0,0.3)_50%,_transparent_100%)] bg-[length:100%_4px] pointer-events-none" />
-        
-        {/* Main content */}
-        <div className="relative space-y-6 text-center lg:text-left">
-          {/* Optimized headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter">
-            <span>
-              Retro Gaming Image API
-            </span>
-          </h1>
+    <div className="container mx-auto">
+      <div className="min-h-[90vh] flex items-center justify-center py-12 lg:py-24">
+        <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Decorative scanlines overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,_rgba(0,0,0,0.3)_50%,_transparent_100%)] bg-[length:100%_4px] pointer-events-none" />
+          
+          {/* Main content */}
+          <div className="relative space-y-6 text-center lg:text-left">
+            {/* Optimized headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter">
+              <span>
+                Retro Gaming Image API
+              </span>
+            </h1>
 
-          {/* Feature badges with enhanced copy */}
-          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-            <div className="bg-purple-500/10 border border-purple-500/20 rounded-full px-6 py-2 flex items-center gap-2">
-              <Terminal size={16} className="text-purple-400" />
-              <span className="text-sm">Simple API</span>
+            {/* Feature badges with enhanced copy */}
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <div className="bg-purple-500/10 border border-purple-500/20 rounded-full px-6 py-2 flex items-center gap-2">
+                <Terminal size={16} className="text-purple-400" />
+                <span className="text-sm">Simple API</span>
+              </div>
+              <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-full px-6 py-2 flex items-center gap-2">
+                <Gamepad2 size={16} className="text-cyan-400" />
+                <span className="text-sm">200+ Platforms</span>
+              </div>
+              <div className="bg-purple-500/10 border border-purple-500/20 rounded-full px-6 py-2 flex items-center gap-2">
+                <Sparkles size={16} className="text-purple-400" />
+                <span className="text-sm">High Quality</span>
+              </div>
             </div>
-            <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-full px-6 py-2 flex items-center gap-2">
-              <Gamepad2 size={16} className="text-cyan-400" />
-              <span className="text-sm">200+ Platforms</span>
-            </div>
-            <div className="bg-purple-500/10 border border-purple-500/20 rounded-full px-6 py-2 flex items-center gap-2">
-              <Sparkles size={16} className="text-purple-400" />
-              <span className="text-sm">High Quality</span>
+
+            {/* Enhanced value proposition */}
+            <p className="text-gray-400 text-lg">
+              Power your{' '}
+              <span className="inline-block bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold hover:animate-pulse transition-all duration-300">
+                retro gaming projects
+              </span>
+              {' '}with the most comprehensive game screenshot API. 
+              Access high-quality images from NES, SNES, PlayStation, and 200+ classic gaming platforms. 
+              Perfect for developers, content creators, and retro gaming enthusiasts.
+            </p>
+
+            {/* CTA Buttons with stronger action words */}
+            <div className="flex gap-4 justify-center lg:justify-start">
+              <Link 
+                href="/api-docs"
+                className="group relative px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-all duration-200 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative">Start Free Trial</span>
+              </Link>
+              <Link 
+                href="/gallery"
+                className="px-8 py-3 bg-gray-800/50 hover:bg-gray-800/70 text-gray-300 rounded-lg transition-colors duration-200"
+              >
+                Explore Library
+              </Link>
             </div>
           </div>
 
-          {/* Enhanced value proposition */}
-          <p className="text-gray-400 text-lg">
-            Power your{' '}
-            <span className="inline-block bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-semibold hover:animate-pulse transition-all duration-300">
-              retro gaming projects
-            </span>
-            {' '}with the most comprehensive game screenshot API. 
-            Access high-quality images from NES, SNES, PlayStation, and 200+ classic gaming platforms. 
-            Perfect for developers, content creators, and retro gaming enthusiasts.
-          </p>
-
-          {/* CTA Buttons with stronger action words */}
-          <div className="flex gap-4 justify-center lg:justify-start">
-            <Link 
-              href="/api-docs"
-              className="group relative px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-all duration-200 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative">Start Free Trial</span>
-            </Link>
-            <Link 
-              href="/gallery"
-              className="px-8 py-3 bg-gray-800/50 hover:bg-gray-800/70 text-gray-300 rounded-lg transition-colors duration-200"
-            >
-              Explore Library
-            </Link>
-          </div>
-        </div>
-
-        {/* Scrolling Image Grid */}
-        <div className="relative order-first lg:order-last w-full overflow-hidden">
-          <div className="skewed-container space-y-4">
-            <ScrollingRow images={row1Images} speed={0.02} />
-            <ScrollingRow images={row2Images} speed={0.03} delay={100} />
-            <ScrollingRow images={row3Images} speed={0.015} delay={200} />
+          {/* Scrolling Image Grid */}
+          <div className="relative order-first lg:order-last w-full overflow-hidden">
+            <div className="skewed-container space-y-4">
+              <ScrollingRow images={row1Images} speed={0.02} />
+              <ScrollingRow images={row2Images} speed={0.03} delay={100} />
+              <ScrollingRow images={row3Images} speed={0.015} delay={200} />
+            </div>
           </div>
         </div>
       </div>
