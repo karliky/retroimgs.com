@@ -66,14 +66,14 @@ function ScrollingRow({ images, speed, delay = 0 }: { images: string[], speed: n
   }, [speed, delay]);
 
   return (
-    <div className="scroll-outer-container">
+    <div className="scroll-outer-container overflow-hidden">
       <div className="scroll-container" ref={scrollerRef}>
         <div className="scroll-content" ref={contentRef}>
           {images.map((url, index) => (
             <img 
               key={index} 
               src={url} 
-              className="scroll-image" 
+              className="scroll-image w-[200px] h-[120px] object-cover rounded-lg mx-2" 
               alt={`Gaming image ${index + 1}`}
               loading="eager"
             />
@@ -91,22 +91,22 @@ export default function Home() {
   const row3Images = getImageSubset(6, 6);
 
   return (
-    <div className="min-h-[90vh] flex items-center justify-center">
-      <div className="relative grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto px-4">
+    <div className="min-h-[90vh] flex items-center justify-center py-12 lg:py-24">
+      <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto px-4">
         {/* Decorative scanlines overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,_rgba(0,0,0,0.3)_50%,_transparent_100%)] bg-[length:100%_4px] pointer-events-none" />
         
         {/* Main content */}
-        <div className="relative space-y-6 text-center md:text-left">
+        <div className="relative space-y-6 text-center lg:text-left">
           {/* Glowing text effect */}
-          <h1 className="text-6xl md:text-7xl font-bold tracking-tighter">
-            <span className="">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter">
+            <span>
               Your retro gaming images catalog
             </span>
           </h1>
 
           {/* Feature badges */}
-          <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
             <div className="bg-purple-500/10 border border-purple-500/20 rounded-full px-6 py-2 flex items-center gap-2">
               <Terminal size={16} className="text-purple-400" />
               <span className="text-sm">Simple API</span>
@@ -127,7 +127,7 @@ export default function Home() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex gap-4 justify-center md:justify-start">
+          <div className="flex gap-4 justify-center lg:justify-start">
             <Link 
               href="/api-docs"
               className="group relative px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-all duration-200 overflow-hidden"
@@ -145,11 +145,11 @@ export default function Home() {
         </div>
 
         {/* Scrolling Image Grid */}
-        <div className="relative order-first md:order-last">
-          <div className="skewed-container">
-            <ScrollingRow images={row1Images} speed={0.05} />
-            <ScrollingRow images={row2Images} speed={0.07} delay={100} />
-            <ScrollingRow images={row3Images} speed={0.03} delay={200} />
+        <div className="relative order-first lg:order-last w-full overflow-hidden">
+          <div className="skewed-container space-y-4">
+            <ScrollingRow images={row1Images} speed={0.02} />
+            <ScrollingRow images={row2Images} speed={0.03} delay={100} />
+            <ScrollingRow images={row3Images} speed={0.015} delay={200} />
           </div>
         </div>
       </div>

@@ -44,7 +44,7 @@ export default function RootLayout({
         </div>
 
         <Navbar />
-        <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <main className="relative z-10 w-full overflow-x-hidden pt-16">
           {children}
         </main>
         <Footer />

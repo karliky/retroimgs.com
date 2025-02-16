@@ -63,7 +63,7 @@ body {
 }
 
 .animate-grid-movement {
-  animation: grid-movement 20s linear infinite;
+  animation: grid-movement 30s linear infinite;
 }
 
 /* Slow pulse animation */
@@ -73,7 +73,7 @@ body {
 }
 
 .animate-pulse-slow {
-  animation: pulse-slow 10s ease-in-out infinite;
+  animation: pulse-slow 15s ease-in-out infinite;
 }
 
 .delay-1000 {
@@ -149,38 +149,57 @@ body {
   );
 }
 
-/* Add back the skewed container styles */
+/* Update the skewed container styles to be responsive */
 .skewed-container {
-  transform: perspective(1000px) 
-             rotateY(-25deg) 
-             rotateX(15deg) 
-             rotateZ(-5deg) 
-             scale(0.9);
+  transform: none; /* Default mobile/tablet state - no transform */
   transform-style: preserve-3d;
   transform-origin: center center;
   transition: transform 0.3s ease;
 }
 
-.skewed-container:hover {
-  transform: perspective(1000px) 
-             rotateY(-20deg) 
-             rotateX(10deg) 
-             rotateZ(-3deg) 
-             scale(0.95);
+/* Apply skew effect only on large screens and up */
+@media (min-width: 1024px) {
+  .skewed-container {
+    transform: perspective(1000px) 
+               rotateY(-25deg) 
+               rotateX(15deg) 
+               rotateZ(-5deg) 
+               scale(0.9);
+  }
+
+  .skewed-container:hover {
+    transform: perspective(1000px) 
+               rotateY(-20deg) 
+               rotateX(10deg) 
+               rotateZ(-3deg) 
+               scale(0.95);
+  }
+
+  .skewed-container > div {
+    transform-style: preserve-3d;
+  }
+
+  .skewed-container > div:nth-child(1) {
+    transform: translateZ(40px);
+  }
+
+  .skewed-container > div:nth-child(2) {
+    transform: translateZ(20px);
+  }
+
+  .skewed-container > div:nth-child(3) {
+    transform: translateZ(0);
+  }
 }
 
-.skewed-container > div {
-  transform-style: preserve-3d;
-}
-
-.skewed-container > div:nth-child(1) {
-  transform: translateZ(40px);
-}
-
-.skewed-container > div:nth-child(2) {
-  transform: translateZ(20px);
-}
-
-.skewed-container > div:nth-child(3) {
-  transform: translateZ(0);
+/* For mobile and tablet, ensure images stack nicely */
+@media (max-width: 1023px) {
+  .skewed-container > div {
+    margin-bottom: 1rem;
+  }
+  
+  .scroll-image {
+    height: 6rem; /* Slightly smaller images on mobile/tablet */
+    width: 10rem;
+  }
 }
