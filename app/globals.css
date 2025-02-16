@@ -79,3 +79,108 @@ body {
 .delay-1000 {
   animation-delay: -5s;
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-container {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.scroll-content {
+  display: flex;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+.scroll-image {
+  height: 8rem;
+  width: 12rem;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.7;
+}
+
+.scroll-image:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.scroll-outer-container {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.scroll-outer-container::before,
+.scroll-outer-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.scroll-outer-container::before {
+  left: 0;
+  background: linear-gradient(to right, 
+    rgba(10, 10, 10, 1), 
+    rgba(10, 10, 10, 0)
+  );
+}
+
+.scroll-outer-container::after {
+  right: 0;
+  background: linear-gradient(to left, 
+    rgba(10, 10, 10, 1), 
+    rgba(10, 10, 10, 0)
+  );
+}
+
+/* Add back the skewed container styles */
+.skewed-container {
+  transform: perspective(1000px) 
+             rotateY(-25deg) 
+             rotateX(15deg) 
+             rotateZ(-5deg) 
+             scale(0.9);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+.skewed-container:hover {
+  transform: perspective(1000px) 
+             rotateY(-20deg) 
+             rotateX(10deg) 
+             rotateZ(-3deg) 
+             scale(0.95);
+}
+
+.skewed-container > div {
+  transform-style: preserve-3d;
+}
+
+.skewed-container > div:nth-child(1) {
+  transform: translateZ(40px);
+}
+
+.skewed-container > div:nth-child(2) {
+  transform: translateZ(20px);
+}
+
+.skewed-container > div:nth-child(3) {
+  transform: translateZ(0);
+}
